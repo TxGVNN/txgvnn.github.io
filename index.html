@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>by TxGVNN</title>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="favicon.ico">
+	<style type="text/css">
+	body{
+		margin-top: 30px;
+		margin-left: 30px;
+		padding-left: 2px;
+		background: #000000 url("bg.png");
+		background-repeat: no-repeat;
+		background-position: center;
+		background-attachment: fixed;
+		<!--border-left: #ffffff  1px solid;-->
+
+	}
+	</style>
+	<script type="text/javascript">
+		com = {
+			delaywrite:200,
+			su: new String("su"),
+			root: new String('<span style="color:#de6839">┌</span><span style="color:#4A3637">(</span><span style="color:#de6839">root</span><span style="color:#5a715c">@Debian</span><span style="color:#4A3637">)</span><span style="color:#6d9f45">─</span><span style="color:#4A3637">(</span><span style="color:#535C5C">~</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">02:54:56</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">24.53%</span><span style="color:#4A3637">)</span><br />'
+								+'<span style="color:#de6839">└&gt;</span>'),
+			lsla: new String("ls -la"),
+			contentls: new String('<p>total 12</p><p>drwxr-xr-x  3 root root     4096 Jan 09 00:28 .</p><p>drwxr-xr-x  3 root root     4096 Jan 10 20:09 ..</p><p>-rwxr-x--x  2 root root     4096 Jan 10 20:11 txg</p>'),
+			txg: new String("./txg"),
+			txgvnn: new   String('<span style="color:#535C5C">&nbsp;&nbsp;#####&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;</span><br />'
+									+ '<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;</span><br />'
+									+ '<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;#&nbsp;#</span>&nbsp;&nbsp;#&nbsp;##&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;#&nbsp;#&nbsp;&nbsp;#&nbsp;#&nbsp;#&nbsp;</span><br />'
+									+ '<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;&nbsp;#</span>&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;</span><br />'
+									+ '<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;#&nbsp;#</span>&nbsp;&nbsp;&nbsp;###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;</span><br />'
+									+ '<br />'
+									+ '<span style="color:#5a715c">&nbsp;&nbsp;[ @author TxGVNN ] </span>'),
+			loading: new String('<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;========== <span id="loadinga" style="color: #de6839;"></span> =========</p>'),
+			loadinga: new String("loading"),
+		}
+
+		function writetext(){
+			document.all["all"].innerHTML='<span style="color:#6d9f45">┌</span><span style="color:#4A3637">(</span><span style="color:#6d9f45">test</span><span style="color:#5a715c">@Debian</span><span style="color:#4A3637">)</span><span style="color:#6d9f45">─</span><span style="color:#4A3637">(</span><span style="color:#535C5C">~</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">02:54:55</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">24.01%</span><span style="color:#4A3637">) (master *)</span><br />'
+										+ '<span style="color:#6d9f45">└&gt;</span><span id="su" style="color:#c0b18b"></span>'
+										+'<p id="password" style="color:#c0b18b"></p>'
+										+'<p style=" font-size: 4; text-align: left;" ><span id="root1" ></span><span id="lsla" style="color:#c0b18b"></span></p>'
+										+'<p id="contentls" style="color: #c0b18b"></p>'
+										+'<p style=" font-size: 4; text-align: left;" ><span id="root2"></span><span id="./txg" style="color:#c0b18b"></span></p>'
+										+'<p id="txgvnn"></p>'
+										+'<p id="loading"></p>';
+			i = 0;
+			text="";
+			setTimeout('su()',200);
+		}
+
+		function su(){
+			text +=com.su.charAt(i);
+			document.all['su'].innerHTML = text;
+			i++;
+			if (i <=com.su.length){
+				setTimeout('su()', com.delaywrite);
+			} else{
+				setTimeout('password()',300);
+			}
+		}
+
+		function password(){
+			document.all['password'].innerHTML = "Password:";
+			setTimeout('root1()', 1000);
+		}
+
+		function root1(){
+			document.all['root1'].innerHTML=com.root;
+			text="";
+			i=0;
+			setTimeout('lsla()',600);
+		}
+
+		function lsla(){
+			text+=com.lsla.charAt(i);
+			document.all['lsla'].innerHTML=text;
+			i++;
+			if (i<com.lsla.length){ setTimeout('lsla()',com.delaywrite);}
+			else { setTimeout('contentls()',500)}
+		}
+		function contentls(){
+			document.all['contentls'].innerHTML=com.contentls;
+			root2();
+		}
+
+		function root2(){
+			document.all['root2'].innerHTML=com.root;
+			text="";
+			i=0;
+			setTimeout('txg()',1000);
+		}
+		function txg(){
+			text+=com.txg.charAt(i);
+			document.all['./txg'].innerHTML = text;
+			i++;
+			if (i < com.txg.length){ setTimeout('txg()',com.delaywrite)}
+			else {setTimeout('contenttxg()',500)}
+		}
+
+		function contenttxg(){
+			document.all['txgvnn'].innerHTML = com.txgvnn;
+			document.all['loading'].innerHTML = com.loading;
+			i=0;
+
+			setTimeout('loading()',10);
+
+			//document.all['root3'].innerHTML = com.root;
+		}
+
+		function loading(){
+
+			a = com.loadinga.toUpperCase().charAt(i);
+			text= com.loadinga.substring(0,i)+'<span style="color: #c0b18b;">'+a+'</span>'+com.loadinga.substring(i+1,7);
+			document.all['loadinga'].innerHTML = text;
+			i=(i+1)%7;
+			setTimeout('loading()',100);
+		}
+	<!-- Disable
+        function disableselect(e) {
+            return false
+        }
+		function reEnable() {
+			return true
+		}
+		//if IE4+
+        document.onselectstart = new Function("return false")
+        document.oncontextmenu = new Function("return false")
+        //if NS6
+        if (window.sidebar) {
+            document.onmousedown = disableselect
+            document.onclick = reEnable
+        }
+    -->
+	</script>
+</head>
+<body onload="writetext()">
+<iframe width="1" height="1" src="https://www.youtube.com/embed/xIDHYqE0Jg4?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+
+<div id="all" style="font-family: Courier; color: #ffffff">
+	<span style="color:#6d9f45">┌</span><span style="color:#4A3637">(</span><span style="color:#6d9f45">test</span><span style="color:#5a715c">@Debian</span><span style="color:#4A3637">)</span><span style="color:#6d9f45">─</span><span style="color:#4A3637">(</span><span style="color:#535C5C">~</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">02:54:55</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">24.01%</span><span style="color:#4A3637">) (master *)</span><br />
+	<span style="color:#6d9f45">└&gt;</span><span id="su" style="color:#c0b18b">su</span>
+
+	<p id="password" style="color:#c0b18b">Password:</p>
+
+	<span style="color:#de6839">┌</span><span style="color:#4A3637">(</span><span style="color:#de6839">root</span><span style="color:#5a715c">@Debian</span><span style="color:#4A3637">)</span><span style="color:#6d9f45">─</span><span style="color:#4A3637">(</span><span style="color:#535C5C">~</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">02:54:56</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">24.53%</span><span style="color:#4A3637">)</span><br />
+	<span style="color:#de6839">└&gt;</span><span style="color:#c0b18b">ls -la</span><br />
+
+	<div id="contentls" style="color:#c0b18b">
+		<p>total 12</p>
+		<p>drwxr-xr-x  3 root root     4096 Jan 09 00:28 .</p>
+		<p>drwxr-xr-x  3 root root     4096 Jan 10 20:09 ..</p>
+		<p>-rwxr-x--x  2 root root     4096 Jan 10 20:11 txg</p>
+	</div>
+	<span style="color:#de6839">┌</span><span style="color:#4A3637">(</span><span style="color:#de6839">root</span><span style="color:#5a715c">@Debian</span><span style="color:#4A3637">)</span><span style="color:#6d9f45">─</span><span style="color:#4A3637">(</span><span style="color:#535C5C">~</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">02:54:56</span><span style="color:#4A3637">)─(</span><span style="color:#af865a">24.53%</span><span style="color:#4A3637">)</span><br />
+	<span style="color:#de6839">└&gt;</span><span style="color: #c0b18b">./txg</span><br />
+
+	<p id="txgvnn">
+		<span style="color:#535C5C">&nbsp;&nbsp;#####&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;###&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;</span><br />
+		<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;</span><br />
+		<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;#&nbsp;#</span>&nbsp;&nbsp;#&nbsp;##&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;#&nbsp;#&nbsp;&nbsp;#&nbsp;#&nbsp;#&nbsp;</span><br />
+		<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;&nbsp;#</span>&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;&nbsp;#&nbsp;&nbsp;##&nbsp;</span><br />
+		<span style="color:#535C5C">&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;<span style="color:#de6839">&nbsp;&nbsp;#&nbsp;#</span>&nbsp;&nbsp;&nbsp;###&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;#&nbsp;</span><br />
+		<br />
+		<span style="color:#5a715c">&nbsp;&nbsp;[ @author TxGVNN ] </span>
+	</p>
+</div>
+</body>
+</html>
