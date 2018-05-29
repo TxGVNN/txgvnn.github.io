@@ -1,0 +1,31 @@
+#!/bin/sh
+COMPOSE_VERSION=1.21.2
+
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
+msg(){ printf "%s: %s\n" "$1" "$2";}
+
+if [ "$(id -u)" -ne 0 ]; then
+    msg "E" "Required privileged root"
+    exit 1
+fi
+
+if ! type curl >& /dev/null; then
+    msg "E" "curl not found"
+    exit 1
+fi
+
+if ! type docker >& /dev/null; then
+    echo Installing Docker ...
+    curl https://get.docker.com/ | sh
+fi
+
+if ! type docker-compose; then
+    echo Installing Docker Compose
+    curl -L https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    chmod +x /usr/local/bin/docker-compose
+    if ! which docker-compose >& /dev/null; then
+        ln -sv /usr/local/bin/docker-compose /usr/bin/docker-compose
+    fi
+fi
