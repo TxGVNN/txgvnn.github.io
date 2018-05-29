@@ -1,0 +1,33 @@
+#!/bin/bash
+SERVER_DEFAULT="irc.oftc.net"
+NICKNAME_DEFAULT="irc_$(date +%s)"
+CHANNEL_DEFAULT="#debian-vn"
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
+
+help(){
+    echo "Usage:"
+    echo " cat irc | MESSAGE=\"Somethings\" [SERVER=;CHANNEL=;NICKNAME=] bash"
+    exit 1
+}
+
+irc(){
+    if [ ! -S "/proc/$$/fd/3" ]; then
+        exec 3>/dev/tcp/"${SERVER}"/6667
+        cat <&3 &
+        echo "NICK ${NICKNAME}" >&3
+        echo "USER ${NICKNAME} +i * :sh" >&3
+        echo "JOIN ${CHANNEL}" >&3
+    fi
+    echo "PRIVMSG ${CHANNEL} :$*" >&3
+}
+
+if [ -z "$MESSAGE" ]; then
+    help
+fi
+NICKNAME=${NICKNAME:-$NICKNAME_DEFAULT}
+CHANNEL=${CHANNEL:-$CHANNEL_DEFAULT}
+SERVER=${SERVER:-$SERVER_DEFAULT}
+
+irc "$MESSAGE"
