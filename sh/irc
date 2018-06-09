@@ -19,6 +19,10 @@ irc(){
         echo "NICK ${NICKNAME}" >&3
         echo "USER ${NICKNAME} +i * :sh" >&3
         echo "JOIN ${CHANNEL}" >&3
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}" >&3
+        fi
     fi
     echo "PRIVMSG ${CHANNEL} :$*" >&3
 }

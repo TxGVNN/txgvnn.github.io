@@ -1,0 +1,56 @@
+#!/bin/bash
+REPO_DEFAULT=/opt/ausolv
+SERVER_DEFAULT="irc.freenode.net"
+NICKNAME_DEFAULT="$(hostname)-$(date +%s)"
+CHANNEL_DEFAULT="#ausolv"
+GPG_DEFAULT="0xB8E9A6F112C2D7B7"
+
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
+msg(){ printf "%s: %s\n" "$1" "$2";}
+irc(){
+    if [ ! -S "/proc/$$/fd/3" ]; then
+        exec 3>/dev/tcp/"${SERVER}"/6667
+        cat <&3 &
+        echo "NICK $NICKNAME" >&3
+        echo "USER $NICKNAME +i * :sh" >&3
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}" >&3
+        fi
+    fi
+    echo "PRIVMSG ${CHANNEL} :$*" >&3
+}
+
+REPO=${REPO:-$REPO_DEFAULT}
+SERVER=${SERVER:-$SERVER_DEFAULT}
+NICKNAME=${NICKNAME:-$NICKNAME_DEFAULT}
+CHANNEL=${CHANNEL:-$CHANNEL_DEFAULT}
+GPG=${GPG:-$GPG_DEFAULT}
+
+if ! type curl >/dev/null 2>&1; then
+    msg "E" "curl not found"
+    exit 1
+fi
+if ! type gpg >/dev/null 2>&1; then
+    msg "E" "gpg not found"
+    exit 1
+fi
+
+cd "$REPO" || exit 1
+if [ -d ".git" ]; then
+    git --git-dir "$REPO/.git" pull origin master
+fi
+
+while IFS='\0' read -r -d '' shell
+do
+    echo "### $shell" >> "$NICKNAME"
+    bash "${shell}" &>> "$NICKNAME"
+done <  <(find "$REPO" -maxdepth 1 -name \*.sh -printf '%P\0')
+
+gpg --recv-keys "$GPG"
+gpg --yes --trust-model always --output "$NICKNAME.log" --encrypt --recipient "$GPG" "$NICKNAME"
+irc "$(curl --upload-file "$NICKNAME.log" https://transfer.sh)"
+rm "$NICKNAME" -rf
+#irc "QUIT"
