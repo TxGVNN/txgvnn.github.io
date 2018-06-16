@@ -1,0 +1,41 @@
+#!/bin/bash
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
+OUTPUT="$HOME"
+INPUT="https://raw.githubusercontent.com/TxGVNN/dots/master"
+
+msg(){ printf "\e[32m%s\e[0m: %s\n" "$1" "$2";}
+
+banner(){
+    echo -e '\e[-1;34m'
+    echo -e '  #####        ###   #   #  #   #  #   #'
+    echo -e '    #         #      #   #  ##  #  ##  #'
+    echo -e '    #    \e[0;31m# #\e[0;34m  # ##   #   #  # # #  # # #'
+    echo -e '    #     \e[0;31m#\e[0;34m   #   #   # #   #  ##  #  ##'
+    echo -e '    #    \e[0;31m# #\e[0;34m   ###     #    #   #  #   #'
+    echo ''
+    echo -e '  \e[0;36m[ @author TxGVNN ]\e[0m'
+    echo ''
+}
+
+# install OUTPUT LINK
+install(){
+    msg "I" "Install $1"
+    if type wget >& /dev/null; then
+        wget -qO "$1" "$2"
+        return $?
+    fi
+    if type curl >& /dev/null; then
+        curl -sSL -o "$1" "$2"
+        return $?
+    fi
+    echo "Please install wget or curl command!"
+    exit 1
+}
+
+# main
+banner
+install "${OUTPUT}/.screenrc" "${INPUT}/.screenrc"
+install "${OUTPUT}/.emacs" "${INPUT}/.emacs"
+install "${OUTPUT}/.vimrc" "${INPUT}/.vimrc"
