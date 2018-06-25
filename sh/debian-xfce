@@ -1,0 +1,40 @@
+#!/bin/bash
+if [ "${DEBUG:-0}" -eq 1 ] ; then
+    set -x
+fi
+
+msg(){ printf "%s: %s\n" "$1" "$2";}
+help(){
+    echo "Usage: "
+    echo "    PART=/dev/sdb2"
+    exit 0
+}
+
+if [ "$(id -u)" -ne 0 ]; then
+    msg "E" "Required privileged root"
+    exit 1
+fi
+
+if [ -z "$PART" ]; then
+    help
+fi
+
+mount "$PART" /mnt
+debootstrap stretch /mnt http://debian.xtdv.net/debian
+
+mount -o bind /proc /mnt/proc
+mount -o bind /sys /mnt/sys
+mount -o bind /dev /mnt/dev
+mount -o bind /dev/pts /mnt/dev/pts
+
+
+echo "deb http://debian.xtdv.net/debian stretch main contrib non-free" > /mnt/etc/apt/sources.list
+
+ls -la /dev/disk/by-uuid/ | grep "${PART##/dev}"  | awk '{print "UUID="$9"   /     ext4    errors=remount-ro       0       1"}' > /mnt/etc/fstab
+
+chroot /mnt apt-get update
+chroot /mnt apt-get install xfce4 linux-image-4.9.0-6-rt-amd64 grub-efi firefox-esr chromium thunderbird gnome-screenshot git build-essential sudo network-manager-gnome -y
+
+
+echo "Please setup grub2. Then umount"
+echo "umount /mnt{/dev/pts,/dev,/proc,/sys,}"
