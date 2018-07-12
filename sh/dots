@@ -34,8 +34,31 @@ install(){
     exit 1
 }
 
+
+# install OUTPUT LINK
+apply(){
+    tmp=$(mktemp -t bakXXXXX -u)
+    if grep "TxGVNN" "$1" >& /dev/null ; then
+        msg "I" "Skip $1"
+        return 0
+    fi
+    if type wget >& /dev/null; then
+        wget -qO "$tmp" "$2"
+        cat "$tmp" >> "$1"
+        return $?
+    fi
+    if type curl >& /dev/null; then
+        curl -sSL -o "$tmp" "$2"
+        cat "$tmp" >> "$1"
+        return $?
+    fi
+    echo "Please install wget or curl command!"
+    exit 1
+}
+
 # main
 banner
 install "${OUTPUT}/.screenrc" "${INPUT}/.screenrc"
 install "${OUTPUT}/.emacs" "${INPUT}/.emacs"
 install "${OUTPUT}/.vimrc" "${INPUT}/.vimrc"
+apply "${OUTPUT}/.bashrc" "${INPUT}/.bashrc"

@@ -1,3 +1,3 @@
 #!/bin/bash
 apt-get update
-apt-get install -y task-laptop acpi alsa-utils chromium conky-all cryptsetup curl debootstrap dirmngr emacs feh firefox-esr fonts-font-awesome fonts-inconsolata git gparted htop i3 ibus-unikey keepassx keychain mplayer mpv mutt openvpn policykit-1 ranger redshift rxvt-unicode-256color screen scrot silversearcher-ag tcpdump tor wicd xbacklight xinit xinput
+apt-get install -y task-laptop acpi alsa-utils chromium conky-all cryptsetup curl debootstrap dirmngr emacs feh firefox-esr fonts-font-awesome fonts-inconsolata git gparted htop i3 ibus-unikey keepassx keychain mplayer mpv mutt openvpn policykit-1 ranger redshift rxvt-unicode-256color screen scrot silversearcher-ag tcpdump tor wicd xbacklight xinit xinput graphicsmagick-imagemagick-compat
