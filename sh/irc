@@ -10,6 +10,11 @@ fi
 help(){
     echo "Usage:"
     echo " cat irc | MESSAGE=\"Somethings\" [SERVER=;CHANNEL=;NICKNAME=] bash"
+    echo ""
+    echo "Defaults:"
+    echo " SERVER=${SERVER_DEFAULT}"
+    echo " CHANNEL=${CHANNEL_DEFAULT}"
+    echo " NICKNAME=irc_\$(date +%s)"
     exit 1
 }
 msg(){ printf "%s: %s\n" "$1" "$2";}
