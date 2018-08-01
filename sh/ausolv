@@ -1,4 +1,5 @@
 #!/bin/bash
+# TxGVNN
 REPO_DEFAULT=/opt/ausolv
 SERVER_DEFAULT="irc.freenode.net"
 NICKNAME_DEFAULT="$(hostname)-$(date +%s)"

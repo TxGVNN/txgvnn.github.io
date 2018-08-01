@@ -1,4 +1,5 @@
 #!/bin/bash
+# TxGVNN
 if [ "${DEBUG:-0}" -eq 1 ]; then
     set -x
 fi
@@ -6,7 +7,7 @@ OUTPUT="$HOME"
 INPUT="https://raw.githubusercontent.com/TxGVNN/dots/master"
 
 msg(){ printf "\e[32m%s\e[0m: %s\n" "$1" "$2";}
-
+msg
 banner(){
     echo -e '\e[-1;34m'
     echo -e '  #####        ###   #   #  #   #  #   #'
