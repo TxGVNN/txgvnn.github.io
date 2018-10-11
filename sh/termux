@@ -1,3 +1,3 @@
 #!/bin/bash
 apt update
-apt install emacs screen vim tmux openssl dropbear curl weechat gawk git global gnupg silversearcher-ag -y
+apt install emacs screen vim tmux openssl dropbear curl weechat gawk git global gnupg silversearcher-ag grep findutils -y

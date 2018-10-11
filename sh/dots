@@ -7,7 +7,7 @@ OUTPUT="$HOME"
 INPUT="https://raw.githubusercontent.com/TxGVNN/dots/master"
 
 msg(){ printf "\e[32m%s\e[0m: %s\n" "$1" "$2";}
-msg
+
 banner(){
     echo -e '\e[-1;34m'
     echo -e '  #####        ###   #   #  #   #  #   #'
@@ -20,9 +20,8 @@ banner(){
     echo ''
 }
 
-# install OUTPUT LINK
-install(){
-    msg "I" "Install $1"
+# download OUTPUT LINK
+download(){
     if type wget >& /dev/null; then
         wget -qO "$1" "$2"
         return $?
@@ -35,6 +34,11 @@ install(){
     exit 1
 }
 
+# install OUTPUT LINK
+install(){
+    msg "I" "Install $1"
+    download "$1" "$2"
+}
 
 # install OUTPUT LINK
 apply(){
@@ -43,18 +47,9 @@ apply(){
         msg "I" "Skip $1"
         return 0
     fi
-    if type wget >& /dev/null; then
-        wget -qO "$tmp" "$2"
-        cat "$tmp" >> "$1"
-        return $?
-    fi
-    if type curl >& /dev/null; then
-        curl -sSL -o "$tmp" "$2"
-        cat "$tmp" >> "$1"
-        return $?
-    fi
-    echo "Please install wget or curl command!"
-    exit 1
+    download "$tmp" "$2"
+    cat "$tmp" >> "$1"
+    return $?
 }
 
 # main
