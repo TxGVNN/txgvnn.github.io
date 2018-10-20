@@ -1,3 +1,92 @@
 #!/bin/bash
-apt-get update
-apt-get install -y task-laptop acpi alsa-utils chromium conky-all cryptsetup curl debootstrap dirmngr emacs feh firefox-esr fonts-font-awesome fonts-inconsolata git gparted htop i3 ibus-unikey keepassx keychain mplayer mpv mutt openvpn policykit-1 ranger redshift rxvt-unicode-256color screen scrot silversearcher-ag tcpdump tor wicd xbacklight xinit xinput graphicsmagick-imagemagick-compat
+if [ "${DEBUG:-0}" -eq 1 ]; then
+    set -x
+fi
+
+if [ "$(id -u)" -eq 0 ]; then
+    echo "You are root! Please switch user"
+    exit 1
+fi
+if ! type sudo >/dev/null 2>&1; then
+    echo "Required sudo command!"
+    exit 1
+fi
+# packages
+PACKAGES="
+abook
+acpi
+alsa-utils
+build-essential
+chromium
+conky-all
+cryptsetup
+curl
+debootstrap
+dirmngr
+emacs-lucid
+feh
+firefox-esr
+fonts-font-awesome
+fonts-inconsolata
+gawk
+git
+global
+gnupg2
+gparted
+imagemagick
+htop
+i3
+i3lock
+ibus-unikey
+keepassx
+mpv
+mutt
+openvpn
+policykit-1
+ranger
+redshift
+rxvt-unicode-256color
+screen
+scrot
+silversearcher-ag
+socat
+strace
+task-laptop
+tcpdump
+tmux
+tor
+vim
+w3m
+wicd
+wireshark
+xbacklight
+xdotool
+xinit
+xinput
+xsel
+zip
+"
+sudo apt-get update
+IFS=$'\n' sudo apt-get install -y ${PACKAGES}
+
+# configure
+## locales
+echo "locales locales/default_environment_locale select en_US.UTF-8"         | debconf-set-selections
+echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | debconf-set-selections
+rm -f /etc/locale.gen
+dpkg-reconfigure --frontend noninteractive locales
+
+## tzdata
+echo 'tzdata  tzdata/Zones/Etc select UTC'          | debconf-set-selections
+echo 'tzdata  tzdata/Areas select Asia'             | debconf-set-selections
+echo 'tzdata  tzdata/Zones/Asia select Ho_Chi_Minh' | debconf-set-selections
+rm -f /etc/localtime /etc/timezone
+dpkg-reconfigure --frontend noninteractive tzdata
+
+
+# dotfiles
+wget -O- https://txgvnn.github.io/sh/dots | bash
+
+# i3-config
+git clone --depth 2 https://github.com/TxGVNN/i3-config.git ~/.i3
+ln -sv ~/.i3/Xresources ~/.Xresources

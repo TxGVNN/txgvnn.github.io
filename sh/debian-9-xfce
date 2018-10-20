@@ -3,6 +3,20 @@ if [ "${DEBUG:-0}" -eq 1 ] ; then
     set -x
 fi
 
+PACKAGES="
+build-essential
+chromium
+firefox-esr
+git
+gnome-screenshot
+grub-efi
+linux-image-4.9.0-6-rt-amd64
+network-manager-gnome
+sudo
+thunderbird
+xfce4
+"
+
 msg(){ printf "%s: %s\n" "$1" "$2";}
 help(){
     echo "Usage: "
@@ -33,8 +47,7 @@ echo "deb http://debian.xtdv.net/debian stretch main contrib non-free" > /mnt/et
 ls -la /dev/disk/by-uuid/ | grep "${PART##/dev}"  | awk '{print "UUID="$9"   /     ext4    errors=remount-ro       0       1"}' > /mnt/etc/fstab
 
 chroot /mnt apt-get update
-chroot /mnt apt-get install xfce4 linux-image-4.9.0-6-rt-amd64 grub-efi firefox-esr chromium thunderbird gnome-screenshot git build-essential sudo network-manager-gnome -y
-
+IFS=$'\n' chroot /mnt apt-get install -y ${PACKAGES}
 
 echo "Please setup grub2. Then umount"
 echo "umount /mnt{/dev/pts,/dev,/proc,/sys,}"
