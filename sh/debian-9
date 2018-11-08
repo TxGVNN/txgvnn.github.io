@@ -16,6 +16,7 @@ PACKAGES="
 abook
 acpi
 alsa-utils
+apt-file
 build-essential
 chromium
 conky-all
@@ -60,8 +61,10 @@ tmux
 tor
 vim
 w3m
+weechat
 wicd
 wireshark
+xautolock
 xbacklight
 xdotool
 xinit
