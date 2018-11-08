@@ -21,9 +21,10 @@ chromium
 conky-all
 cryptsetup
 curl
+debconf
 debootstrap
 dirmngr
-emacs-lucid
+emacs25-lucid
 feh
 firefox-esr
 fonts-font-awesome
@@ -33,15 +34,17 @@ git
 global
 gnupg2
 gparted
-imagemagick
 htop
 i3
 i3lock
 ibus-unikey
+imagemagick
 keepassx
+libnotify-bin
 mpv
 mutt
 openvpn
+pciutils
 policykit-1
 ranger
 redshift
@@ -71,17 +74,17 @@ IFS=$'\n' sudo apt-get install -y ${PACKAGES}
 
 # configure
 ## locales
-echo "locales locales/default_environment_locale select en_US.UTF-8"         | debconf-set-selections
-echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | debconf-set-selections
-rm -f /etc/locale.gen
-dpkg-reconfigure --frontend noninteractive locales
+echo "locales locales/default_environment_locale select en_US.UTF-8"         | sudo debconf-set-selections
+echo "locales locales/locales_to_be_generated multiselect en_US.UTF-8 UTF-8" | sudo debconf-set-selections
+sudo rm -f /etc/locale.gen
+sudo dpkg-reconfigure --frontend noninteractive locales
 
 ## tzdata
-echo 'tzdata  tzdata/Zones/Etc select UTC'          | debconf-set-selections
-echo 'tzdata  tzdata/Areas select Asia'             | debconf-set-selections
-echo 'tzdata  tzdata/Zones/Asia select Ho_Chi_Minh' | debconf-set-selections
-rm -f /etc/localtime /etc/timezone
-dpkg-reconfigure --frontend noninteractive tzdata
+echo 'tzdata  tzdata/Zones/Etc select UTC'          | sudo debconf-set-selections
+echo 'tzdata  tzdata/Areas select Asia'             | sudo debconf-set-selections
+echo 'tzdata  tzdata/Zones/Asia select Ho_Chi_Minh' | sudo debconf-set-selections
+sudo rm -f /etc/localtime /etc/timezone
+sudo dpkg-reconfigure --frontend noninteractive tzdata
 
 
 # dotfiles
