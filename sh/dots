@@ -6,17 +6,13 @@ fi
 OUTPUT="$HOME"
 INPUT="https://raw.githubusercontent.com/TxGVNN/dots/master"
 
-msg(){ printf "\e[32m%s\e[0m: %s\n" "$1" "$2";}
-
 banner(){
-    echo -e '\e[-1;34m'
-    echo -e '  #####        ###   #   #  #   #  #   #'
-    echo -e '    #         #      #   #  ##  #  ##  #'
-    echo -e '    #    \e[0;31m# #\e[0;34m  # ##   #   #  # # #  # # #'
-    echo -e '    #     \e[0;31m#\e[0;34m   #   #   # #   #  ##  #  ##'
-    echo -e '    #    \e[0;31m# #\e[0;34m   ###     #    #   #  #   #'
     echo ''
-    echo -e '  \e[0;36m[ @author TxGVNN ]\e[0m'
+    echo '  _____  _     __    _      _      _'
+    echo '   | |  \ \_/ / /`_ \ \  / | |\ | | |\ |'
+    echo '   |_|  /_/ \ \_\_/  \_\/  |_| \| |_| \|'
+    echo ''
+    echo '  [ @author TxGVNN ]'
     echo ''
 }
 
@@ -36,17 +32,23 @@ download(){
 
 # install OUTPUT LINK
 install(){
-    msg "I" "Install $1"
+    if [ -e "$1" ]; then
+        echo "W: $1 is exist, backup first"
+        cp -v "$1" "$1.$(date +%F@%R.%s)"
+    fi
+
+    echo "I: Install $1"
     download "$1" "$2"
 }
 
 # install OUTPUT LINK
 apply(){
-    tmp=$(mktemp -t bakXXXXX -u)
     if grep "TxGVNN" "$1" >& /dev/null ; then
-        msg "I" "Skip $1"
+        echo "I: Skip $1"
         return 0
     fi
+    tmp=$(mktemp -t bakXXXXX -u)
+    echo "O: Apply $1"
     download "$tmp" "$2"
     cat "$tmp" >> "$1"
     return $?
