@@ -3,26 +3,24 @@ if [ "${DEBUG:-0}" -eq 1 ] ; then
     set -x
 fi
 
-PACKAGES="
-build-essential
-chromium
-firefox-esr
-git
-gnome-screenshot
-grub-efi
-linux-image-4.9.0-6-rt-amd64
-network-manager-gnome
-sudo
-thunderbird
-xfce4
-"
-
 msg(){ printf "%s: %s\n" "$1" "$2";}
 help(){
     echo "Usage: "
     echo "    PART=/dev/sdb2"
-    exit 0
+    exit 1
 }
+
+PACKAGES="
+build-essential
+git
+linux-image-amd64
+sudo"
+
+if [ -d /sys/firmware/efi/efivars ]; then
+    GRUB="grub-efi"
+else
+    GRUB="grub2"
+fi
 
 if [ "$(id -u)" -ne 0 ]; then
     msg "E" "Required privileged root"
@@ -34,7 +32,7 @@ if [ -z "$PART" ]; then
 fi
 
 mount "$PART" /mnt
-debootstrap stretch /mnt http://debian.xtdv.net/debian
+debootstrap stretch /mnt http://deb.debian.org/debian
 
 mount -o bind /proc /mnt/proc
 mount -o bind /sys /mnt/sys
@@ -42,12 +40,13 @@ mount -o bind /dev /mnt/dev
 mount -o bind /dev/pts /mnt/dev/pts
 
 
-echo "deb http://debian.xtdv.net/debian stretch main contrib non-free" > /mnt/etc/apt/sources.list
+echo "deb http://deb.debian.org/debian stretch main contrib non-free" > /mnt/etc/apt/sources.list
 
 ls -la /dev/disk/by-uuid/ | grep "${PART##/dev}"  | awk '{print "UUID="$9"   /     ext4    errors=remount-ro       0       1"}' > /mnt/etc/fstab
 
 chroot /mnt apt-get update
-IFS=$'\n' chroot /mnt apt-get install -y ${PACKAGES}
+IFS=$'\n' chroot /mnt apt-get install -y ${PACKAGES} ${GRUB}
 
-echo "Please setup grub2. Then umount"
+echo "To complete, please run:"
+echo "grub-install </dev/DISK>"
 echo "umount /mnt{/dev/pts,/dev,/proc,/sys,}"
