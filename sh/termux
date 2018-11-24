@@ -1,3 +1,24 @@
 #!/bin/bash
+PACKAGES="
+curl
+dropbear
+emacs
+findutils
+gawk
+git
+global
+gnupg
+grep
+man
+openssl
+screen
+silversearcher-ag
+socat
+texinfo
+tmux
+vim
+weechat
+zip
+"
 apt update
-apt install emacs screen vim tmux openssl dropbear curl weechat gawk git global gnupg silversearcher-ag grep findutils -y
+IFS=$'\n' apt install -y ${PACKAGES}

@@ -25,6 +25,7 @@ curl
 debconf
 debootstrap
 dirmngr
+dnsutils
 emacs25-lucid
 feh
 firefox-esr
@@ -36,6 +37,7 @@ global
 gnome-screenshot
 gnupg2
 gparted
+gpgsm
 htop
 i3
 i3lock
