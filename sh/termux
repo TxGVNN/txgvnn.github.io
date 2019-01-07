@@ -18,6 +18,7 @@ texinfo
 tmux
 vim
 weechat
+weechat-python-plugin
 zip
 "
 apt update
