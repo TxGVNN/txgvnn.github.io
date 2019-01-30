@@ -1,0 +1,8 @@
+#!/bin/bash
+[ "${DEBUG:-0}" -eq 1 ] && set -x
+
+OPTS=""
+if [ $# -gt 1 ]; then
+    OPTS="--private-window"
+fi
+firefox -P "$1" $OPTS
