@@ -5,8 +5,8 @@ OPTS=""
 
 _help(){
     echo "Usage: w3 [-p] [-c] [-d] PROFILE"
-    echo "Profiles: $profiles"
-    pgrep dunst >/dev/null 2>&1 && notify-send -u low "Chromium profiles" "Usage: w3 [-p] [-c] PROFILE\n\n$profiles"
+    echo "Profiles:${profiles}"
+    pgrep dunst >/dev/null 2>&1 && notify-send -u low "Chromium profiles" "Usage: w3 [-p] [-c] PROFILE\n\nProfiles:${profiles}"
 
 }
 for opt in "$@"; do
@@ -32,11 +32,12 @@ profile_name=${args[0]}
 
 [ $PRIVATE ] && OPTS="--incognito"
 
-profiles=""
+profiles=" "
 for dir in $HOME/.config/chromium/profile*; do
     name=$(basename $dir)
-    profiles=" ${name##*profile.} $profiles"
+    profiles="${name##*profile.} $profiles"
 done
+profiles=" $profiles"
 
 if [ -z "$profile_name" ]; then
     _help
