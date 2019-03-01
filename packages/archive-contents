@@ -1,4 +1,4 @@
 (1
- (doom-modeline . [(1 0 0 4) ((emacs (25 1)) (shrink-path (0 2 0)) (dash (2 11 0))) "A minimal and modern modeline" tar])
+ (doom-modeline . [(1 0 0 5) ((emacs (25 1)) (shrink-path (0 2 0)) (dash (2 11 0))) "A minimal and modern modeline" tar])
  (doom-themes . [(20181220 220) ((emacs (24 4)) (all-the-icons (1 0 0)) (cl-lib (0 5))) "an opinionated pack of modern color-themes" tar])
 )
