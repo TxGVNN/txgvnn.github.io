@@ -4,9 +4,7 @@ SERVER_DEFAULT="irc.oftc.net"
 NICKNAME_DEFAULT="irc_$(date +%s)"
 CHANNEL_DEFAULT="#debian-vn"
 
-if [ "${DEBUG:-0}" -eq 1 ]; then
-    set -x
-fi
+[ "${DEBUG:-0}" -eq 1 ] && set -x
 
 help(){
     echo "Usage:"

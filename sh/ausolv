@@ -1,14 +1,13 @@
 #!/bin/bash
 # TxGVNN
-REPO_DEFAULT=/opt/ausolv
+REPO_DEFAULT="${HOME}/.ausolv"
 SERVER_DEFAULT="irc.freenode.net"
 NICKNAME_DEFAULT="$(hostname)"
 CHANNEL_DEFAULT="#ausolv"
 GPG_DEFAULT="0xB8E9A6F112C2D7B7"
 
-if [ "${DEBUG:-0}" -eq 1 ]; then
-    set -x
-fi
+[ "${DEBUG:-0}" -eq 1 ] && set -x
+
 msg(){ printf "%s: %s\n" "$1" "$2";}
 irc(){
     if [ ! -S "/proc/$$/fd/3" ]; then

@@ -1,9 +1,8 @@
 #!/bin/bash
 # TxGVNN
 # CA management functions
-if [ "${DEBUG:-0}" -eq 1 ]; then
-    set -x
-fi
+[ "${DEBUG:-0}" -eq 1 ] && set -x
+
 CN="${CN:-example.com}"
 
 days="365"

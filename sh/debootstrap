@@ -1,7 +1,5 @@
 #!/bin/bash
-if [ "${DEBUG:-0}" -eq 1 ] ; then
-    set -x
-fi
+[ "${DEBUG:-0}" -eq 1 ] && set -x
 
 msg(){ printf "%s: %s\n" "$1" "$2";}
 help(){

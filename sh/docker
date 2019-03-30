@@ -1,9 +1,8 @@
 #!/bin/sh
 COMPOSE_VERSION=1.21.2
 
-if [ "${DEBUG:-0}" -eq 1 ]; then
-    set -x
-fi
+[ "${DEBUG:-0}" -eq 1 ] && set -x
+
 msg(){ printf "%s: %s\n" "$1" "$2";}
 
 if [ "$(id -u)" -ne 0 ]; then
