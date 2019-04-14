@@ -57,5 +57,4 @@ apply(){
 banner
 install "${OUTPUT}/.screenrc" "${INPUT}/.screenrc"
 install "${OUTPUT}/.emacs" "${INPUT}/.emacs"
-install "${OUTPUT}/.vimrc" "${INPUT}/.vimrc"
 apply "${OUTPUT}/.bashrc" "${INPUT}/.bashrc"
