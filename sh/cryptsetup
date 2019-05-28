@@ -1,6 +1,6 @@
 #!/bin/sh
 # TxGVNN
-[ "${DEBUG:-0}" -eq 1 ] && set -x
+[ "${DEBUG:-0}" -eq 0 ] || set -x
 
 banner(){
     echo -e ' \e[36m_____      ___\e[0m   '

@@ -6,7 +6,7 @@ NICKNAME_DEFAULT="$(hostname)"
 CHANNEL_DEFAULT="#ausolv"
 GPG_DEFAULT="0xB8E9A6F112C2D7B7"
 
-[ "${DEBUG:-0}" -eq 1 ] && set -x
+[ "${DEBUG:-0}" -eq 0 ] || set -x
 
 msg(){ printf "%s: %s\n" "$1" "$2";}
 irc(){

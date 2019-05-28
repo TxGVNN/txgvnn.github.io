@@ -1,5 +1,5 @@
 #!/bin/bash
-[ "${DEBUG:-0}" -eq 1 ] && set -x
+[ "${DEBUG:-0}" -eq 0 ] || set -x
 
 msg(){ printf "%s: %s\n" "$1" "$2";}
 help(){
