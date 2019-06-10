@@ -1,0 +1,46 @@
+#!/bin/bash
+TIMES=9999
+DAYS=14
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+for opt in "$@"
+do
+    if [[ "$opt" == [-]* ]]; then
+        long=''
+        case ${opt:1:1} in
+            t)  long="TIMES" ;;
+            d)  long="DAYS";;
+            -)
+                case ${opt:2} in
+                    times) long="TIMES";;
+                    days) long="DAYS";;
+                esac;;
+        esac
+        unset opt
+    else
+        if [ "$long" ]; then
+            eval "$long"="$opt"
+            unset long
+
+        else
+            input=${input:-"$opt"}
+        fi
+    fi
+done
+
+tmpfile=$(mktemp -t transferXXX);
+basefile=$(basename "${input}" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
+if [ -z "$basefile" ]; then
+    echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
+    echo "Options:"
+    echo "  -d|--days    Max-Days"
+    echo "  -t|--times   Max-Downloads"
+    exit 1
+fi;
+if tty -s; then
+    curl --progress-bar -H "Max-Downloads: ${TIMES}" -H "Max-Days: ${DAYS}" --upload-file "$input" "https://transfer.sh/${basefile}" >> $tmpfile;
+else
+    curl --progress-bar -H "Max-Downloads: ${TIMES}" -H "Max-Days: ${DAYS}" --upload-file "-" "https://transfer.sh/${basefile}" >> $tmpfile;
+fi;
+cat $tmpfile;
+rm -f $tmpfile
