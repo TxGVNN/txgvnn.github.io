@@ -1,5 +1,5 @@
 (1
- (counsel . [(20190604 1057) ((emacs (24 3)) (swiper (0 11 0))) "Various completion functions using Ivy" tar])
+ (counsel . [(20190604 1058) ((emacs (24 3)) (swiper (0 11 0))) "Various completion functions using Ivy" tar])
  (doom-modeline . [(1 0 0 6) ((emacs (25 1)) (shrink-path (0 2 0)) (dash (2 11 0))) "A minimal and modern modeline" tar])
  (doom-themes . [(20181220 221) ((emacs (24 4)) (cl-lib (0 5))) "an opinionated pack of modern color-themes" tar])
  (yasnippet-snippets . [(20190612 123) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar])
