@@ -1,7 +1,6 @@
 #!/bin/bash
 PACKAGES="
 curl
-dropbear
 emacs
 findutils
 gawk
@@ -9,14 +8,15 @@ git
 global
 gnupg
 grep
+make
 man
+openssh
 openssl
 screen
 silversearcher-ag
 socat
 texinfo
 tmux
-vim
 weechat
 weechat-python-plugin
 zip
