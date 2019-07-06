@@ -11,10 +11,10 @@ if ! type sudo >/dev/null 2>&1; then
 fi
 # packages
 PACKAGES="
-abook
 acpi
 alsa-utils
 apt-file
+bash-completion
 build-essential
 chromium
 conky-all
@@ -24,11 +24,10 @@ debconf
 debootstrap
 dirmngr
 dnsutils
-emacs25-lucid
+emacs
 feh
 firefox-esr
 fonts-font-awesome
-fonts-inconsolata
 gawk
 git
 global
@@ -44,7 +43,6 @@ imagemagick
 keepassx
 libnotify-bin
 mpv
-mutt
 openvpn
 pciutils
 policykit-1
@@ -60,9 +58,6 @@ strace
 task-laptop
 tcpdump
 tmux
-tor
-vim
-w3m
 weechat
 wicd
 wireshark

@@ -30,7 +30,7 @@ if [ -z "$PART" ]; then
 fi
 
 mount "$PART" /mnt
-debootstrap stretch /mnt http://deb.debian.org/debian
+debootstrap stable /mnt http://deb.debian.org/debian
 
 mount -o bind /proc /mnt/proc
 mount -o bind /sys /mnt/sys
@@ -38,7 +38,7 @@ mount -o bind /dev /mnt/dev
 mount -o bind /dev/pts /mnt/dev/pts
 
 
-echo "deb http://deb.debian.org/debian stretch main contrib non-free" > /mnt/etc/apt/sources.list
+echo "deb http://deb.debian.org/debian stable main contrib non-free" > /mnt/etc/apt/sources.list
 
 ls -la /dev/disk/by-uuid/ | grep "${PART##/dev}"  | awk '{print "UUID="$9"   /     ext4    errors=remount-ro       0       1"}' > /mnt/etc/fstab
 
