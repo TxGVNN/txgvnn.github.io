@@ -1,5 +1,5 @@
 (1
- (counsel . [(20191103 1237) ((emacs (24 5)) (swiper (0 13 0))) "Various completion functions using Ivy" single ((:commit . "66a8b1be71875755a9f6a45ca53e5110ef13f27d") (:keywords "convenience" "matching" "tools") (:authors ("Oleh Krehel" . "ohwoeowho@gmail.com")) (:maintainer "Oleh Krehel" . "ohwoeowho@gmail.com") (:url . "https://github.com/abo-abo/swiper"))])
+ (counsel . [(20191103 1238) ((emacs (24 5)) (swiper (0 13 0))) "Various completion functions using Ivy" single ((:commit . "66a8b1be71875755a9f6a45ca53e5110ef13f27d") (:keywords "convenience" "matching" "tools") (:authors ("Oleh Krehel" . "ohwoeowho@gmail.com")) (:maintainer "Oleh Krehel" . "ohwoeowho@gmail.com") (:url . "https://github.com/abo-abo/swiper"))])
  (crux . [(20181108 827) ((emacs (24 3))) "A Collection of Ridiculously Useful eXtensions" tar])
  (doom-themes . [(20181220 221) ((emacs (24 4)) (cl-lib (0 5))) "an opinionated pack of modern color-themes" tar])
  (yasnippet-snippets . [(20190612 123) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar])

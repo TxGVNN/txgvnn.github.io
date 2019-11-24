@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20191103.1237
+;; Package-Version: 20191103.1238
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
 ;; Keywords: convenience, matching, tools
@@ -1387,7 +1387,10 @@ On success, RESULT-FN is called in output buffer with no arguments."
 
 (defun counsel--grep-unwind ()
   (counsel-delete-process)
-  (swiper--cleanup))
+  (swiper--cleanup)
+  (if (fboundp 'xref-push-marker-stack)
+      (xref-push-marker-stack)
+    (ring-insert find-tag-marker-ring (point-marker))))
 
 ;;;###autoload
 (defun counsel-git-grep (&optional initial-input initial-directory cmd)
