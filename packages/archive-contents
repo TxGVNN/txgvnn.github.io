@@ -4,5 +4,5 @@
  (doom-themes . [(20181220 221) ((emacs (24 4)) (cl-lib (0 5))) "an opinionated pack of modern color-themes" tar])
  (ivy . [(20200116 1613) ((emacs (24 5))) "Incremental Vertical completYon" tar])
  (swiper . [(20200116 1013) ((emacs (24 5)) (ivy (0 13 0))) "Isearch with an overview. Oh, man!" tar])
- (yasnippet-snippets . [(20191230 1405) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar])
+ (yasnippet-snippets . [(20200122 1140) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar])
  )
