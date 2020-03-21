@@ -697,6 +697,7 @@ and the entire buffer (in the absense of a region)."
           (list (region-beginning) (region-end))
         (list (point) (line-end-position))))))
 
+;;;###autoload
 (defun crux-hex-decode-string (hex-string)
   "Decode to HEX-STRING."
   (let ((res nil))
@@ -704,6 +705,7 @@ and the entire buffer (in the absense of a region)."
       (let ((hex-byte (substring hex-string (* 2 i) (* 2 (+ i 1)))))
         (push (format "%c" (string-to-number hex-byte 16)) res)))))
 
+;;;###autoload
 (defun crux-hex-encode-string (ascii-string)
   "Encode ASCII-STRING to hex."
   (let ((res nil))
