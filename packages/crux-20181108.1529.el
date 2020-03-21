@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1528
+;; Package-Version: 20181108.1529
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -711,16 +711,20 @@ and the entire buffer (in the absense of a region)."
   (let ((res nil))
     (dotimes (i (length ascii-string) (apply #'concat (reverse res)))
       (let ((ascii-char (substring ascii-string i  (+ i 1))))
-        (push (format "%x" (string-to-char ascii-char)) res)))))
+        (if (not (multibyte-string-p ascii-char)) ascii-char
+          (setq ascii-char (encode-coding-string ascii-char locale-coding-system)))
+        (push (format "%.2x" (string-to-char ascii-char)) res)))))
 
 ;;;###autoload
 (defun crux-hex-decode-region (start end)
   "Decode a hex string in the selected region(START END)."
   (interactive "r")
   (save-excursion
-    (let* ((decoded-text
+    (let* ((coding-system-for-write 'raw-text)
+	       (coding-system-for-read buffer-file-coding-system)
+           (decoded-text
             (crux-hex-decode-string
-             (buffer-substring start end))))
+             (buffer-substring-no-properties start end))))
       (delete-region start end)
       (insert decoded-text))))
 
@@ -729,9 +733,11 @@ and the entire buffer (in the absense of a region)."
   "Encode a hex string in the selected region(START END)."
   (interactive "r")
   (save-excursion
-    (let* ((encoded-text
+    (let* ((coding-system-for-read 'raw-text)
+           (coding-system-for-write buffer-file-coding-system)
+           (encoded-text
             (crux-hex-encode-string
-             (buffer-substring start end))))
+             (buffer-substring-no-properties start end))))
       (delete-region start end)
       (insert encoded-text))))
 
