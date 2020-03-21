@@ -711,6 +711,7 @@ and the entire buffer (in the absense of a region)."
       (let ((ascii-char (substring ascii-string i  (+ i 1))))
         (push (format "%x" (string-to-char ascii-char)) res)))))
 
+;;;###autoload
 (defun crux-hex-decode-region (start end)
   "Decode a hex string in the selected region(START END)."
   (interactive "r")
@@ -721,6 +722,7 @@ and the entire buffer (in the absense of a region)."
       (delete-region start end)
       (insert decoded-text))))
 
+;;;###autoload
 (defun crux-hex-encode-region (start end)
   "Encode a hex string in the selected region(START END)."
   (interactive "r")
