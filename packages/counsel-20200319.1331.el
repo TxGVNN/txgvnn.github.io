@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200319.1330
+;; Package-Version: 20200319.1331
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
 ;; Keywords: convenience, matching, tools
@@ -4671,6 +4671,22 @@ selected color."
    ("H" counsel-colors-action-kill-hex "kill hexadecimal value")))
 
 
+;;** `counsel-kmacro'
+(defvar counsel-kmacro-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-k") #'counsel-kmacro-kill)
+    map))
+
+(defun counsel-kmacro-kill ()
+  "Kill the line, or delete the keyboard macro."
+  (interactive)
+  (if (not (eolp))
+      (ivy-kill-line)
+    (counsel-kmacro-action-delete-kmacro
+     (assoc
+      (ivy-state-current ivy-last)
+      (ivy-state-collection ivy-last)))
+    (ivy--kill-current-candidate)))
 ;;;###autoload
 (defun counsel-kmacro ()
   "Interactively choose and run a keyboard macro.
