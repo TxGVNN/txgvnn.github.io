@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1529
+;; Package-Version: 20181108.1530
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -696,6 +696,72 @@ and the entire buffer (in the absense of a region)."
       (if mark-active
           (list (region-beginning) (region-end))
         (list (point) (line-end-position))))))
+;; https://codereview.stackexchange.com/questions/186840/binary-octal-decimal-and-hexadecimal-conversion-in-elisp
+(defun format-binary (b)
+  (let ((s ""))
+    (while (> b 0)
+      (setq s (concat (number-to-string (logand b 1)) s))
+      (setq b (lsh b -1)))
+    (if (string= "" s) "0" s)))
+
+(defun radix-prefix (radix)
+  (cond ((eq radix 'binary) "0b")
+        ((eq radix 'octal) "0")
+        ((eq radix 'decimal) "")
+        ((eq radix 'hex) "0x")))
+
+(defun format-number-as (number radix)
+  (let ((prefix (radix-prefix radix)))
+    (if (eq radix 'binary)
+        (concat prefix (format-binary number))
+      (concat prefix (format (radix-format radix) number)))))
+
+;;;###autoload
+(defun crux-binary-encode-hex-string (hex-string)
+  "Encode HEX-STRING to BINARY."
+  (let ((res nil))
+    (dotimes (i (length hex-string) (apply #'concat (reverse res)))
+      (let* ((hex-char (substring hex-string i  (+ i 1)))
+             (binary-str (substring (format-number-as (string-to-number hex-char 16) 'binary)
+                                    (length (radix-prefix 'binary)))))
+        (push (concat (substring "0000" (length binary-str)) binary-str " ") res)))))
+
+;;;###autoload
+(defun crux-binary-encode-hex-region  (start end)
+  "Encode a hex string in the selected region(START END)."
+  (interactive "r")
+  (save-excursion
+    (let* ((coding-system-for-read 'raw-text)
+           (coding-system-for-write buffer-file-coding-system)
+           (encoded-text
+            (crux-binary-encode-hex-string
+             (buffer-substring-no-properties start end))))
+      (delete-region start end)
+      (insert encoded-text))))
+
+;;;###autoload
+(defun crux-bytes-encode-string (ascii-string)
+  "Encode ASCII-STRING to hex."
+  (let ((res nil))
+    (set-buffer-multibyte nil)
+    (dotimes (i (length ascii-string) (apply #'concat (reverse res)))
+      (let ((ascii-char (substring ascii-string i  (+ i 1))))
+        ;; (if (not (multibyte-string-p ascii-char)) ascii-char
+        ;;   (setq ascii-char (encode-coding-string ascii-char 'raw-text)))
+        (push (format "%d " (string-to-char ascii-char)) res)))))
+
+;;;###autoload
+(defun crux-bytes-encode-region (start end)
+  "Encode a hex string in the selected region(START END)."
+  (interactive "r")
+  (save-excursion
+    (let* ((coding-system-for-read 'raw-text)
+           (coding-system-for-write buffer-file-coding-system)
+           (encoded-text
+            (crux-bytes-encode-string
+             (buffer-substring-no-properties start end))))
+      (delete-region start end)
+      (insert encoded-text))))
 
 ;;;###autoload
 (defun crux-hex-decode-string (hex-string)
