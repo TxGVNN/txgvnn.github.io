@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1530
+;; Package-Version: 20181108.1531
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -698,6 +698,7 @@ and the entire buffer (in the absense of a region)."
         (list (point) (line-end-position))))))
 ;; https://codereview.stackexchange.com/questions/186840/binary-octal-decimal-and-hexadecimal-conversion-in-elisp
 (defun format-binary (b)
+  "Format number b -> binary."
   (let ((s ""))
     (while (> b 0)
       (setq s (concat (number-to-string (logand b 1)) s))
@@ -705,10 +706,17 @@ and the entire buffer (in the absense of a region)."
     (if (string= "" s) "0" s)))
 
 (defun radix-prefix (radix)
+  "Get radix prefix."
   (cond ((eq radix 'binary) "0b")
         ((eq radix 'octal) "0")
         ((eq radix 'decimal) "")
         ((eq radix 'hex) "0x")))
+
+(defun radix-format (radix)
+  "Get radix format."
+  (cond ((eq radix 'octal) "%o")
+        ((eq radix 'decimal) "%d")
+        ((eq radix 'hex) "%x")))
 
 (defun format-number-as (number radix)
   (let ((prefix (radix-prefix radix)))
