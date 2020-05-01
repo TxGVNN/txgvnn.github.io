@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1531
+;; Package-Version: 20181108.1532
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -140,17 +140,20 @@ the current buffer."
     (switch-to-buffer-other-window buffer-name)))
 
 ;;;###autoload
-(defun crux-visit-term-buffer ()
+(defun crux-visit-term-buffer (&optional prefix)
   "Create or visit a terminal buffer.
-If the process in that buffer died, ask to restart."
-  (interactive)
-  (crux-start-or-switch-to (lambda ()
-                             (ansi-term crux-shell (concat crux-term-buffer-name "-term")))
-                           (format "*%s-term*" crux-term-buffer-name))
-  (when (and (null (get-buffer-process (current-buffer)))
-             (y-or-n-p "The process has died.  Do you want to restart it? "))
-    (kill-buffer-and-window)
-    (crux-visit-term-buffer)))
+If PREFIX is not nil, create visit in default-directory"
+  (interactive "P")
+  (let ((session ""))
+    (if prefix
+        (setq session (concat "(" (file-name-nondirectory (directory-file-name default-directory)) ")")))
+    (crux-start-or-switch-to (lambda ()
+                               (ansi-term crux-shell (format "%s-term%s" crux-term-buffer-name session)))
+                             (format "*%s-term%s*" crux-term-buffer-name session))
+    (when (and (null (get-buffer-process (current-buffer)))
+               (y-or-n-p "The process has died.  Do you want to restart it? "))
+      (kill-buffer-and-window)
+      (crux-visit-term-buffer prefix))))
 
 ;;;###autoload
 (defun crux-indent-rigidly-and-copy-to-clipboard (begin end arg)
