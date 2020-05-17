@@ -2547,6 +2547,12 @@ CALLER is passed to `ivy-read'."
               :history 'counsel-git-grep-history
               :action #'counsel-git-grep-action
               :require-match t
+              :unwind (lambda ()
+                        (counsel-delete-process)
+                        (swiper--cleanup)
+                        (if (fboundp 'xref-push-marker-stack)
+                            (xref-push-marker-stack)
+                          (ring-insert find-tag-marker-ring (point-marker))))
               :caller (or caller 'counsel-ag))))
 
 (ivy-configure 'counsel-ag
