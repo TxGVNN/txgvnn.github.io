@@ -1,5 +1,6 @@
 #!/bin/bash
 PACKAGES="
+bash-completion
 curl
 emacs
 findutils
@@ -12,6 +13,7 @@ make
 man
 openssh
 openssl
+othtool
 screen
 silversearcher-ag
 socat
