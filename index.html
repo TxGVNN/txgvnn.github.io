@@ -6,9 +6,7 @@
 	<meta charset="UTF-8">
     <title>M-x txgvnn.github.io</title>
 	<style type="text/css">
-      *,
-      *:before,
-      *:after {
+      *, *:before, *:after {
           -moz-box-sizing: border-box;
           -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -50,11 +48,16 @@
           overflow: hidden;
           white-space: nowrap;
       }
-      .text-cursor {
-          background: black;
-          width: 1em;
-          height: 1em;
-          display: none;
+      .cursor {
+          display: inline-block;
+          width: 10px;
+          height: 20px;
+          background-color: #333;
+          animation: twinkle 1s cubic-bezier(1, -1, 0, 2) infinite;
+      }
+      @keyframes twinkle {
+          0% {background-color: transparent;}
+          100% {background-color: #333;}
       }
 	</style>
     <!-- Thanks https://emacs-berlin.org/ -->
@@ -78,7 +81,7 @@
 <b>* Contacts</b>
   - Mail    txgvnn@gmail.com
   - IRC     txgvnn@irc.oftc.net
-  - Address Hanoi, Vietnam<span class="text-cursor" style="display: inline"> </span>
+  - Address Hanoi, Vietnam<span class="cursor"> </span>
 
 </pre>
   </section>
