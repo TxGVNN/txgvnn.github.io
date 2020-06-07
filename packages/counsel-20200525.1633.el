@@ -1446,6 +1446,7 @@ On success, RESULT-FN is called in output buffer with no arguments."
   (counsel--call command))
 
 (defun counsel--grep-unwind ()
+  (counsel--push-xref-marker)
   (counsel-delete-process)
   (swiper--cleanup))
 
