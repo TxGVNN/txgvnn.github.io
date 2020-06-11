@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1532
+;; Package-Version: 20181108.1533
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -583,7 +583,8 @@ Doesn't mess with special buffers."
 (defun crux-create-scratch-buffer ()
   "Create a new scratch buffer."
   (interactive)
-  (let ((buf (generate-new-buffer "*scratch*")))
+  (let ((buf (generate-new-buffer
+              (format "*scratch-%s*" (format-time-string "%m%d-%H%M%S" (current-time))))))
     (switch-to-buffer buf)
     (funcall initial-major-mode)))
 
