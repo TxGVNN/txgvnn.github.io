@@ -2739,7 +2739,6 @@ CALLER is passed to `ivy-read'."
                 (read-from-minibuffer (format "%s args: " prog-name)))))
     (setq counsel-ag-command (counsel--format-ag-command (or extra-ag-args "") "%s"))
     (let ((default-directory (or initial-directory
-                                 (counsel--git-root)
                                  default-directory)))
       (ivy-read (or ag-prompt
                     (concat prog-name ": "))
