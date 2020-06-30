@@ -4,7 +4,8 @@
 
 ;; Author: Eric Danan
 ;; URL: https://github.com/ericdanan/counsel-projectile
-;; Package-Version: 20200522.1131
+;; Package-Version: 20200522.1132
+;; Package-Commit: 77392cbbc42e98fc137b43f1db1b111ba6e2dd75
 ;; Keywords: project, convenience
 ;; Version: 0.3.1
 ;; Package-Requires: ((counsel "0.13.0") (projectile "2.0.0"))
@@ -1443,7 +1444,7 @@ for the first action, etc) of the action to set as default."
     ;; Remove files that are visited by a buffer:
     (dolist (buffer buffers files)
       (when (setq file (buffer-file-name (get-buffer buffer)))
-        (setq files (remove (file-relative-name file root) files))))
+        (setq buffers (remove buffer buffers))))
     ;; Sort buffers and files depending on
     ;; `counsel-projectile-sort-buffers' and
     ;; `counsel-projectile-sort-files', respectively.
