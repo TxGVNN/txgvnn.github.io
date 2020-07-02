@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1031
+;; Package-Version: 20200619.1032
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -1715,7 +1715,18 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("k" counsel-find-file-delete "delete")
    ("c" counsel-find-file-copy "copy file")
    ("m" counsel-find-file-move "move or rename")
+   ("t" counsel-run-ansi-term-here "run ansi-term")
    ("d" counsel-find-file-mkdir-action "mkdir")))
+
+(defun counsel-run-ansi-term-here (file)
+  "Run ansi-term in this directories of FILE."
+  (let* ((dir (directory-file-name (file-name-directory file)))
+         (buffer (format "ansi-term(%s)" (file-name-nondirectory dir))))
+    (if (get-buffer (format "*%s*" buffer))
+        (switch-to-buffer (format "*%s*" buffer))
+      (cd dir)
+      (message "%s:%s" default-directory dir)
+      (ansi-term crux-shell buffer))))
 
 (defcustom counsel-find-file-at-point nil
   "When non-nil, add file-at-point to the list of candidates."
