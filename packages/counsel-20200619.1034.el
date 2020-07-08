@@ -1725,7 +1725,7 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("d" counsel-find-file-mkdir-action "mkdir")))
 
 (defun counsel-run-ansi-term-here (file)
-  "Run ansi-term in this directories of FILE."
+  "Run ansi-term in this directory of FILE."
   (let* ((dir (directory-file-name (file-name-directory file)))
          (buffer (format "ansi-term(%s)" (file-name-nondirectory dir))))
     (if (get-buffer (format "*%s*" buffer))
