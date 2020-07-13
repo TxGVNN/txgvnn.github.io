@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1033
+;; Package-Version: 20200619.1034
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -1716,6 +1716,12 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("c" counsel-find-file-copy "copy file")
    ("m" counsel-find-file-move "move or rename")
    ("t" counsel-run-ansi-term-here "run ansi-term")
+   ("F" (lambda (x) (with-ivy-window (insert (file-relative-name x))))
+    "insert relative filename")
+   ("B" (lambda (x)
+          (with-ivy-window
+            (insert (file-name-nondirectory (replace-regexp-in-string "/\\'" "" x)))))
+    "insert filename without directory")
    ("d" counsel-find-file-mkdir-action "mkdir")))
 
 (defun counsel-run-ansi-term-here (file)
