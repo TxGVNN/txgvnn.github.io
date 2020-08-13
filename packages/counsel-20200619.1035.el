@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1034
+;; Package-Version: 20200619.1035
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -1703,6 +1703,18 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
     (make-directory dir t)
     (when win (with-selected-window win (ivy--cd dir)))))
 
+(defun counsel-find-file-search-ag-action (file)
+  "Call `counsel-find-file' from FILE's directory."
+  (let* ((f (projectile-expand-root file))
+         (default-directory (file-name-directory f)))
+    (counsel-ag)))
+
+(defun counsel-find-file-jump-action (file)
+  "Call `counsel-find-file' from FILE's directory."
+  (let* ((f (projectile-expand-root file))
+         (default-directory (file-name-directory f)))
+    (counsel-file-jump)))
+
 (ivy-set-actions
  'counsel-find-file
  '(("j" find-file-other-window "other window")
@@ -1715,6 +1727,8 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("k" counsel-find-file-delete "delete")
    ("c" counsel-find-file-copy "copy file")
    ("m" counsel-find-file-move "move or rename")
+   ("ss" counsel-find-file-search-ag-action "file search ag")
+   ("sj" counsel-find-file-jump-action "file jump")
    ("t" counsel-run-ansi-term-here "run ansi-term")
    ("F" (lambda (x) (with-ivy-window (insert (file-relative-name x))))
     "insert relative filename")
