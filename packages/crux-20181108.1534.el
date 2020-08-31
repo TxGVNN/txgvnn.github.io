@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1533
+;; Package-Version: 20181108.1534
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -818,6 +818,59 @@ and the entire buffer (in the absense of a region)."
              (buffer-substring-no-properties start end))))
       (delete-region start end)
       (insert encoded-text))))
+
+;;;###autoload
+(defun crux-share-to-paste.debian ()
+  "Share buffer to paste.debian.net."
+  (interactive)
+  (let ((temp-file
+         (make-temp-file nil nil (file-name-extension (buffer-name) t)))
+        (msg ""))
+    (if (region-active-p)
+        (write-region (point) (mark) temp-file)
+      (write-region (point-min) (point-max) temp-file))
+    (when (yes-or-no-p "Share to paste.debian.net?")
+      (when (yes-or-no-p "Encrypt?")
+        (let ((file-hash (md5 (buffer-string))))
+          (shell-command (format "openssl aes-256-cbc -md md5 -k %s -in '%s' | base64 > '%s.enc'"
+                                 file-hash temp-file temp-file))
+          (dired-delete-file temp-file)
+          (setq temp-file (format "%s.enc" temp-file)
+                msg (format "| base64 -d | openssl aes-256-cbc -d -md md5 -k %s -in - 2>/dev/null"
+                            file-hash))))
+      (find-file-read-only temp-file)
+      (debpaste-paste-buffer (get-file-buffer temp-file))
+      (let ((output
+             (format "curl -L %s 2>/dev/null %s"
+                     (debpaste-get-param-val 'download-url (debpaste-get-posted-info)) msg)))
+        (kill-new output) (message output))
+      (dired-delete-file temp-file))))
+
+;;;###autoload
+(defun crux-share-to-dpaste ()
+  "Share buffer to dpaste.com."
+  (interactive)
+  (let ((temp-file
+         (make-temp-file nil nil (file-name-extension (buffer-name) t)))
+        (msg ""))
+    (if (region-active-p)
+        (write-region (point) (mark) temp-file)
+      (write-region (point-min) (point-max) temp-file))
+    (when (yes-or-no-p "Share to dpaste.com?")
+      (when (yes-or-no-p "Encrypt?")
+        (let ((file-hash (md5 (buffer-string))))
+          (shell-command (format "openssl aes-256-cbc -md md5 -k %s -in '%s' | base64 > '%s.enc'"
+                                 file-hash temp-file temp-file))
+          (dired-delete-file temp-file)
+          (setq temp-file (format "%s.enc" temp-file)
+                msg (format "| base64 -d | openssl aes-256-cbc -d -md md5 -k %s -in - 2>/dev/null"
+                            file-hash))))
+      (find-file-read-only temp-file)
+      (dpaste-region (point-min) (point-max) (buffer-name))
+      (let ((output
+             (format "curl -L %s.txt 2>/dev/null %s" (car kill-ring) msg)))
+        (kill-new output) (message output))
+      (dired-delete-file temp-file))))
 
 (provide 'crux)
 ;;; crux.el ends here
