@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1035
+;; Package-Version: 20200619.1036
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -5731,7 +5731,11 @@ specified by the `blddir' property."
         ;; No need to specify `:history' because of this hook.
         (add-hook 'compilation-start-hook #'counsel-compile--update-history)
         (unwind-protect
-             (compile cmd)
+            (if (fboundp 'persp-name)
+                (cl-letf ((compilation-buffer-name-function
+                           #'(lambda (&rest _)(format "*compilation(%s)*" (persp-name (persp-curr))))))
+                  (compile cmd))
+              (compile cmd))
           (remove-hook 'compilation-start-hook #'counsel-compile--update-history))))))
 
 ;;;###autoload
