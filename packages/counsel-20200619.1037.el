@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1036
+;; Package-Version: 20200619.1037
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -1701,6 +1701,7 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
         (win (and (not (eq ivy-exit 'done))
                   (active-minibuffer-window))))
     (make-directory dir t)
+    (dired dir)
     (when win (with-selected-window win (ivy--cd dir)))))
 
 (defun counsel-find-file-search-ag-action (file)
