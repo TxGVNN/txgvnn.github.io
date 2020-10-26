@@ -4,7 +4,7 @@
 
 ;; Author: Eric Danan
 ;; URL: https://github.com/ericdanan/counsel-projectile
-;; Package-Version: 20200522.1132
+;; Package-Version: 20200522.1133
 ;; Package-Commit: 77392cbbc42e98fc137b43f1db1b111ba6e2dd75
 ;; Keywords: project, convenience
 ;; Version: 0.3.1
@@ -432,6 +432,8 @@ The sorting function can be modified by adding an entry for
     "other window")
    ("x" counsel-projectile-find-dir-action-extern
     "open externally")
+   ("ss" counsel-find-file-search-ag-action "file search ag")
+   ("sj" counsel-find-file-jump-action "file jump")
    ("r" counsel-projectile-find-dir-action-root
     "open as root")
    ("m" counsel-projectile-find-file-action-find-file-manually
