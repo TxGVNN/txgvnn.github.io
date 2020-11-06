@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20181108.1534
+;; Package-Version: 20181108.1600
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
 ;; Package-Requires: ((seq "1.11"))
@@ -819,6 +819,36 @@ and the entire buffer (in the absense of a region)."
       (delete-region start end)
       (insert encoded-text))))
 
+(defvar crux-share-to-transfersh-host "https://transfersh.com"
+  "Provider host of transfer.sh.")
+;;;###autoload
+(defun crux-share-to-transfersh (&optional downloads)
+  "Share buffer to transfersh.com.
+- DOWNLOADS: The max-downloads"
+  (interactive "p")
+  (let ((temp-file
+         (make-temp-file nil nil (file-name-extension (buffer-name) t)))
+        (url crux-share-to-transfersh-host) (msg ""))
+    (if (region-active-p)
+        (write-region (point) (mark) temp-file)
+      (write-region (point-min) (point-max) temp-file))
+    (when (yes-or-no-p (format "Share to %s (%d)?" url downloads))
+      (when (yes-or-no-p "Encrypt?")
+        (let ((file-hash (md5 (buffer-string))))
+          (shell-command (format "openssl aes-256-cbc -md md5 -k %s -in '%s' -out '%s.enc'"
+                                 file-hash temp-file temp-file))
+          (dired-delete-file temp-file)
+          (setq temp-file (format "%s.enc" temp-file)
+                msg (format "| openssl aes-256-cbc -d -md md5 -k %s -in - 2>/dev/null"
+                            file-hash))))
+      (let ((output (format
+                     "curl -L %s 2>/dev/null %s"
+                     (shell-command-to-string
+                      (format "curl -q -H 'Max-Downloads: %d' --upload-file '%s' %s 2>/dev/null"
+                              downloads temp-file url)) msg)))
+        (kill-new output) (message output))
+      (dired-delete-file temp-file))))
+
 ;;;###autoload
 (defun crux-share-to-paste.debian ()
   "Share buffer to paste.debian.net."
@@ -871,6 +901,13 @@ and the entire buffer (in the absense of a region)."
              (format "curl -L %s.txt 2>/dev/null %s" (car kill-ring) msg)))
         (kill-new output) (message output))
       (dired-delete-file temp-file))))
+
+;;;###autoload
+(defun crux-toggle-local-recompile()
+  "Toggle local recompile."
+  (if (memq 'recompile after-save-hook)
+      (remove-hook 'after-save-hook 'recompile t)
+    (add-hook 'after-save-hook 'recompile nil t)))
 
 (provide 'crux)
 ;;; crux.el ends here
