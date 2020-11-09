@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20200817.1700
+;; Package-Version: 20200817.1701
 ;; Package-Commit: 139eb6f1504b6885c86c658fd33c6d59bfac0a8c
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
@@ -1001,6 +1001,7 @@ and the entire buffer (in the absense of a region)."
 ;;;###autoload
 (defun crux-toggle-local-recompile()
   "Toggle local recompile."
+  (interactive)
   (if (memq 'recompile after-save-hook)
       (remove-hook 'after-save-hook 'recompile t)
     (add-hook 'after-save-hook 'recompile nil t)))
