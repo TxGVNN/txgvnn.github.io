@@ -4,7 +4,7 @@
 
 ;; Author: Oleh Krehel <ohwoeowho@gmail.com>
 ;; URL: https://github.com/abo-abo/swiper
-;; Package-Version: 20200619.1037
+;; Package-Version: 20200619.1038
 ;; Package-Commit: 77748673d3481f9fd1de91283c57ce535404c28f
 ;; Version: 0.13.0
 ;; Package-Requires: ((emacs "24.5") (swiper "0.13.0"))
@@ -1731,6 +1731,7 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("ss" counsel-find-file-search-ag-action "file search ag")
    ("sj" counsel-find-file-jump-action "file jump")
    ("t" counsel-run-ansi-term-here "run ansi-term")
+   ("&" counsel-run-async-shell-here "run async-shell")
    ("F" (lambda (x) (with-ivy-window (insert (file-relative-name x))))
     "insert relative filename")
    ("B" (lambda (x)
@@ -1740,12 +1741,17 @@ choose between `yes-or-no-p' and `y-or-n-p'; otherwise default to
    ("d" counsel-find-file-mkdir-action "mkdir")))
 
 (defun counsel-run-ansi-term-here (file)
-  "Run ansi-term in this directory of FILE."
-  (let* ((dir (directory-file-name (file-name-directory file)))
+  "Run `ansi-term in this directory of FILE."
+   (let* ((dir (directory-file-name (file-name-directory file)))
          (buffer (format "ansi-term(%s)" (file-name-nondirectory dir))))
     (if (get-buffer (format "*%s*" buffer))
         (switch-to-buffer (format "*%s*" buffer))
       (cd dir) (ansi-term (getenv "SHELL") buffer))))
+
+(defun counsel-run-async-shell-here (file)
+  "Run `async-shell-command in this directory of FILE."
+  (let ((default-directory (directory-file-name (file-name-directory file))))
+    (call-interactively #'async-shell-command)))
 
 (defcustom counsel-find-file-at-point nil
   "When non-nil, add file-at-point to the list of candidates."
