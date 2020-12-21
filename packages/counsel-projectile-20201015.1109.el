@@ -1282,7 +1282,7 @@ with a different switching mechanism: the switch-project action
 is called from a dedicated buffer rather than the initial buffer.
 Also, PROJECT's dir-local variables are loaded before calling the
 action."
-  (run-hooks 'projectile-before-switch-project-hook)
+  (run-hook-with-args 'projectile-before-switch-project-hook project)
   ;; Kill and recreate the switch buffer to get rid of any local
   ;; variable
   (ignore-errors (kill-buffer " *counsel-projectile*"))
@@ -1297,7 +1297,7 @@ action."
   ;; back to the initial buffer. Hence we make sure tu evaluate
   ;; `projectile-after-switch-project-hook' from the switch buffer.
   (with-current-buffer " *counsel-projectile*"
-    (run-hook-with-args 'projectile-before-switch-project-hook project)))
+    (run-hook-with-args 'projectile-after-switch-project-hook project)))
 
 (defun counsel-projectile-switch-project-action (project)
   "Jump to a file or buffer in PROJECT."
