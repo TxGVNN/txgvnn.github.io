@@ -5,4 +5,4 @@
  (doom-themes . [(20181220 221) ((emacs (24 4)) (cl-lib (0 5))) "an opinionated pack of modern color-themes" tar])
  (ivy . [(20201218 1222) ((emacs (24 5))) "Incremental Vertical completYon" tar ((:commit . "e43141df8a92995336585b401eb550a375349759") (:authors ("Oleh Krehel" . "ohwoeowho@gmail.com")) (:maintainer "Oleh Krehel" . "ohwoeowho@gmail.com") (:keywords "matching") (:url . "https://github.com/abo-abo/swiper"))])
  (swiper . [(20201208 1419) ((emacs (24 5)) (ivy (0 13 0))) "Isearch with an overview. Oh, man!" single ((:commit . "e43141df8a92995336585b401eb550a375349759") (:authors ("Oleh Krehel" . "ohwoeowho@gmail.com")) (:maintainer "Oleh Krehel" . "ohwoeowho@gmail.com") (:keywords "matching") (:url . "https://github.com/abo-abo/swiper"))])
- (yasnippet-snippets . [(20200122 1140) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar]))
+ (yasnippet-snippets . [(20201221 849) ((yasnippet (0 8 0))) "Collection of yasnippet snippets" tar]))
