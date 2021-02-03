@@ -4,7 +4,7 @@
 ;;
 ;; Author: Bozhidar Batsov <bozhidar@batsov.com>
 ;; URL: https://github.com/bbatsov/crux
-;; Package-Version: 20200817.1701
+;; Package-Version: 20200817.1702
 ;; Package-Commit: 139eb6f1504b6885c86c658fd33c6d59bfac0a8c
 ;; Version: 0.4.0-snapshot
 ;; Keywords: convenience
@@ -200,21 +200,27 @@ the current buffer."
         (funcall function))
     (switch-to-buffer-other-window buffer-name)))
 
+(defun crux-directory-domain-name()
+  "Return name.p.~."
+  (require 'shrink-path)
+  (let ((path (split-string (nreverse (shrink-path-dirs default-directory)) "/")))
+    (string-join (cons (nreverse (nth 1 path)) (nthcdr 2 path)) ".")))
+
 ;;;###autoload
 (defun crux-visit-term-buffer (&optional prefix)
   "Create or visit a terminal buffer.
 If PREFIX is not nil, create visit in default-directory"
   (interactive "P")
-  (let ((session ""))
+  (let ((session "0"))
     (if prefix
-        (setq session (concat "(" (file-name-nondirectory (directory-file-name default-directory)) ")")))
+        (setq session (crux-directory-domain-name)))
     (crux-start-or-switch-to (lambda ()
-                               (ansi-term crux-shell (format "%s-term%s" crux-term-buffer-name session)))
-                             (format "*%s-term%s*" crux-term-buffer-name session))
-    (when (and (null (get-buffer-process (current-buffer)))
-               (y-or-n-p "The process has died.  Do you want to restart it? "))
-      (kill-buffer-and-window)
-      (crux-visit-term-buffer prefix))))
+                               (ansi-term crux-shell (format "%s(%s)" crux-term-buffer-name session)))
+                             (format "*%s(%s)*" crux-term-buffer-name session)))
+  (when (and (null (get-buffer-process (current-buffer)))
+             (y-or-n-p "The process has died.  Do you want to restart it? "))
+    (kill-buffer-and-window)
+    (crux-visit-term-buffer prefix)))
 
 ;;;###autoload
 (defun crux-visit-shell-buffer ()
@@ -442,7 +448,7 @@ there's a region, all lines that region covers will be duplicated."
 
 ;;;###autoload
 (defun crux-copy-file-preserve-attributes (visit)
-    "Copy the current file-visiting buffer's file to a destination.
+  "Copy the current file-visiting buffer's file to a destination.
 
 This function prompts for the new file's location and copies it
 similar to cp -p. If the new location is a directory, and the
@@ -458,35 +464,35 @@ to not created it, nothing will be done.
 
 When invoke with C-u, the newly created file will be visited.
 "
-    (interactive "p")
-    (let ((current-file (buffer-file-name)))
-      (when current-file
-        (let* ((new-file (read-file-name "Copy file to: "))
-               (abs-path (expand-file-name new-file))
-               (create-dir-prompt "%s is a non-existent directory, create it? ")
-               (is-dir? (string-match "/" abs-path (1- (length abs-path))))
-               (dir-missing? (and is-dir? (not (file-exists-p abs-path))))
-               (create-dir? (and is-dir?
-                                 dir-missing?
-                                 (y-or-n-p
-                                  (format create-dir-prompt new-file))))
-               (destination (concat (file-name-directory abs-path)
-                                    (file-name-nondirectory current-file))))
-          (unless (and is-dir? dir-missing? (not create-dir?))
-            (when (and is-dir? dir-missing? create-dir?)
-              (make-directory abs-path))
-            (condition-case nil
-                (progn
-                  (copy-file current-file abs-path nil t t t)
-                  (message "Wrote %s" destination)
-                  (when visit
-                    (find-file-other-window destination)))
-              (file-already-exists
-               (when (y-or-n-p (format "%s already exists, overwrite? " destination))
-                 (copy-file current-file abs-path t t t t)
-                 (message "Wrote %s" destination)
-                 (when visit
-                   (find-file-other-window destination))))))))))
+  (interactive "p")
+  (let ((current-file (buffer-file-name)))
+    (when current-file
+      (let* ((new-file (read-file-name "Copy file to: "))
+             (abs-path (expand-file-name new-file))
+             (create-dir-prompt "%s is a non-existent directory, create it? ")
+             (is-dir? (string-match "/" abs-path (1- (length abs-path))))
+             (dir-missing? (and is-dir? (not (file-exists-p abs-path))))
+             (create-dir? (and is-dir?
+                               dir-missing?
+                               (y-or-n-p
+                                (format create-dir-prompt new-file))))
+             (destination (concat (file-name-directory abs-path)
+                                  (file-name-nondirectory current-file))))
+        (unless (and is-dir? dir-missing? (not create-dir?))
+          (when (and is-dir? dir-missing? create-dir?)
+            (make-directory abs-path))
+          (condition-case nil
+              (progn
+                (copy-file current-file abs-path nil t t t)
+                (message "Wrote %s" destination)
+                (when visit
+                  (find-file-other-window destination)))
+            (file-already-exists
+             (when (y-or-n-p (format "%s already exists, overwrite? " destination))
+               (copy-file current-file abs-path t t t t)
+               (message "Wrote %s" destination)
+               (when visit
+                 (find-file-other-window destination))))))))))
 
 ;;;###autoload
 (defun crux-view-url ()
@@ -693,10 +699,10 @@ Doesn't mess with special buffers."
 ;;;###autoload
 (defun crux-find-user-custom-file ()
   "Edit the `custom-file', in another window."
-    (interactive)
-    (if custom-file
-        (find-file-other-window custom-file)
-      (message "No custom file found.")))
+  (interactive)
+  (if custom-file
+      (find-file-other-window custom-file)
+    (message "No custom file found.")))
 
 ;;;###autoload
 (defun crux-find-shell-init-file ()
