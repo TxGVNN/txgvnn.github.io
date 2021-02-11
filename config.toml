@@ -1,0 +1,12 @@
+baseURL = "http://example.org/"
+languageCode = "vi-vn"
+title = "Mấy khi mấy khỉ"
+theme = "kiss"
+
+[params.social]
+github = "TxGVNN"
+email = "txgvnn@gmail.com"
+rss = "index.xml" # Add this to show RSS button in social.
+
+[params.social.config]
+platforms = ["github","email", "rss"]

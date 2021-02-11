@@ -1,0 +1,19 @@
+---
+title: "Implement tính năng kill/yank trong Emacs vào I3WM"
+date: 2021-02-11T23:10:28+07:00
+tags: [i3wm]
+draft: false
+---
+
+* Lý do
+
+Khoảng ngày <2021-02-11 Thu> sau khi được 1 bạn suggest về cái ~~/.i3/bin/x-register~ tổt hơn [[https://github.com/TxGVNN/i3-config/issues/5][TxGVNN/i3-config#5]]. Tôi mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà tôi có thể yank rồi chọn item để paste nhưng sử dụng ~dmenu~. Như tính năng yank trong Emacs.
+
+Tôi đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste. Nó là 1 chương trình riêng, hiệu quả đấy, nhưng có vẻ sẽ bất tiện với tôi. Vì tôi muốn nó tích hợp vào dmenu với i3, bạn sẽ cảm giác nó là 1 hệ thống hoàn chỉnh
+
+Tôi quyết định vào reddit.com/i3wm tìm với từ khoá clipboard, và tìm ra repostory này https://github.com/cdown/clipmenu
+
+* Cấu hình
+Và đã cấu hình nó [[https://github.com/TxGVNN/i3-config/commit/799304716cbe18fa6cdb8d4b8ee0c0ebc435cf8d][TxGVNN/i3-config@7993047]] quá ưng ý cho tôi.
+Với 1 chút chỉnh sửa là thêm ~xdotool~ vào line này [[https://github.com/TxGVNN/i3-config/commit/799304716cbe18fa6cdb8d4b8ee0c0ebc435cf8d#diff-cfdacdccb84c4862f01c698497888ae65278c0240d7b588facc557da61f634d4R72][TxGVNN/i3-config/commit/7993047#diff-cfdacdccb84c4862f01c698497888ae65278c0240d7b588facc557da61f634d4R72]] để paste thẳng ra luôn.
+Quá ưng ý cho tôi với phím tắt ~Super + Shift + w~. Tuyệt

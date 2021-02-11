@@ -1,0 +1,34 @@
+---
+title: "Bắt đầu chia sẽ hơn qua blog o.O"
+date: 2021-02-11T23:00:48+07:00
+draft: false
+---
+* Sao lại bây giờ mới viết?
+
+Truớc đây tôi đã muốn xây dựng debian-vn.github.io để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Thực ra page đó cũng có mỗi tôi viết :joy:
+Tóm lại không đủ nhiệt huyết để làm nữa :sad:
+
+Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ. Nên tôi nghĩ viết blog sẽ chia sẽ tốt hơn, đỡ phải nói đi nói lại mỏi mồm phết.
+
+Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì đó (đống hỗn độn chẳng hạn) mình chia sẽ hay ho thì sẽ tốt cho ai đó, không hay thì được góp ý lại mình càng tốt (khôn phết). Tôi đã định viết mấy lần rồi, nhưng LƯỜI -_-
+
+* Quan điểm
+
+Blog này sẽ KHÔNG đề cập/đá đểu đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (Lạy chúa, Tôi sẽ cố gắng không đề cập. Hic)
+
+Tôi chỉ tập trung vào kỹ thuật, chủ yếu là tips, workflow cá nhân của tôi.
+
+* Sao không dùng tiếng anh?
+
+Tiếng việt là một trong những thế mạnh của tôi. Btw, my english skill is not good!
+
+Tôi cũng sẽ dùng vài từ tiếng anh, tôi cũng không sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
+* Đại từ nhân xưng
+
+Tiếng anh thì dùng mỗi ~I~ cho khoẻ, dùng Tiếng Việt lại phải chọn ~Tôi, Mình, Tớ, Tao, Tau, Anh, Em, Chú, Bác, Thím...~
+Nên mình/tao/tau sẽ chọn Tôi. (Chịu). Hay là chọn Tui nhỉ, dễ thương phết đó mấy má.
+
+* Sao không bật comment?
+
+Ace (Anh chị em) hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check :v )
+Nếu nội dung nhảy cảm thì nhớ ~GnuPG/0xE655BF766A56995D~ nhá, tôi đang tập dùng.
