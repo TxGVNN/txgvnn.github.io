@@ -5,7 +5,7 @@ draft: false
 ---
 * Sao lại bây giờ mới viết?
 
-Truớc đây tôi đã muốn xây dựng debian-vn.github.io để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì tôi nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi tôi viết :joy:
+Truớc đây tôi đã muốn xây dựng [[https://debian-vn.github.io/][debian-vn.github.io]] để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì tôi nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi tôi viết :joy:
 Tóm lại không đủ nhiệt huyết để làm nữa :sad:
 
 Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ. Nên tôi nghĩ viết blog sẽ chia sẽ tốt hơn, đỡ phải nói đi nói lại mỏi mồm phết.
@@ -16,13 +16,15 @@ Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì
 
 Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (Lạy chúa, tôi sẽ cố gắng không đề cập. Hic)
 
-Tôi chỉ tập trung vào kỹ thuật, chủ yếu là tips, workflow cá nhân của tôi.
+Tôi cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, helloworld như nào?)
+
+Mà chủ yếu là tips, workflow cá nhân của tôi. Nên có thể nó sẽ không phù hợp với bạn và bạn của bạn
 
 * Sao không dùng tiếng anh?
 
-Tiếng việt là một trong những thế mạnh của tôi. Btw, my english skill is not good!
+Tiếng việt là một trong những thế mẹnh của tôi. Btw, my english skill is not good!
 
-Tôi cũng sẽ dùng vài từ tiếng anh, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
+Tôi cũng sẽ dùng vài từ tiếng anh như cách nói thông thường mỗi ngày, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
 * Đại từ nhân xưng
 
 Tiếng anh thì dùng mỗi ~I~ cho khoẻ, dùng Tiếng Việt lại phải chọn ~Tôi, Mình, Tớ, Tao, Tau, Anh, Em, Chú, Bác, Thím...~
@@ -30,5 +32,5 @@ Nên mình/tao/tau sẽ chọn Tôi. (Chịu). Hay là chọn Tui nhỉ, dễ th
 
 * Sao không bật comment?
 
-Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check :v, nên có thể sẽ reply khá lâuuuu )
+Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check, haha, nên có thể sẽ reply khá lâuuuu)
 Nếu nội dung nhảy cảm thì nhớ ~GnuPG/0xE655BF766A56995D~ nhá, tôi đang tập dùng.
