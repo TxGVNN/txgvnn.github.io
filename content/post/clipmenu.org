@@ -9,7 +9,7 @@ draft: false
 
 Khoảng ngày <2021-02-11 Thu> sau khi được 1 bạn suggest về cái ~~/.i3/bin/x-register~ tổt hơn [[https://github.com/TxGVNN/i3-config/issues/5][TxGVNN/i3-config#5]]. Tôi mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà tôi có thể yank rồi chọn item để paste nhưng sử dụng ~dmenu~. Như tính năng yank trong Emacs.
 
-Tôi đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste. Nó là 1 chương trình riêng, hiệu quả đấy, nhưng có vẻ sẽ bất tiện với tôi. Vì tôi muốn nó tích hợp vào dmenu với i3, bạn sẽ cảm giác nó là 1 hệ thống hoàn chỉnh
+Mấy năm truớc tôi đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste. Nó là 1 chương trình riêng, hiệu quả đấy, nhưng có vẻ sẽ bất tiện với tôi. Vì tôi muốn nó tích hợp vào dmenu với i3, bạn sẽ cảm giác nó là 1 hệ thống hoàn chỉnh
 
 Tôi quyết định vào reddit.com/i3wm tìm với từ khoá clipboard, và tìm ra repostory này https://github.com/cdown/clipmenu
 

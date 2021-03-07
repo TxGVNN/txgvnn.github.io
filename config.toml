@@ -1,6 +1,6 @@
 baseURL = "http://example.org/"
 languageCode = "vi-vn"
-title = "Mấy khi mấy khỉ"
+title = "MẤY KHI MẤY KHỈ"
 theme = "kiss"
 
 [params.social]
