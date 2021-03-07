@@ -16,25 +16,8 @@ draft: false
   Tôi viết các file org ở các vị trí khác nhau, và sử dụng ~org-agenda~ để hiện thị toàn bộ chúng như 1 bức tranh toàn cảnh.
 
   Hình ảnh mang tính chất minh hoạ
-#+begin_src org-mode
-Week-agenda (W09):
-Monday      1 March 2021 W09
-Tuesday     2 March 2021
-Wednesday   3 March 2021
-  company-A:  Deadline:   DONE Write something
-Thursday    4 March 2021
-  company-A:  Deadline:   REJECTED Eat something
-Friday      5 March 2021
-Saturday    6 March 2021
-Sunday      7 March 2021
-  blog:       Deadline:   WIP Write a new post to share org-agenda
 
-===========================================================================
-Global list of TODO items of type: ALL
-  blog:       WIP Write a new post to share org-agenda
-  2021-03-07: TODO Drink something
-#+end_src
-
+{{< figure src="/images/2021-03-07-14-48-59.png" alt="" >}}
 
 ** Trên máy tính cá nhân của tôi có:
    #+begin_src txt
