@@ -1,0 +1,46 @@
+---
+title: "Vở ghi chung, tôi vẫn ghi"
+date: 2021-03-07T15:07:16+07:00
+draft: false
+---
+
+Khi còn là sinh viên tôi cũng vọc vạch kha khá, kinh nghiệm đọng lại rồi cũng rơi dần nếu không dùng lại ngay cả những cái đơn giản nhất.
+Tôi bắt đầu suy nghĩ về việc viết notes như là mình hồi xưa đi học để lại các kiến thức trong vở. (Nhưng vở thì mình cũng vứt lâu rồi)
+
+
+Thế là tôi bắt đầu làm nó bài bản hơn. Như 1 cuốn vở ghi chung. Tôi cần
+
+- Git cả thư mục viết notes đó lên 1 gitlab/github (private)
+- Tôi sẽ note theo các topic là các folder cho dễ tìm. Kiểu structure 1 chút
+- Để tìm 1 notes thì tôi sẽ tìm theo 2 cách tìm theo file và tìm theo pattern
+- Viết anything có thể note được. Ví dụ tôi cho cả đống config về cái gì đó lên luôn, chả sao.
+
+* Bắt đầu
+
+  Từ cái đó tôi đã viết ra 1 cái tool là [[https://github.com/txgvnn/gxt][gxt]] (vâng, tôi tự sướng bằng tên của tôi. Haha)
+  Tool này rất tiện cho tôi note mọi thứ, và cả share note nhanh chóng nữa. Support `gpg` luôn
+
+* Bây giờ
+  Vâng, bây giờ ngày nào tôi cũng viết vào ~notes~ nếu tôi ngồi vào máy tính. Tôi đưa cả dotfiles của tôi vào, nên ngày nào cũng cập nhật. LOL
+
+  Bây giờ <2021-03-07 Sun>, tôi đang có:
+  - 1914 files
+  - 3396 commits
+  - Ngày commit đầu tiên là ~2015-09-22~
+
+  Hôì đó tôi đang dùng Vim, chưa dùng Emacs.
+  Sau này chuyển qua sống trong Emacs thì tôi không còn dùng ~gxt~ nhiều trên máy tính của tôi nữa.
+  Nhưng ~gxt~ thì nó vẫn hữu dụng trên điện thoại cuả tôi. Vì tôi sử dụng [[https://termux.com][Termux]] trên điện thoại nên dùng ~gxt~ để tìm kiếm note rất tiện.
+
+* Tôi thấy
+
+  Nhảy việc ở vài công ty nhưng tôi thấy mọi người THƯỜNG không viết notes, có viết thì cũng chỉ viết tạm vào 1 cái file, hay folder. Rồi họ cài lại máy hay di chuyển công ty thì các tệp đó đều mất hoặc backup vào chỗ nào đó mà chả bao giờ họ mở lại.
+
+
+  Vì thế với vở ghi chung, tôi lấy ví dụ:
+  - gặp 1 cái bug, rồi tôi note lại. Bữa sau thì cứ thế mà áp dụng.
+  - note lại cách chạy 1 cái lệnh gì đó.
+  - note lại cả config nào đó, bữa sau đối chiếu
+  - note lại cách viết note
+
+  Giờ tôi còn có thể xem lại hôì làm ở công ty X, tôi đã làm về cái gì. Vì tôi đều ghi lại khá khá
