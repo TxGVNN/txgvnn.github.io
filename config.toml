@@ -1,12 +1,29 @@
-baseURL = "http://example.org/"
+baseURL = "http://txgvnn.github.io/"
 languageCode = "vi-vn"
 title = "MẤY KHI MẤY KHỈ"
-theme = "kiss"
+theme = "cactus"
 
-[params.social]
-github = "TxGVNN"
-email = "txgvnn@gmail.com"
-rss = "index.xml" # Add this to show RSS button in social.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
 
-[params.social.config]
-platforms = ["github","email", "rss"]
+[[menu.main]]
+name = "Writings"
+url = "/post"
+weight = 2
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 3
+
+[params]
+logo = "https://avatars.githubusercontent.com/u/9713793?s=64"
+[[params.social]]
+  name = "github"
+  link = "https://github.com/TxGVNN"
+
+[[params.social]]
+  name = "email"
+  link = "TxGVNN@gmail.com"
