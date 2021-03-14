@@ -1,5 +1,5 @@
 ---
-title: "Sử dụng TODO list để quản lý việc cá nhân và việc công ty"
+title: "Sử dụng TODO list để quản lý công việc"
 date: 2021-03-07T14:08:36+07:00
 draft: false
 ---
@@ -56,4 +56,4 @@ Vì mynotes là thư mục notes của tôi luôn được sync các máy với 
 * Cái hay tôi thấy
 
   - Trên máy cá nhân của tôi thì có thể nhìn hết toàn bộ task mà tôi đang cần làm. Từ dự án cá nhân, đến công ty này công ty kia, ghi chú nhỏ mỗi ngày
-  - Trên máy công ty, thì tôi chỉ cần nhìn task chính cuả công ty đó, các task trên project và cả chi tiết ở các worklogs của tôi.
+  - Trên máy công ty, thì tôi chỉ cần nhìn task chính, các task riêng lẻ trên project và cả chi tiết ở các worklogs của chính công ty đó thôi.
