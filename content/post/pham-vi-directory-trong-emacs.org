@@ -1,0 +1,50 @@
+---
+title: "Phạm vi directory trong Emacs"
+date: 2021-03-22T22:46:38+07:00
+tags: [emacs]
+draft: false
+---
+
+* Sơ lược về cách Emacs làm việc với buffer/file
+Buffer nói 1 cách dễ hiểu là 1 tệp ảo (không cần)/(chưa được)/(đã được) lưu thành 1 tệp. Đối tượng mà emacs làm việc là buffer.
+Khi mở 1 file trong emacs, emacs sẽ mở file đó vào 1 buffer cùng tên hoặc tên sẽ được đi kèm với thư mục cha khác nhau để phân biệt nếu mở file trùng tên.
+
+Mỗi buffer sẽ đi kèm với 1 biến local là ~default-directory~. Biến này sẽ cho chúng ta biết ta đang ở đâu, nó giống như ~cd~ vào ~default-directory~ rồi mở file.
+
+
+Biến local này rất quan trọng, nó là thư mục ngầm định cho các câu lệnh mà mình sẽ thực hiện. Ví dụ:
+- ~M-x shell-commmand~ -> ~touch ABC~ thì sẽ tạo ra file ABC ở ~default-directory~
+- ~M-x find-grep~ hay ~M-x grep~ sẽ tìm kiếm trên thư mục này
+- ~M-x compile~ sẽ chạy function trên thư mục này
+
+Chúng ta có thể thay đôỉ biến local này trên mỗi buffer bằng ~M-x cd~.
+
+* Các phạm vi mà tôi định nghĩa
+Giả sử chúng ta gọi ~base_dir~ để chỉ thư mục đang đứng ở đó để chạy các function.
+
+Trong quá trình sử dụng, tôi nhận thấy rằng mình cần có 3 nhóm phạm vi lúc tương tác với file
+- Phạm vi thư mục hiện hành => chính là dùng ~default-directory~ làm ~base_dir~ như emacs mặc định sử dụng.
+- Phạm vi thư mục project => Tức là sử dụng thư mục project làm ~base_dir~
+- Pham vi thư mục khác => Tức mình sẽ chỉ định chính xác thư mục nào sẽ được làm ~base_dir~
+
+Với việc làm rõ như này, tôi rất linh động khi sử dụng các function trên thư mục mà tôi mong muốn. Vừa hiệu quả mà lại còn tốc độ thì nhanh khủng khiếp mà không cần dùng chuột =))
+** Phạm vi thư mục hiện hành
+
+Cái này cơ bản nhất. Khi muôn thực hiện các function CHỈ ở trong thư mục hiện hành.
+Tôi thường sử dụng các funcion như: find-file, ripgrep, compile, find-grep
+
+** Phạm vi thư mục project
+
+Khi làm việc với 1 project. Tôi thường sử dụng các function sau
+- ~projectile-find-file~ -> Tìm file trong project
+- ~projectile-ripgrep~ -> Tìm pattern trong project
+- ~projectile-compile~ -> Biên dịch trong project như chạy ~make build~
+- ~magit~ -> Mở git
+- ...
+
+** Phạm vi thư mục khác
+Trong trường hợp tôi cần chạy function nào đó ở 1 thư mục không phải là thư mục hiện tại và cũng không phải là thư mục của project nào cả. Thì đây là pham vi thư mục khác
+
+Ví dụ chạy ~ripgrep~ ở 1 thư mục khác như ~/usr/share/emacs/site-lisp~
+
+Tôi sẽ sử dụng ~M-x find-file~ -> ~/usr/share/emacs/site-lisp~ -> chạy ~embark-act~ -> ~embark-in-directory~ và chạy function mà tôi muốn
