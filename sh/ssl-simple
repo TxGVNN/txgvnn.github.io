@@ -1,0 +1,113 @@
+#!/bin/bash
+# TxGVNN
+# CA management functions
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+CN="${CN:-example.com}"
+
+days="365"
+cadays="735"
+REQ="openssl req"
+CA="openssl ca"
+
+ca_root=./ca
+certs_out=./certs
+
+function buildConf(){
+    cat > ca.cnf <<EOF
+[ ca ]
+default_ca      = CA_default
+
+[ CA_default ]
+dir            = ./ca
+certs          = \$dir/certs
+crl_dir        = \$dir/crl
+database       = \$dir/index.txt
+new_certs_dir  = \$dir/newcerts
+certificate    = \$dir/cacert.pem
+serial         = \$dir/serial
+crlnumber      = \$dir/crlnumber
+crl            = \$dir/crl.pem
+private_key    = \$dir/private/cakey.pem
+default_md     = sha1
+policy         = policy_match
+
+[ req ]
+default_bits = 2048
+encrypt_key = no
+distinguished_name = req_dn
+prompt = no
+
+[ req_dn ]
+C=VN
+ST=Vietnam
+O=Demo
+OU=Aliasource
+CN=#CAID#.ca
+
+
+# For the CA policy
+[ policy_match ]
+countryName            = match
+stateOrProvinceName    = match
+organizationName       = optional
+organizationalUnitName = optional
+commonName             = supplied
+emailAddress           = optional
+
+[ v3_ca ]
+subjectKeyIdentifier   = hash
+authorityKeyIdentifier = keyid:always,issuer:always
+basicConstraints       = CA:true
+nsCertType             = sslCA
+EOF
+}
+
+function buildCA() {
+    cakey=cakey.pem
+    careq=careq.pem
+    cacert=cacert.pem
+    rm -fr ${ca_root}
+    mkdir -p ${ca_root}
+    mkdir -p ${ca_root}/certs
+    mkdir -p ${ca_root}/crl
+    mkdir -p ${ca_root}/newcerts
+    mkdir -p ${ca_root}/private
+    cp ./ca.cnf ${ca_root}
+    computed_ca_id=$(date +%s)
+    sed -i -e "s%#CAID#%${computed_ca_id}%" ${ca_root}/ca.cnf
+    grep -v "CN=" "${ca_root}"/ca.cnf  > "${ca_root}"/ca_nocn.cnf
+    echo "00" > ${ca_root}/serial
+    touch ${ca_root}/index.txt
+
+    echo "Making CA certificate ..."
+    $REQ -config $ca_root/ca.cnf -new -keyout ${ca_root}/private/$cakey \
+	     -out ${ca_root}/$careq
+
+    echo "Request for CA cert creation done."
+    $CA -config ${ca_root}/ca.cnf -out ${ca_root}/$cacert -days "$cadays" -batch \
+	    -keyfile ${ca_root}/private/$cakey -selfsign \
+	    -extensions v3_ca \
+	    -infiles ${ca_root}/$careq
+    echo "The CA is made"
+}
+
+function buildSignedCert() {
+    test $# -eq 1 || {
+	    echo "Usage: command <CN>"
+	    exit 1
+    }
+
+    mkdir -p ${certs_out}
+    sed -e "s/CN=#CAID#.ca/CN=${1}/" ./ca.cnf > ${certs_out}/cert.cnf
+    $REQ -config ${certs_out}/cert.cnf -new -nodes -keyout "${certs_out}/$1_key.pem" -out "${certs_out}/$1_req.pem" -days "$days"
+    # rm -f ${certs_out}/cert.cnf
+    # sign with CA
+    $CA -config $ca_root/ca_nocn.cnf -policy policy_match -days "$days" -batch \
+	    -out "${certs_out}/$1_cert.pem" -infiles "${certs_out}/$1_req.pem"
+    cat "${certs_out}/$1_cert.pem" "${certs_out}/$1_key.pem" > "${certs_out}/$1_signed.pem"
+}
+
+buildConf
+buildCA
+buildSignedCert "$CN"

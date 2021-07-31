@@ -1,0 +1,10 @@
+#!/bin/bash
+EMACS_SOCKET="/tmp/.emacs.sock"
+
+client () {
+    emacsclient -nw -s $EMACS_SOCKET "$@"
+}
+server () {
+    emacs -nw --daemon=$EMACS_SOCKET
+}
+client "$@"|| (server && client "$@")

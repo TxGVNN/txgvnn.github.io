@@ -1,0 +1,50 @@
+#!/bin/bash
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+msg(){ printf "%s: %s\n" "$1" "$2";}
+help(){
+    echo "Usage: "
+    echo "    PART=/dev/sdb2"
+    exit 1
+}
+
+PACKAGES="
+build-essential
+git
+linux-image-amd64
+sudo"
+
+if [ -d /sys/firmware/efi/efivars ]; then
+    GRUB="grub-efi"
+else
+    GRUB="grub2"
+fi
+
+if [ "$(id -u)" -ne 0 ]; then
+    msg "E" "Required privileged root"
+    exit 1
+fi
+
+if [ -z "$PART" ]; then
+    help
+fi
+
+mount "$PART" /mnt
+debootstrap stable /mnt http://deb.debian.org/debian
+
+mount -o bind /proc /mnt/proc
+mount -o bind /sys /mnt/sys
+mount -o bind /dev /mnt/dev
+mount -o bind /dev/pts /mnt/dev/pts
+
+
+echo "deb http://deb.debian.org/debian stable main contrib non-free" > /mnt/etc/apt/sources.list
+
+ls -la /dev/disk/by-uuid/ | grep "${PART##/dev}"  | awk '{print "UUID="$9"   /     ext4    errors=remount-ro       0       1"}' > /mnt/etc/fstab
+
+chroot /mnt apt-get update
+IFS=$'\n' chroot /mnt apt-get install -y ${PACKAGES} ${GRUB}
+
+echo "To complete, please run:"
+echo "grub-install </dev/DISK>"
+echo "umount /mnt{/dev/pts,/dev,/proc,/sys,}"

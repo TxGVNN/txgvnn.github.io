@@ -1,0 +1,65 @@
+#!/bin/bash
+# TxGVNN
+SERVER_DEFAULT="irc.oftc.net"
+NICKNAME_DEFAULT="irc_$(date +%s)"
+CHANNEL_DEFAULT="#debian-vn"
+
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+help(){
+    echo "Usage:"
+    echo " cat irc | MESSAGE=\"Somethings\" [SERVER=;CHANNEL=;NICKNAME=] bash"
+    echo ""
+    echo "Defaults:"
+    echo " SERVER=${SERVER_DEFAULT}"
+    echo " CHANNEL=${CHANNEL_DEFAULT}"
+    echo " NICKNAME=irc_\$(date +%s)"
+    exit 1
+}
+msg(){ printf "%s: %s\n" "$1" "$2";}
+
+irc(){
+    if [ ! -S "/proc/$$/fd/3" ]; then
+        exec 3>/dev/tcp/"${SERVER}"/6667
+        cat <&3 &
+        echo "NICK ${NICKNAME}" >&3
+        echo "USER ${NICKNAME} +i * :sh" >&3
+        echo "JOIN ${CHANNEL}" >&3
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}" >&3
+        fi
+    fi
+    echo "PRIVMSG ${CHANNEL} :$*" >&3
+    echo "QUIT" >&3
+}
+
+irc_ssl(){
+    if ! type openssl >/dev/null 2>&1; then
+        msg "W" "openssl not found! Skip irc_ssl"
+        return 1
+    fi
+    (
+        echo "NICK $NICKNAME"
+        echo "USER $NICKNAME +i * :sh"
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}"
+        fi
+        echo "PRIVMSG ${CHANNEL} :$*";
+        echo "QUIT"
+        sleep 10
+    ) | openssl s_client -quiet -connect "${SERVER}":6697
+}
+
+if [ -z "$MESSAGE" ]; then
+    help
+fi
+NICKNAME=${NICKNAME:-$NICKNAME_DEFAULT}
+CHANNEL=${CHANNEL:-$CHANNEL_DEFAULT}
+SERVER=${SERVER:-$SERVER_DEFAULT}
+
+irc_ssl "$MESSAGE"
+if [ $? -ne 0 ]; then
+    irc "$MESSAGE"
+fi

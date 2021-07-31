@@ -1,0 +1,64 @@
+#!/bin/bash
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+OPTS=""
+
+_help(){
+    echo "Usage: w3 [-p] [-c] [-d] PROFILE"
+    echo "Profiles:${profiles}"
+    pgrep dunst >/dev/null 2>&1 && notify-send -u low "Chromium profiles" "Usage: w3 [-p] [-c] PROFILE\n\nProfiles:${profiles}"
+
+}
+for opt in "$@"; do
+    if [[ "$opt" == [-]* ]]; then
+        case ${opt:1:1} in
+            p) PRIVATE=0 ;;
+            c) CREATE=0 ;;
+            d) DELETE=0 ;;
+            -)
+                case ${opt:2} in
+                    create) CREATE=0 ;;
+                    private) PRIVATE=0 ;;
+                    delete) DELETE=0 ;;
+                esac;;
+        esac
+    else
+        args_string+="$IFS$opt"
+    fi
+done
+
+args=($args_string)
+profile_name=${args[0]}
+
+[ $PRIVATE ] && OPTS="--incognito"
+
+profiles=" "
+for dir in $HOME/.config/chromium/profile*; do
+    name=$(basename $dir)
+    profiles="${name##*profile.} $profiles"
+done
+profiles=" $profiles"
+
+if [ -z "$profile_name" ]; then
+    _help
+    exit 1
+fi
+
+# If --delete is set
+if [ $DELETE ]; then
+    if [[ "$profiles" == *" ${profile_name} "* ]];then
+        rm -rf "${HOME}/.config/chromium/profile.${profile_name}"
+    fi
+    exit 0
+fi
+
+# If --create is not set, check the exist before start
+if [ ! $CREATE ]; then
+    if [[ ! "$profiles" == *" ${profile_name} "* ]];then
+        _help
+        exit 1
+    fi
+fi
+
+# Start one is default
+chromium --args --profile-directory="profile.$profile_name" "$OPTS"

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on MẤY KHI MẤY KHỈ</title>
+    <link>/post/</link>
+    <description>Recent content in Posts on MẤY KHI MẤY KHỈ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Mon, 22 Mar 2021 22:46:38 +0700</lastBuildDate>
+    
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Phạm vi directory trong Emacs</title>
+      <link>/post/pham-vi-directory-trong-emacs/</link>
+      <pubDate>Mon, 22 Mar 2021 22:46:38 +0700</pubDate>
+      
+      <guid>/post/pham-vi-directory-trong-emacs/</guid>
+      <description>Sơ lược về cách Emacs làm việc với buffer/file   Buffer nói 1 cách dễ hiểu là 1 tệp ảo (không cần)/(chưa được)/(đã được) lưu thành 1 tệp. Đối tượng mà emacs làm việc là buffer. Khi mở 1 file trong emacs, emacs sẽ mở file đó vào 1 buffer cùng tên hoặc tên sẽ được đi kèm với thư mục cha khác nhau để phân biệt nếu mở file trùng tên.</description>
+    </item>
+    
+    <item>
+      <title>Viết ghi chú mỗi ngày làm việc</title>
+      <link>/post/vo-ghi-chung/</link>
+      <pubDate>Sun, 07 Mar 2021 15:07:16 +0700</pubDate>
+      
+      <guid>/post/vo-ghi-chung/</guid>
+      <description>Khi còn là sinh viên tôi cũng vọc vạch kha khá, kinh nghiệm đọng lại rồi cũng rơi dần nếu không dùng lại, ngay cả những cái đơn giản nhất. Tôi bắt đầu suy nghĩ về việc viết note như là mình hồi xưa đi học để lại các kiến thức trong vở. (Nhưng vở thì mình cũng vứt lâu rồi)  Thế là tôi bắt đầu làm nó bài bản hơn.</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng TODO list để quản lý công việc</title>
+      <link>/post/su-dung-todo-list-de-quan-ly-cong-viec/</link>
+      <pubDate>Sun, 07 Mar 2021 14:08:36 +0700</pubDate>
+      
+      <guid>/post/su-dung-todo-list-de-quan-ly-cong-viec/</guid>
+      <description>Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách tôi dùng   Tôi viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.</description>
+    </item>
+    
+    <item>
+      <title>Implement tính năng kill/yank trong Emacs vào I3WM</title>
+      <link>/post/clipmenu/</link>
+      <pubDate>Thu, 11 Feb 2021 23:10:28 +0700</pubDate>
+      
+      <guid>/post/clipmenu/</guid>
+      <description>Lý do   Khoảng ngày &amp;lt;2021-02-11 Thu&amp;gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Tôi mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà tôi có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc tôi đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste.</description>
+    </item>
+    
+    <item>
+      <title>Lời giới thiệu o.O</title>
+      <link>/post/intro/</link>
+      <pubDate>Thu, 11 Feb 2021 23:00:48 +0700</pubDate>
+      
+      <guid>/post/intro/</guid>
+      <description>Sao lại bây giờ mới viết?   Truớc đây tôi đã muốn xây dựng debian-vn.github.io để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì tôi nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi tôi viết :joy: Tóm lại không đủ nhiệt huyết để làm nữa :sad:  Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,93 @@
+#!/bin/bash
+# TxGVNN
+REPO_DEFAULT="${HOME}/.ausolv"
+SERVER_DEFAULT="irc.freenode.net"
+NICKNAME_DEFAULT="$(hostname)"
+CHANNEL_DEFAULT="#ausolv"
+GPG_DEFAULT="0xB8E9A6F112C2D7B7"
+
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+msg(){ printf "%s: %s\n" "$1" "$2";}
+irc(){
+    if [ ! -S "/proc/$$/fd/3" ]; then
+        exec 3>/dev/tcp/"${SERVER}"/6667
+        cat <&3 &
+        echo "NICK $NICKNAME" >&3
+        echo "USER $NICKNAME +i * :sh" >&3
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}" >&3
+        fi
+    fi
+    echo "PRIVMSG ${CHANNEL} :$*" >&3
+    echo "QUIT" >&3
+}
+irc_ssl(){
+    if ! type openssl >/dev/null 2>&1; then
+        msg "W" "openssl not found! Skip irc_ssl"
+        return 1
+    fi
+    (
+        echo "NICK $NICKNAME"
+        echo "USER $NICKNAME +i * :sh"
+        # if $CHANNEL is IRC channel
+        if [[ $CHANNEL == [#]* ]]; then
+            echo "JOIN ${CHANNEL}"
+        fi
+        echo "PRIVMSG ${CHANNEL} :$*";
+        echo "QUIT"
+        sleep 10
+    ) | openssl s_client -quiet -connect "${SERVER}":6697
+}
+
+REPO=${REPO:-$REPO_DEFAULT}
+SERVER=${SERVER:-$SERVER_DEFAULT}
+NICKNAME=${NICKNAME:-$NICKNAME_DEFAULT}-$(date +%s)
+CHANNEL=${CHANNEL:-$CHANNEL_DEFAULT}
+GPG=${GPG:-$GPG_DEFAULT}
+
+# dependencies
+if ! type curl >/dev/null 2>&1; then
+    msg "E" "curl not found"
+    exit 1
+fi
+if ! type gpg >/dev/null 2>&1; then
+    msg "E" "gpg not found"
+    exit 1
+fi
+
+# update if it's git repository
+cd "$REPO" || exit 1
+if [ -d ".git" ]; then
+    git --git-dir "$REPO/.git" pull origin master
+fi
+
+# banner
+{
+    echo "-----*-----"
+    uname -a
+    echo "$(date) | $(date +%s)"
+    echo "-----*-----"
+} > "$NICKNAME"
+
+# execute shell
+while IFS='\0' read -r -d '' shell
+do
+    echo "### $shell" >> "$NICKNAME"
+    bash "${shell}" &>> "$NICKNAME"
+done <  <(find "$REPO" -maxdepth 1 -name \*.sh -printf '%P\0')
+
+# encrypt the output
+gpg --recv-keys "$GPG"
+gpg --yes --trust-model always --output "$NICKNAME.log" --encrypt --recipient "$GPG" "$NICKNAME"
+message="$(curl --upload-file "$NICKNAME.log" https://transfer.sh)"
+
+# send to IRC channel
+irc_ssl "$message"
+if [ $? -ne 0 ]; then
+    irc "$message"
+fi
+
+# clean
+rm "$NICKNAME" -rf
