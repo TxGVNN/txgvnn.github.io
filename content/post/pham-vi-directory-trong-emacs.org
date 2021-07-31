@@ -36,9 +36,9 @@ Tôi thường sử dụng các funcion như: find-file, ripgrep, compile, find-
 ** Phạm vi thư mục project
 
 Khi làm việc với 1 project. Tôi thường sử dụng các function sau
-- ~projectile-find-file~ -> Tìm file trong project
-- ~projectile-ripgrep~ -> Tìm pattern trong project
-- ~projectile-compile~ -> Biên dịch trong project như chạy ~make build~
+- ~project-find-file~ -> Tìm file trong project
+- ~project-consult-ripgrep~ -> Tìm pattern trong project ([[https://github.com/TxGVNN/dots/blob/4063d31572e88dba58fc2b7cef506b9efc337776/.emacs#L289][src]])
+- ~project-compile~ -> Biên dịch trong project như chạy ~make build~
 - ~magit~ -> Mở git
 - ...
 
@@ -47,4 +47,4 @@ Trong trường hợp tôi cần chạy function nào đó ở 1 thư mục khô
 
 Ví dụ chạy ~ripgrep~ ở 1 thư mục khác như ~/usr/share/emacs/site-lisp~
 
-Tôi sẽ sử dụng ~M-x find-file~ -> ~/usr/share/emacs/site-lisp~ -> chạy ~embark-act~ -> ~embark-in-directory~ và chạy function mà tôi muốn
+Tôi sẽ sử dụng ~M-x find-file~ -> ~/usr/share/emacs/site-lisp~ -> chạy ~embark-act~ -> ~embark-chroot~ và chạy function mà tôi muốn
