@@ -9,32 +9,32 @@ draft: false
   [[https://orgmode.org/][org-mode]] là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì ~org-mode~ thôi
 
 
-  Cách sử dụng như nào bạn có thể xem ở trang chủ
+  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode
 
 * Cách tôi dùng
 
-  Tôi viết các file org ở các vị trí khác nhau, và sử dụng ~org-agenda~ để hiện thị toàn bộ chúng như 1 bức tranh toàn cảnh.
+  Tôi viết các file org ở các vị trí khác nhau, và sử dụng ~org-agenda~ để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.
 
   Hình ảnh mang tính chất minh hoạ
 
-{{< figure src="/images/2021-03-07-14-48-59.png" alt="" >}}
+  {{< figure src="/images/2021-03-07-14-48-59.png" alt="" >}}
 
 ** Trên máy tính cá nhân của tôi có:
    #+begin_src txt
-[-] home
- |-- mynotes/*.org -> chuyên để lưu trữ các file org chủ đạo. Ví như `personal.org`, `companyA.org`, `companyB.org`,...
- |-- worklogs/$(date +F)/$(date +F).org -> Nó là các ghi chú tôi đã log lại khi làm việc mỗi ngày cho tiện tôi theo dõi và lục tìm lại.
- `-- sources/*/*.org/ -> chứa các project cá nhân
+   [-] home
+    |-- mynotes/*.org -> chuyên để lưu trữ các file org chủ đạo. Ví như `personal.org`, `companyA.org`, `companyB.org`,...
+    |-- worklogs/$(date +F)/$(date +F).org -> Nó là các ghi chú tôi đã log lại khi làm việc mỗi ngày cho tiện tôi theo dõi và lục tìm lại.
+    `-- sources/*/*.org -> chứa các project cá nhân
    #+end_src
 
    Máy tính cá nhân cuả tôi sẽ đọc hết các file org trong cả 3 thư mục này
 
    #+begin_src emacs-lisp
-(with-eval-after-load 'org
-  (setq org-agenda-files '("~/mynotes/org"))
-  (mapc (lambda (x) (add-to-list 'org-agenda-files x))
-        (directory-files-recursively "~/worklogs" ".org$"))
-  (mapc (lambda (x) (add-to-list 'org-agenda-files x))
+   (with-eval-after-load 'org
+     (setq org-agenda-files '("~/mynotes/org"))
+     (mapc (lambda (x) (add-to-list 'org-agenda-files x))
+     (directory-files-recursively "~/worklogs" ".org$"))
+     (mapc (lambda (x) (add-to-list 'org-agenda-files x))
         (directory-files-recursively "~/sources" ".org$")))
 
    #+end_src
@@ -42,8 +42,8 @@ draft: false
 
 ** Máy trên công ty
 
-Structure tương tự như máy cá nhân, tuy nhiên ở ~mynotes~ thì chỉ đọc file org của công ty mà mình đang làm việc mà thôi.
-Vì mynotes là thư mục notes của tôi luôn được sync các máy với nhau
+   Structure tương tự như máy cá nhân, tuy nhiên ở ~mynotes~ thì chỉ đọc file org của công ty mà mình đang làm việc mà thôi.
+   Vì mynotes là thư mục notes của tôi luôn được sync các máy với nhau
 
    #+begin_src diff
  (with-eval-after-load 'org

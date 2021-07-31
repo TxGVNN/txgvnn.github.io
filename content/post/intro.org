@@ -14,9 +14,9 @@ Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì
 
 * Quan điểm
 
-Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (Lạy chúa, tôi sẽ cố gắng không đề cập. Hic)
+Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (lạy chúa, tôi sẽ cố gắng không đề cập. Hic)
 
-Tôi cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, helloworld như nào?)
+Tôi cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, xây dựng helloworld ra làm sao?)
 
 Mà chủ yếu là tips, workflow cá nhân của tôi. Nên có thể nó sẽ không phù hợp với bạn và bạn của bạn
 
@@ -24,7 +24,7 @@ Mà chủ yếu là tips, workflow cá nhân của tôi. Nên có thể nó sẽ
 
 Tiếng việt là một trong những thế mẹnh của tôi. Btw, my english skill is not good!
 
-Tôi cũng sẽ dùng vài từ tiếng anh như cách nói thông thường mỗi ngày, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
+Tôi cũng sẽ dùng vài từ tiếng anh như cách nói thông thường trong công việc, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
 * Đại từ nhân xưng
 
 Tiếng anh thì dùng mỗi ~I~ cho khoẻ, dùng Tiếng Việt lại phải chọn ~Tôi, Mình, Tớ, Tao, Tau, Anh, Em, Chú, Bác, Thím...~
@@ -32,5 +32,5 @@ Nên mình/tao/tau sẽ chọn Tôi. (Chịu). Hay là chọn Tui nhỉ, dễ th
 
 * Sao không bật comment?
 
-Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check, haha, nên có thể sẽ reply khá lâuuuu)
+Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check, hà hà, nên có thể sẽ rep khá lâuuuu | hoặc không rep)
 Nếu nội dung nhảy cảm thì nhớ ~GnuPG/0xE655BF766A56995D~ nhá, tôi đang tập dùng.

@@ -1,5 +1,5 @@
 ---
-title: "Vở ghi chung, tôi vẫn ghi"
+title: "Viết ghi chú mỗi ngày làm việc"
 date: 2021-03-07T15:07:16+07:00
 tags: [emacs]
 draft: false
@@ -22,7 +22,7 @@ Thế là tôi bắt đầu làm nó bài bản hơn. Như 1 cuốn vở ghi chu
   Tool này rất tiện cho tôi note mọi thứ, và cả share note nhanh chóng nữa. Support `gpg` luôn
 
 * Bây giờ
-  Vâng, bây giờ ngày nào tôi cũng viết vào ~note~ nếu tôi ngồi vào máy tính. Tôi đưa cả dotfiles của tôi vào, nên ngày nào cũng cập nhật. LOL
+  Giờ thì ngày nào tôi cũng viết vào ~note~ nếu tôi ngồi vào máy tính. Tôi đưa cả dotfiles của tôi vào, nên ngày nào cũng cập nhật. LOL
 
   Bây giờ <2021-03-07 Sun>, tôi đang có:
   - 1914 files
@@ -35,7 +35,7 @@ Thế là tôi bắt đầu làm nó bài bản hơn. Như 1 cuốn vở ghi chu
 
 * Tôi thấy
 
-  Nhảy việc ở vài công ty nhưng tôi thấy mọi người THƯỜNG không viết note, có viết thì cũng chỉ viết tạm vào 1 cái file, hay folder. Rồi họ cài lại máy hay di chuyển công ty thì các tệp đó đều mất hoặc backup vào chỗ nào đó mà chả bao giờ họ mở lại.
+  Nhảy việc ở vài công ty nhưng tôi thấy mọi người THƯỜNG KHÔNG hay viết note, có viết thì cũng chỉ viết tạm vào 1 cái file, hay folder. Rồi họ cài lại máy hay di chuyển công ty thì các tệp đó đều mất hoặc backup vào chỗ nào đó mà chả bao giờ họ mở lại.
 
 
   Vì thế với vở ghi chung, tôi lấy ví dụ:
