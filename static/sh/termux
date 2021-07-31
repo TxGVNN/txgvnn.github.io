@@ -1,0 +1,27 @@
+#!/bin/bash
+PACKAGES="
+bash-completion
+curl
+emacs
+findutils
+gawk
+git
+global
+gnupg
+grep
+make
+man
+openssh
+openssl
+othtool
+screen
+silversearcher-ag
+socat
+texinfo
+tmux
+weechat
+weechat-python-plugin
+zip
+"
+apt update
+IFS=$'\n' apt install -y ${PACKAGES}

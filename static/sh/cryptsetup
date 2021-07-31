@@ -1,0 +1,53 @@
+#!/bin/sh
+# TxGVNN
+[ "${DEBUG:-0}" -eq 0 ] || set -x
+
+banner(){
+    echo -e ' \e[36m_____      ___\e[0m   '
+    echo -e '\e[36m|_   _|\e[31m_ __\e[36m/ __|\e[0m Giap Tran <txgvnn@gmail.com>\e[0m'
+    echo -e '  \e[36m| | \e[31m\ \ /\e[36m (_ |\e[0m github.com/txgvnn\e[0m'
+    echo -e '  \e[36m|_| \e[31m/_\_\\\e[36m\___|\e[0m txgvnn:irc.oftc.net\e[0m'
+    echo ''
+}
+msg(){ printf "%s: %s\n" "$1" "$2";}
+help(){
+    echo "Usage: "
+    echo "    PART=/dev/sdb2 DST=/mnt txgvnn"
+    exit 0
+}
+
+banner
+if [ "$(id -u)" -ne 0 ]; then
+    msg "E" "Required privileged root"
+    exit 1
+fi
+if ! type cryptsetup >/dev/null 2>&1 ; then
+    msg "E" "cryptsetup not found!"
+    exit 1
+fi
+if [ -z "$PART" ] || [ -z "$DST" ]; then
+    help
+fi
+if [ ! -d "$DST" ]; then
+    msg "E" "$DST is not directory"
+    exit 1
+fi
+
+MAPDEVICE=txgvnn-${RANDOM:-default}
+
+msg "I" "Luksopen"
+cryptsetup open "$PART" "$MAPDEVICE" </dev/tty
+if [ "$?" -ne 0 ]; then
+    msg "E" "Can not luksopen!"
+    exit 1
+fi
+
+msg "I" "Mount $MAPDEVICE to $DST"
+mount "/dev/mapper/$MAPDEVICE" "$DST"
+if [ "$?" -ne 0 ]; then
+    msg "E" "Can not mount!"
+    read -rp "Do you want luksClose \"$PART\"? (y/N) : " yn
+    case $yn in
+        [Yy]* ) cryptsetup close "$MAPDEVICE" ;;
+    esac
+fi

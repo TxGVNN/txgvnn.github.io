@@ -1,0 +1,23 @@
+#!/bin/bash
+[ "${DEBUG:-0}" -eq 1 ] && set -x
+
+OPTS=""
+for opt in "$@"; do
+    if [[ "$opt" == [-]* ]]; then
+        case ${opt:1:1} in
+            p) PRIVATE=0 ;;
+            -)
+                case ${opt:2} in
+                    private) PRIVATE=0 ;;
+                esac;;
+        esac
+    else
+        args_string+="$IFS$opt"
+    fi
+done
+args=($args_string)
+profile_name=${args[0]}
+
+[ $PRIVATE ] && OPTS="--private-window"
+
+firefox -P "$profile_name" $OPTS

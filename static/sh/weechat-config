@@ -1,0 +1,7 @@
+#!/bin/bash
+if ! type weechat >/dev/null 2>&1; then
+    echo "E:" "weechat not found!"
+    exit 1
+fi
+weechat -r "/script install ircrypt.py; /set irc.server_default.nicks ${USER}; /server add freenode irc.freenode.net/6697 -ssl -autoconnect; /set irc.server.freenode.autojoin #ausolv; /server add oftc irc.oftc.net/6697 -ssl -ssl_verify;"
+
