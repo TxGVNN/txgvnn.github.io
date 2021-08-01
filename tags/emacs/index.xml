@@ -6,10 +6,19 @@
     <description>Recent content in emacs on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Mon, 22 Mar 2021 22:46:38 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 01 Aug 2021 08:26:07 +0700</lastBuildDate>
     
 	<atom:link href="/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Builb bàn phím công thái học (ergo)</title>
+      <link>/post/ergo-keyboard/</link>
+      <pubDate>Sun, 01 Aug 2021 08:26:07 +0700</pubDate>
+      
+      <guid>/post/ergo-keyboard/</guid>
+      <description>Lý do  1. Nếu làm việc nhiều, ngón tay út bắt đầu mỏi và đau do bấm phím Ctrl quá nhiều lần (do Emacs đó)   Vì thế mà tôi muốn 1 cái bàn phím có thể map được phím thoải mái, tôi sẽ di chuyển ngay phím Ctrl về ngón cái  Thực ra có 1 số giải phát thay thế như dùng vi-keybinding (tôi không thích, phải thêm config cho emacs nữa), đảo phím Ctrl lên Capslock (cũng được) nhưng khá khó chịu cho những tổ hợp C-z, C-x 2.</description>
+    </item>
     
     <item>
       <title>Phạm vi directory trong Emacs</title>
@@ -27,6 +36,15 @@
       
       <guid>/post/vo-ghi-chung/</guid>
       <description>Khi còn là sinh viên tôi cũng vọc vạch kha khá, kinh nghiệm đọng lại rồi cũng rơi dần nếu không dùng lại, ngay cả những cái đơn giản nhất. Tôi bắt đầu suy nghĩ về việc viết note như là mình hồi xưa đi học để lại các kiến thức trong vở. (Nhưng vở thì mình cũng vứt lâu rồi)  Thế là tôi bắt đầu làm nó bài bản hơn.</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng TODO list để quản lý công việc</title>
+      <link>/post/su-dung-todo-list-de-quan-ly-cong-viec/</link>
+      <pubDate>Sun, 07 Mar 2021 14:08:36 +0700</pubDate>
+      
+      <guid>/post/su-dung-todo-list-de-quan-ly-cong-viec/</guid>
+      <description>Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách tôi dùng   Tôi viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.</description>
     </item>
     
   </channel>
