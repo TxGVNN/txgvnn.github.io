@@ -1,0 +1,90 @@
+---
+title: "Builb bàn phím công thái học (ergo)"
+date: 2021-08-01T08:26:07+07:00
+tags: [keyboard, emacs]
+draft: false
+---
+
+* Lý do
+***  1. Nếu làm việc nhiều, ngón tay út bắt đầu mỏi và đau do bấm phím Ctrl quá nhiều lần (do Emacs đó)
+
+    Vì thế mà tôi muốn 1 cái bàn phím có thể map được phím thoải mái, tôi sẽ di chuyển ngay phím Ctrl về ngón cái
+
+    Thực ra có 1 số giải phát thay thế như dùng vi-keybinding (tôi không thích, phải thêm config cho emacs nữa), đảo phím Ctrl lên Capslock (cũng được) nhưng khá khó chịu cho những tổ hợp C-z, C-x
+
+*** 2. Tôi thấy tư thế ngồi để gõ trên 1 bàn phím nó vừa co chụm lại 1 chỗ, lại vừa tay phải thẳng hướng lên trên
+
+    Nên tôi muốn bàn phím linh động được, tức là kiểu chia đôi 2 bên 2 súng (split)
+
+*** 3. Tôi muốn bàn phím đó dùng firmware opensource
+
+    Ví dụ QMK, yes
+
+* Ngâm cứu loại nào
+
+  Trên thị truờng có rất nhiều thiết kế khác nhau từ opensource cho đến thương mại. Bạn có thể kham khảo ở đây
+  - https://github.com/diimdeep/awesome-split-keyboards
+  - http://xahlee.info/kbd/ergonomic_keyboards_index.html
+
+  Thời điểm nay tôi có may mắn được trải nghiệm 1 chiếc bàn phím [[https://github.com/FateNozomi/arisu-pcb][Arisu]] của ông anh (a Cường). Anh ấy gọi chơi là ergo nửa mùa. Sau khi dùng thử bàn phím này 1 tuần, đổi đủ tư thế keymap phù hợp.
+  Rồi cũng quen layout này nhưng nó không kiến tôi hài lòng. Được cái là tôi đã có đã trải nghiệm về layout và tôi cần lên layout truớc khi chọn 1 loại nào đó.
+
+  Sau 1 thời gian thi thoảng ngâm cứu thì tôi đã tìm được loại ưng ý là [[https://github.com/omkbd/ErgoDash][ErgoDash]]
+
+* Triển khai
+
+  A Cường, cũng là 1 tay chơi bàn phím custom chuyên nghiệN. Nên anh ấy đã cho tôi mượn đầy đủ dụng cụ để có thể làm bàn phím. Cảm ơn a nhiều!
+  Tôi đã rủ thêm 1 nguời bạn (a Dũng) có đam mê về bàn phím ergo để build. Như vậy tôi sẽ build 2 cái vào 2 ngày cuối tuần
+
+** 1. Chuẩn bị
+   Tôi đã đặt mua truớc
+
+   - Bộ kit ErgoDash từ anh Hải https://ergomech.store do là đồng môn nên a ấy đã discount cho tôi. Cảm ơn anh
+   - Kalih yellow switch từ shopee
+   - 68 Blank keycap cũng từ shopee (2 cái 2u, còn lại 1u. Trong đống 1u, có 2 phím có gờ lên hoặc xuống cho phím F và G)
+
+     {{< figure src="/images/ergodash-prepare.jpeg" alt="" >}}
+
+   Chúng ta có guide từ trang chủ
+
+   - https://github.com/omkbd/ErgoDash/blob/master/Doc/build-en.md
+
+   Và các link tham khảo
+
+   - https://revan.io/2021/01/10/building-the-ergodash/
+   - https://dosssman.github.io/projects/ergodash-build/ (nói về ưu nhược điểm. Và cả chuột nữa)
+   - https://www.youtube.com/watch?v=weV0FkCVkLE
+
+** 2. Build phần cứng
+   Đọc nhiều và được cả a Hải dặn dò cẩn thận thế mà tôi vẫn hấp tấp hàn luôn cái controller truớc khi hàn switch, thế là tôi có thêm phím kiểu Plug and Play. LOL (nó không được hàn vào mạch).
+   Nhưng với chiếc thứ 2 thì quá hoàn hảo nhưng mà nó là của a Dũng :(
+
+   Vì vậy mà với mạch này cần phải lưu ý khi hàn xong diot vào mạch, lấy cuộn đồng cuốn vào controller để test mạch trước. Test ổn thì hàn switch rồi lại test controller lần nữa và hàn controller.
+
+   Chiều thứ 7 làm chiếc bàn phím đầu tiên cho tôi khá lâu, hôm đó anh bạn tôi thì ngồi lube các switch, ổng cũng không học truớc hay sao, lube rõ nhiều dầu nên cái bàn phím chắc là gõ nặng hơn. -_-
+
+   Còn tôi thì hì hục hàn các diot, rồi hàn switch, controller các kiểu. Cuối cùng nó cũng thành công
+
+   Chiều chủ nhật bọn tôi bắt đầu làm bàn phím thứ 2. Sau khi có kinh nghiệm thì chiếc thứ 2 quá đơn giản, anh bạn tôi ngồi hàn. Còn tôi ngồi chỉ đạo như 1 nhạc trưởng và lube switch tiếp.
+   Cái mớ dầu mượn của anh Cường đã bảo lube đc 4 cái phím, nhưng chúng tôi đã lube sạch cho 2 bàn phím. Đúng thật là...
+
+** 3. Flash firmware
+   Sử dụng https://config.qmk.fm để custom cho mình một cái layout ưu thích thôi nào. Sau đó thì flash nó
+
+   #+begin_src shell
+   docker run --rm -v `pwd`:/data --privileged -v /dev:/dev qmkfm/qmk_firmware qmk flash /data/ergodash_rev1_layout_4key_mine.json
+   #+end_src
+
+   Default lúc flash này là cho left hand, còn nếu bạn muốn flash cho right hand hoặc enable thêm mouse mode thì cần phải update mấy file *.c ở trong keyboards/ergodash của qmk_firmware
+* Sử dụng
+  {{< figure src="/images/ergodash.jpeg" alt="ergodash" >}}
+  Tôi đã vác lên công ty sử dụng luôn, nó thật là khó chịu đã thế keycap của tôi là blank =)). Nhưng sau nhiều lần chỉnh sửa keymap layout thì dần dần tôi đã quen và trở về tốc độ gõ của ngày xưa (vẫn gõ chậm)
+  Sau khi có chiếc phím này, tôi bán chiếc Leopold FC750 Red switch mua cách đây 2 năm cho bạn đồng nghiệp và tặng luôn cái kê tay. Cậu ấy có nguơì nhà làm thợ mộc nên đã tặng lại tôi 2 cái kê tay mà tôi tự lên kích thuớc, quá ngon.
+
+  Bây giờ sau hơn 2 tháng sử dụng thì nó thật sự tuyệt vời. Không còn đau ngót út, có khi nào chuẩn bị đau ngon cái không nhỉ. Tư thế tay cũng linh động, thích đặt đâu thì đặt
+
+  Mấy hôm truớc tôi mới phát hiện ra QMK có hỗ trợ mouse mode, tôi đã config vào phím của tôi luôn. Quá tuyệt
+
+** Layouts
+   Hiện tại tôi đang sử dụng layout như này. Và không chắc nó là bản final.
+   {{< figure src="/images/ergodash-layout.png" alt="layout" >}}
