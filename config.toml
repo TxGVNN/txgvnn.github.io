@@ -13,14 +13,17 @@ name = "Writings"
 url = "/post"
 weight = 2
 
-[[menu.main]]
-name = "Tags"
-url = "/tags"
-weight = 3
+# [[menu.main]]
+# name = "Tags"
+# url = "/tags"
+# weight = 3
 
 [params]
 logo = "https://avatars.githubusercontent.com/u/9713793?s=64"
 colortheme = "light" # dark, light, white, or classic
+showAllPostsOnHomePage = true
+tagsOverview = true
+
 [[params.social]]
   name = "github"
   link = "https://github.com/TxGVNN"
