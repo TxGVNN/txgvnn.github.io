@@ -4,8 +4,8 @@ title = "MẤY KHI MẤY KHỈ"
 theme = "cactus"
 
 [[menu.main]]
-name = "Home"
-url = "/"
+name = "Intro"
+url = "/post/intro"
 weight = 1
 
 [[menu.main]]
@@ -20,6 +20,7 @@ weight = 3
 
 [params]
 logo = "https://avatars.githubusercontent.com/u/9713793?s=64"
+colortheme = "light" # dark, light, white, or classic
 [[params.social]]
   name = "github"
   link = "https://github.com/TxGVNN"
