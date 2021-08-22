@@ -6,10 +6,19 @@
     <description>Recent content on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Sun, 01 Aug 2021 08:26:07 +0700</lastBuildDate>
+    <lastBuildDate>Sun, 22 Aug 2021 21:21:12 +0700</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vài link để bắt đầu với Emacs</title>
+      <link>/post/bat-dau-voi-emacs/</link>
+      <pubDate>Sun, 22 Aug 2021 21:21:12 +0700</pubDate>
+      
+      <guid>/post/bat-dau-voi-emacs/</guid>
+      <description>Hôm nay người bạn hữu của tôi xin tôi vài link để học emacs. Nên tôi xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.  Nên tôi đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs Web (có thể dùng M-x eww)     https://tuhdo.</description>
+    </item>
     
     <item>
       <title>Builb bàn phím công thái học (ergo)</title>
