@@ -1,0 +1,27 @@
+---
+title: "Vài link để bắt đầu với Emacs"
+date: 2021-08-22T21:21:12+07:00
+tags: [emacs]
+draft: false
+---
+
+Hôm nay người bạn hữu của tôi xin tôi vài link để học emacs. Nên tôi xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.
+
+Nên tôi đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs
+
+* Web (có thể dùng ~M-x eww~)
+- https://tuhdo.github.io/index.html 3 bài từ tác giả Tu Do (nguời Việt) từ đơn giản đến hấp dẫn
+- https://www.emacswiki.org/emacs/StarterKits Các bộ config dễ dàng sử dụng luôn cho người bắt đầu, cũng như bắt đầu học cách customize
+- http://reddit.com/r/emacs cộng đồng Emacs trên Reddit
+- https://sachachua.com/blog/ tổng hợp tin tức Emacs
+
+* Trong emacs
+- ~M-x info~ -> [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Emacs]]
+- ~M-x info~ -> [[https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html][ELisp]]
+- ~M-x debbugs-gnu~ Truy cập danh sách bugs của Emacs
+- ~M-x gnus~ -> nntp+news.gmane.io:gmane.emacs.devel Truy cập mailing-list về phát triển Emacs
+#+begin_src lisp
+(require 'nnir)
+;; @see http://www.emacswiki.org/emacs/GnusGmail#toc1
+(setq gnus-select-method '(nntp "news.gmane.org"))
+#+end_src
