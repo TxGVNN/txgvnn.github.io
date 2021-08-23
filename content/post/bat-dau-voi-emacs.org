@@ -12,8 +12,9 @@ Nên tôi đưa ra một vài resource để bắt đầu cũng như theo dõi E
 * Web (có thể dùng ~M-x eww~)
 - https://tuhdo.github.io/index.html 3 bài từ tác giả Tu Do (nguời Việt) từ đơn giản đến hấp dẫn
 - https://www.emacswiki.org/emacs/StarterKits Các bộ config dễ dàng sử dụng luôn cho người bắt đầu, cũng như bắt đầu học cách customize
-- http://reddit.com/r/emacs cộng đồng Emacs trên Reddit
+- https://reddit.com/r/emacs cộng đồng Emacs trên Reddit
 - https://sachachua.com/blog/ tổng hợp tin tức Emacs
+- [[https://www.youtube.com/watch?v=w3krYEeqnyk][youtube.com/Conquering Kubernetes with Emacs]] Ví dụ về viết các lisp function tương tác với các command trên OS. Tác giả đã tạo ra gói ~kubel~ rất tiện để làm việc với Kubernetes
 
 * Trong emacs
 - ~M-x info~ -> [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Emacs]]
