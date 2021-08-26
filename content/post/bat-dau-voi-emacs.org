@@ -15,6 +15,7 @@ Nên tôi đưa ra một vài resource để bắt đầu cũng như theo dõi E
 - https://reddit.com/r/emacs cộng đồng Emacs trên Reddit
 - https://sachachua.com/blog/ tổng hợp tin tức Emacs
 - [[https://www.youtube.com/watch?v=w3krYEeqnyk][youtube.com/Conquering Kubernetes with Emacs]] Ví dụ về viết các lisp function tương tác với các command trên OS. Tác giả đã tạo ra gói ~kubel~ rất tiện để làm việc với Kubernetes
+- [[https://www.youtube.com/watch?v=dljNabciEGg][youtube.com/Literate Devops with Emacs]]
 
 * Trong emacs
 - ~M-x info~ -> [[https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html][Emacs]]
