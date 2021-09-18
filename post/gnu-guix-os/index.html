@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> GNU Guix system, hệ thống của tương lai (thời đại 4.0.4) | MẤY KHI MẤY KHỈ</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="GNU Guix system, hệ thống của tương lai (thời đại 4.0.4)" />
+<meta property="og:description" content="Tôi nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (tôi nghĩ thế, sai thì thôi)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/gnu-guix-os/" />
+<meta property="article:published_time" content="2021-09-18T09:12:56+07:00" />
+<meta property="article:modified_time" content="2021-09-18T09:12:56+07:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GNU Guix system, hệ thống của tương lai (thời đại 4.0.4)"/>
+<meta name="twitter:description" content="Tôi nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (tôi nghĩ thế, sai thì thôi)."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="/">
+  
+    <div id="logo" style="background-image: url(https://avatars.githubusercontent.com/u/9713793?s=64)"></div>
+  
+  <div id="title">
+    <h1>MẤY KHI MẤY KHỈ</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+        <li><a href="/post/intro">Intro</a></li>
+      
+        <li><a href="/post">Writings</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    
+<p>
+Tôi nghĩ <a href="https://guix.gnu.org/">GNU Guix</a> sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận.
+GNU đã tạo nhiều <a href="https://www.gnu.org/distros/free-distros.en.html">Linux distros</a> dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+</p>
+<p>
+<a href="https://guix.gnu.org/">GNU Guix</a> là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng <a href="https://www.gnu.org/software/shepherd/">GNU Shepherd</a> làm init system (tôi nghĩ thế, sai thì thôi).
+</p>
+<p>
+Tôi đã từng cài GNU Guix trên máy công ty cũ để làm việc (do lúc đó ít việc). Còn hiện tại tôi vẫn đang dùng Debian Stable và dùng GNU Guix để cài cắm thêm các package và tạo development env.
+</p>
+<h2 id="headline-1">
+Đặc điểm GNU Guix
+</h2>
+<ul>
+<li>
+<p>
+Kế thừa ý tưởng từ NixOS với khả năng 100% reproducible (stateless OS) và không bao giờ bị break vì dependencies (mà sẽ bị break vì hết disk).
+</p>
+</li>
+<li>
+<p>
+Sử dụng GNU Guile (1 loại Scheme) để định nghĩa toàn OS(serices, packages) bằng config as code.
+</p>
+</li>
+<li>
+<p>
+Tạo enviroment, profile, dotfiles tách biệt với nhau hoàn toàn hiệu quả cũng qua config as code.
+</p>
+</li>
+<li>
+<p>
+Có cả giao diện <a href="https://github.com/alezost/guix.el">Emacs</a>, một điểm cộng từ người dùng Emacs, hà hà.
+</p>
+</li>
+<li>
+<p>
+Thôi để tôi dẫn link rồi các bạn tự ngâm cứu.
+</p>
+</li>
+</ul>
+<h2 id="headline-2">
+Liên kết hay ho
+</h2>
+<ul>
+<li>
+<p>
+<a href="https://ambrevar.xyz/guix-advance/">ambrevar.xyz/guix-advance/Guix: A most advanced operating system</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://guix.gnu.org/en/blog/">Guix Blog</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.youtube.com/c/TROP1N/search?query=guix">youtube.com/c/TROP1N/search?query=guix</a>
+</p>
+</li>
+</ul>
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  MẤY KHI MẤY KHỈ 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/post/intro">Intro</a></li>
+         
+        <li><a href="/post">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>
