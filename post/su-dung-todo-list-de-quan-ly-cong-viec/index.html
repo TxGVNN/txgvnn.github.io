@@ -9,7 +9,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Sử dụng TODO list để quản lý công việc" />
-<meta property="og:description" content="Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách tôi dùng   Tôi viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh." />
+<meta property="og:description" content="Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách mình dùng   Mình viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/su-dung-todo-list-de-quan-ly-cong-viec/" />
 <meta property="article:published_time" content="2021-03-07T14:08:36+07:00" />
@@ -17,7 +17,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sử dụng TODO list để quản lý công việc"/>
-<meta name="twitter:description" content="Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách tôi dùng   Tôi viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh."/>
+<meta name="twitter:description" content="Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách mình dùng   Mình viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh."/>
 
   
   
@@ -85,10 +85,10 @@ Công cụ
   Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode
 </p>
 <h2 id="headline-2">
-Cách tôi dùng
+Cách mình dùng
 </h2>
 <p>
-  Tôi viết các file org ở các vị trí khác nhau, và sử dụng <code>org-agenda</code> để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.
+  Mình viết các file org ở các vị trí khác nhau, và sử dụng <code>org-agenda</code> để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.
 </p>
 <p>
   Hình ảnh mang tính chất minh hoạ
@@ -100,16 +100,16 @@ Cách tôi dùng
 
 </p>
 <h3 id="headline-3">
-Trên máy tính cá nhân của tôi có:
+Trên máy tính cá nhân của mình có:
 </h3>
 <div class="src src-txt">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-txt" data-lang="txt">[-] home
  |-- mynotes/*.org -&gt; chuyên để lưu trữ các file org chủ đạo. Ví như `personal.org`, `companyA.org`, `companyB.org`,...
- |-- worklogs/$(date +F)/$(date +F).org -&gt; Nó là các ghi chú tôi đã log lại khi làm việc mỗi ngày cho tiện tôi theo dõi và lục tìm lại.
+ |-- worklogs/$(date +F)/$(date +F).org -&gt; Nó là các ghi chú mình đã log lại khi làm việc mỗi ngày cho tiện mình theo dõi và lục tìm lại.
  `-- sources/*/*.org -&gt; chứa các project cá nhân</code></pre></div>
 </div>
 <p>
-   Máy tính cá nhân cuả tôi sẽ đọc hết các file org trong cả 3 thư mục này
+   Máy tính cá nhân cuả mình sẽ đọc hết các file org trong cả 3 thư mục này
 </p>
 <div class="src src-emacs-lisp">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(with-eval-after-load <span style="color:#e6db74">&#39;org</span>
@@ -124,7 +124,7 @@ Máy trên công ty
 </h3>
 <p>
    Structure tương tự như máy cá nhân, tuy nhiên ở <code>mynotes</code> thì chỉ đọc file org của công ty mà mình đang làm việc mà thôi.
-   Vì mynotes là thư mục notes của tôi luôn được sync các máy với nhau
+   Vì mynotes là thư mục notes của mình luôn được sync các máy với nhau
 </p>
 <div class="src src-diff">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">(with-eval-after-load &#39;org
@@ -134,17 +134,17 @@ Máy trên công ty
 </code></pre></div>
 </div>
 <h2 id="headline-5">
-Cái hay tôi thấy
+Cái hay mình thấy
 </h2>
 <ul>
 <li>
 <p>
-Trên máy cá nhân của tôi thì có thể nhìn hết toàn bộ task mà tôi đang cần làm. Từ dự án cá nhân, đến công ty này công ty kia, ghi chú nhỏ mỗi ngày
+Trên máy cá nhân của mình thì có thể nhìn hết toàn bộ task mà mình đang cần làm. Từ dự án cá nhân, đến công ty này công ty kia, ghi chú nhỏ mỗi ngày
 </p>
 </li>
 <li>
 <p>
-Trên máy công ty, thì tôi chỉ cần nhìn task chính, các task riêng lẻ trên project và cả chi tiết ở các worklogs của chính công ty đó thôi.
+Trên máy công ty, thì mình chỉ cần nhìn task chính, các task riêng lẻ trên project và cả chi tiết ở các worklogs của chính công ty đó thôi.
 </p>
 </li>
 </ul>

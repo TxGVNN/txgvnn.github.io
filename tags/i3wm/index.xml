@@ -17,7 +17,7 @@
       <pubDate>Thu, 11 Feb 2021 23:10:28 +0700</pubDate>
       
       <guid>/post/clipmenu/</guid>
-      <description>Lý do   Khoảng ngày &amp;lt;2021-02-11 Thu&amp;gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Tôi mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà tôi có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc tôi đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste.</description>
+      <description>Lý do   Khoảng ngày &amp;lt;2021-02-11 Thu&amp;gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste.</description>
     </item>
     
   </channel>

@@ -131,18 +131,23 @@ Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</co
 <p>
 Sau đó ta dùng github action để build và push docker image tự động
 </p>
-<h3 id="headline-3">
+</li>
+</ul>
+<h2 id="headline-3">
+Có ưu ắt có nhược (o.O)
+</h2>
+<h3 id="headline-4">
 Các ưu điểm của gitpod và cấu hình của mình mang lại
 </h3>
-</li>
+<ul>
 <li>
 <p>
-Gitpod sẽ luôn giữ thư mục /workspace làm việc của mình
+Gitpod sẽ luôn giữ thư mục <code>/workspace</code> làm việc của mình
 </p>
 </li>
 <li>
 <p>
-Emacs được lưu cấu hình ở /workspace để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
+Emacs được lưu cấu hình ở <code>/workspace</code> để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
 </p>
 </li>
 <li>
@@ -162,12 +167,14 @@ Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git
 </li>
 <li>
 <p>
-Gitpod đã cấu hình docker lưu trữ dữ liệu ở /workspace
+Gitpod đã cấu hình docker lưu trữ dữ liệu ở <code>/workspace</code>
 </p>
-<h3 id="headline-4">
+</li>
+</ul>
+<h3 id="headline-5">
 Nhược điểm
 </h3>
-</li>
+<ul>
 <li>
 <p>
 Chưa có các command để tương tác với gitpod như: stop workspace(mình sử dụng <code>kill 1</code>), expose port,.. Nếu tương lai gitpod tách riêng nó thành các API, protocol gì đó sẽ tiện để implement
@@ -180,11 +187,11 @@ Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắ
 </li>
 <li>
 <p>
-Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vìm, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
 </p>
 </li>
 </ul>
-<h2 id="headline-5">
+<h2 id="headline-6">
 Kết luận
 </h2>
 <p>
@@ -196,7 +203,7 @@ Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu.
 <p>
 Và nó cũng như dotfiles, rồi ta lại thêm thú vui mỗi ngày làm việc là commit cho dotfiles!
 </p>
-<h2 id="headline-6">
+<h2 id="headline-7">
 Tham khảo
 </h2>
 <ul>
