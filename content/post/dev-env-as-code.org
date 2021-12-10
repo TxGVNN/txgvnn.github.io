@@ -1,0 +1,53 @@
+---
+title: "Dev enviroment as code"
+date: 2021-12-10T04:32:02Z
+tags: [emacs]
+draft: false
+---
+
+* Giới thiệu
+
+[[https://gitpod.io/][Gitpod.io]] đề cập về khái niệm [[https://www.gitpod.io/blog/dev-env-as-code][dev-env-as-code]], nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó.
+Hay là google cloudshell mình vẫn sử dụng suốt (chém).
+
+Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử.
+
+* Dev-env của mình
+
+Cần (cuốn):
+- Emacs (dĩ nhiên)
+- Chạy trong terminal, web sẽ hạn chế về shortcut
+- Các công cụ xung quanh như docker,...
+
+
+Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build của mình.
+
+- Ta sẽ viết lại [[https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile][Dockerfile]] với FROM từ workspace-full của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
+- Viết thêm phần setup.sh để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
+- Cần cấu hình ~TELEGRAM_BOT_TOKEN~ và ~TELEGRAM_CHAT_ID~ ở trong Gitpod.io->Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web
+- Sau đó ta dùng github action để build và push docker image tự động
+
+** Các ưu điểm của gitpod và cấu hình của mình mang lại
+- Gitpod sẽ luôn giữ thư mục /workspace làm việc của mình
+- Emacs được lưu cấu hình ở /workspace để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
+- Emacs được chạy daemon ở trong tmate session luôn
+- Làm việc trong terminal trược tiếp
+- Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git
+- Gitpod đã cấu hình docker lưu trữ dữ liệu ở /workspace
+
+** Nhược điểm
+- Chưa có các command để tương tác với gitpod như: stop workspace(mình sử dụng ~kill 1~), expose port,.. Nếu tương lai gitpod tách riêng nó thành các API, protocol gì đó sẽ tiện để implement
+- Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
+- Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vìm, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+
+* Kết luận
+
+Về cơ bản thì các nhà cung cấp IDE online sẽ luôn có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
+
+Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái ~dev-env-as-code~ của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).
+
+Và nó cũng như dotfiles, rồi ta lại thêm thú vui mỗi ngày làm việc là commit cho dotfiles!
+
+* Tham khảo
+- Thử xem [[https://github.com/TxGVNN/gitpod][TxGVNN/gitpod]]
+- Bản Emacs GUI chạy trong emacs của cộng đồng [[https://github.com/emacs-lsp/lsp-gitpod][emacs-lsp/lsp-gitpod]]
