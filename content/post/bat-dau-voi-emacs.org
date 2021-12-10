@@ -5,9 +5,9 @@ tags: [emacs]
 draft: false
 ---
 
-Hôm nay người bạn hữu của tôi xin tôi vài link để học emacs. Nên tôi xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.
+Hôm nay người bạn hữu của mình xin mình vài link để học emacs. Nên mình xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.
 
-Nên tôi đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs
+Nên mình đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs
 
 * Web (có thể dùng ~M-x eww~)
 - https://tuhdo.github.io/index.html 3 bài từ tác giả Tu Do (nguời Việt) từ đơn giản đến hấp dẫn

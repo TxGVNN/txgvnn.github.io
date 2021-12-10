@@ -12,23 +12,23 @@ draft: false
 
   Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode
 
-* Cách tôi dùng
+* Cách mình dùng
 
-  Tôi viết các file org ở các vị trí khác nhau, và sử dụng ~org-agenda~ để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.
+  Mình viết các file org ở các vị trí khác nhau, và sử dụng ~org-agenda~ để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.
 
   Hình ảnh mang tính chất minh hoạ
 
   {{< figure src="/images/2021-03-07-14-48-59.png" alt="" >}}
 
-** Trên máy tính cá nhân của tôi có:
+** Trên máy tính cá nhân của mình có:
    #+begin_src txt
    [-] home
     |-- mynotes/*.org -> chuyên để lưu trữ các file org chủ đạo. Ví như `personal.org`, `companyA.org`, `companyB.org`,...
-    |-- worklogs/$(date +F)/$(date +F).org -> Nó là các ghi chú tôi đã log lại khi làm việc mỗi ngày cho tiện tôi theo dõi và lục tìm lại.
+    |-- worklogs/$(date +F)/$(date +F).org -> Nó là các ghi chú mình đã log lại khi làm việc mỗi ngày cho tiện mình theo dõi và lục tìm lại.
     `-- sources/*/*.org -> chứa các project cá nhân
    #+end_src
 
-   Máy tính cá nhân cuả tôi sẽ đọc hết các file org trong cả 3 thư mục này
+   Máy tính cá nhân cuả mình sẽ đọc hết các file org trong cả 3 thư mục này
 
    #+begin_src emacs-lisp
    (with-eval-after-load 'org
@@ -44,7 +44,7 @@ draft: false
 ** Máy trên công ty
 
    Structure tương tự như máy cá nhân, tuy nhiên ở ~mynotes~ thì chỉ đọc file org của công ty mà mình đang làm việc mà thôi.
-   Vì mynotes là thư mục notes của tôi luôn được sync các máy với nhau
+   Vì mynotes là thư mục notes của mình luôn được sync các máy với nhau
 
    #+begin_src diff
  (with-eval-after-load 'org
@@ -54,7 +54,7 @@ draft: false
    #+end_src
 
 
-* Cái hay tôi thấy
+* Cái hay mình thấy
 
-  - Trên máy cá nhân của tôi thì có thể nhìn hết toàn bộ task mà tôi đang cần làm. Từ dự án cá nhân, đến công ty này công ty kia, ghi chú nhỏ mỗi ngày
-  - Trên máy công ty, thì tôi chỉ cần nhìn task chính, các task riêng lẻ trên project và cả chi tiết ở các worklogs của chính công ty đó thôi.
+  - Trên máy cá nhân của mình thì có thể nhìn hết toàn bộ task mà mình đang cần làm. Từ dự án cá nhân, đến công ty này công ty kia, ghi chú nhỏ mỗi ngày
+  - Trên máy công ty, thì mình chỉ cần nhìn task chính, các task riêng lẻ trên project và cả chi tiết ở các worklogs của chính công ty đó thôi.

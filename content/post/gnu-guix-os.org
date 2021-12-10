@@ -5,19 +5,19 @@ draft: false
 tags: [guix, emacs]
 ---
 
-Tôi nghĩ [[https://guix.gnu.org/][GNU Guix]] sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận.
+Mình nghĩ [[https://guix.gnu.org/][GNU Guix]] sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận.
 GNU đã tạo nhiều [[https://www.gnu.org/distros/free-distros.en.html][Linux distros]] dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
 
-[[https://guix.gnu.org/][GNU Guix]] là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng [[https://www.gnu.org/software/shepherd/][GNU Shepherd]] làm init system (tôi nghĩ thế, sai thì thôi).
+[[https://guix.gnu.org/][GNU Guix]] là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng [[https://www.gnu.org/software/shepherd/][GNU Shepherd]] làm init system (mình nghĩ thế, sai thì thôi).
 
-Tôi đã từng cài GNU Guix trên máy công ty cũ để làm việc (do lúc đó ít việc). Còn hiện tại tôi vẫn đang dùng Debian Stable và dùng GNU Guix để cài cắm thêm các package và tạo development env.
+Mình đã từng cài GNU Guix trên máy công ty cũ để làm việc (do lúc đó ít việc). Còn hiện tại mình vẫn đang dùng Debian Stable và dùng GNU Guix để cài cắm thêm các package và tạo development env.
 
 * Đặc điểm GNU Guix
 - Kế thừa ý tưởng từ NixOS với khả năng 100% reproducible (stateless OS) và không bao giờ bị break vì dependencies (mà sẽ bị break vì hết disk).
 - Sử dụng GNU Guile (1 loại Scheme) để định nghĩa toàn OS(serices, packages) bằng config as code.
 - Tạo enviroment, profile, dotfiles tách biệt với nhau hoàn toàn hiệu quả cũng qua config as code.
 - Có cả giao diện [[https://github.com/alezost/guix.el][Emacs]], một điểm cộng từ người dùng Emacs, hà hà.
-- Thôi để tôi dẫn link rồi các bạn tự ngâm cứu.
+- Thôi để mình dẫn link rồi các bạn tự ngâm cứu.
 
 * Liên kết hay ho
 - [[https://ambrevar.xyz/guix-advance/][ambrevar.xyz/guix-advance/Guix: A most advanced operating system]]

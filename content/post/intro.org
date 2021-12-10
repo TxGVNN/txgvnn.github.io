@@ -5,32 +5,32 @@ draft: false
 ---
 * Sao lại bây giờ mới viết?
 
-Truớc đây tôi đã muốn xây dựng [[https://debian-vn.github.io/][debian-vn.github.io]] để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì tôi nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi tôi viết :joy:
+Truớc đây mình đã muốn xây dựng [[https://debian-vn.github.io/][debian-vn.github.io]] để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì mình nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi mình viết :joy:
 Tóm lại không đủ nhiệt huyết để làm nữa :sad:
 
-Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ. Nên tôi nghĩ viết blog sẽ chia sẽ tốt hơn, đỡ phải nói đi nói lại mỏi mồm phết.
+Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ. Nên mình nghĩ viết blog sẽ chia sẽ tốt hơn, đỡ phải nói đi nói lại mỏi mồm phết.
 
-Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì đó (đống hỗn độn chẳng hạn) mình chia sẽ hay ho thì sẽ tốt cho ai đó, không hay thì được góp ý lại mình càng tốt (khôn phết). Tôi đã định viết mấy lần rồi, nhưng LƯỜI -_-
+Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì đó (đống hỗn độn chẳng hạn) mình chia sẽ hay ho thì sẽ tốt cho ai đó, không hay thì được góp ý lại mình càng tốt (khôn phết). Mình đã định viết mấy lần rồi, nhưng LƯỜI -_-
 
 * Quan điểm
 
-Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (lạy chúa, tôi sẽ cố gắng không đề cập. Hic)
+Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (lạy chúa, mình sẽ cố gắng không đề cập. Hic)
 
-Tôi cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, xây dựng helloworld ra làm sao?)
+Mình cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, xây dựng helloworld ra làm sao?)
 
-Mà chủ yếu là tips, workflow cá nhân của tôi. Nên có thể nó sẽ không phù hợp với bạn và bạn của bạn
+Mà chủ yếu là tips, workflow cá nhân của mình. Nên có thể nó sẽ không phù hợp với bạn và bạn của bạn
 
 * Sao không dùng tiếng anh?
 
-Tiếng việt là một trong những thế mẹnh của tôi. Btw, my english skill is not good!
+Tiếng việt là một trong những thế mẹnh của mình. Btw, my english skill is not good!
 
-Tôi cũng sẽ dùng vài từ tiếng anh như cách nói thông thường trong công việc, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
+Mình cũng sẽ dùng vài từ tiếng anh như cách nói thông thường trong công việc, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
 * Đại từ nhân xưng
 
 Tiếng anh thì dùng mỗi ~I~ cho khoẻ, dùng Tiếng Việt lại phải chọn ~Tôi, Mình, Tớ, Tao, Tau, Anh, Em, Chú, Bác, Thím...~
-Nên mình/tao/tau sẽ chọn Tôi. (Chịu). Hay là chọn Tui nhỉ, dễ thương phết đó mấy má.
+Nên Tôi/tao/tau sẽ chọn Mình. (Chịu). Hay là chọn Tui nhỉ, dễ thương phết đó mấy má.
 
 * Sao không bật comment?
 
-Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho tôi nhé. ~txgvnn@gmail.com~ (tôi ít khi check, hà hà, nên có thể sẽ rep khá lâuuuu | hoặc không rep)
-Nếu nội dung nhảy cảm thì nhớ ~GnuPG/0xE655BF766A56995D~ nhá, tôi đang tập dùng.
+Rất vui nếu ace (Anh chị em) góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho mình nhé. ~txgvnn@gmail.com~ (mình ít khi check, hà hà, nên có thể sẽ rep khá lâuuuu | hoặc không rep)
+Nếu nội dung nhảy cảm thì nhớ ~GnuPG/0xE655BF766A56995D~ nhá, mình đang tập dùng.
