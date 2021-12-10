@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Dev enviroment as code | MẤY KHI MẤY KHỈ</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Dev enviroment as code" />
+<meta property="og:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/dev-env-as-code/" />
+<meta property="article:published_time" content="2021-12-10T04:32:02+00:00" />
+<meta property="article:modified_time" content="2021-12-10T04:32:02+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dev enviroment as code"/>
+<meta name="twitter:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="/">
+  
+    <div id="logo" style="background-image: url(https://avatars.githubusercontent.com/u/9713793?s=64)"></div>
+  
+  <div id="title">
+    <h1>MẤY KHI MẤY KHỈ</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+        <li><a href="/post/intro">Intro</a></li>
+      
+        <li><a href="/post">Writings</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    
+<h2 id="headline-1">
+Giới thiệu
+</h2>
+<p>
+<a href="https://gitpod.io/">Gitpod.io</a> đề cập về khái niệm <a href="https://www.gitpod.io/blog/dev-env-as-code">dev-env-as-code</a>, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó.
+Hay là google cloudshell mình vẫn sử dụng suốt (chém).
+</p>
+<p>
+Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử.
+</p>
+<h2 id="headline-2">
+Dev-env của mình
+</h2>
+<p>
+Cần (cuốn):
+</p>
+<ul>
+<li>
+<p>
+Emacs (dĩ nhiên)
+</p>
+</li>
+<li>
+<p>
+Chạy trong terminal, web sẽ hạn chế về shortcut
+</p>
+</li>
+<li>
+<p>
+Các công cụ xung quanh như docker,…
+</p>
+</li>
+</ul>
+<p>
+Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build của mình.
+</p>
+<ul>
+<li>
+<p>
+Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile">Dockerfile</a> với FROM từ workspace-full của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
+</p>
+</li>
+<li>
+<p>
+Viết thêm phần setup.sh để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
+</p>
+</li>
+<li>
+<p>
+Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</code> ở trong Gitpod.io-&gt;Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web
+</p>
+</li>
+<li>
+<p>
+Sau đó ta dùng github action để build và push docker image tự động
+</p>
+<h3 id="headline-3">
+Các ưu điểm của gitpod và cấu hình của mình mang lại
+</h3>
+</li>
+<li>
+<p>
+Gitpod sẽ luôn giữ thư mục /workspace làm việc của mình
+</p>
+</li>
+<li>
+<p>
+Emacs được lưu cấu hình ở /workspace để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
+</p>
+</li>
+<li>
+<p>
+Emacs được chạy daemon ở trong tmate session luôn
+</p>
+</li>
+<li>
+<p>
+Làm việc trong terminal trược tiếp
+</p>
+</li>
+<li>
+<p>
+Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git
+</p>
+</li>
+<li>
+<p>
+Gitpod đã cấu hình docker lưu trữ dữ liệu ở /workspace
+</p>
+<h3 id="headline-4">
+Nhược điểm
+</h3>
+</li>
+<li>
+<p>
+Chưa có các command để tương tác với gitpod như: stop workspace(mình sử dụng <code>kill 1</code>), expose port,.. Nếu tương lai gitpod tách riêng nó thành các API, protocol gì đó sẽ tiện để implement
+</p>
+</li>
+<li>
+<p>
+Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
+</p>
+</li>
+<li>
+<p>
+Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vìm, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+</p>
+</li>
+</ul>
+<h2 id="headline-5">
+Kết luận
+</h2>
+<p>
+Về cơ bản thì các nhà cung cấp IDE online sẽ luôn có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
+</p>
+<p>
+Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái <code>dev-env-as-code</code> của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).
+</p>
+<p>
+Và nó cũng như dotfiles, rồi ta lại thêm thú vui mỗi ngày làm việc là commit cho dotfiles!
+</p>
+<h2 id="headline-6">
+Tham khảo
+</h2>
+<ul>
+<li>
+<p>
+Thử xem <a href="https://github.com/TxGVNN/gitpod">TxGVNN/gitpod</a>
+</p>
+</li>
+<li>
+<p>
+Bản Emacs GUI chạy trong emacs của cộng đồng <a href="https://github.com/emacs-lsp/lsp-gitpod">emacs-lsp/lsp-gitpod</a>
+</p>
+</li>
+</ul>
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2021  MẤY KHI MẤY KHỈ 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/post/intro">Intro</a></li>
+         
+        <li><a href="/post">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>
