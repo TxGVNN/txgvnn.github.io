@@ -19,7 +19,6 @@ Cần (cuốn):
 - Chạy trong terminal, web sẽ hạn chế về shortcut
 - Các công cụ xung quanh như docker,...
 
-
 Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build của mình.
 
 - Ta sẽ viết lại [[https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile][Dockerfile]] với FROM từ workspace-full của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
@@ -27,18 +26,19 @@ Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build c�
 - Cần cấu hình ~TELEGRAM_BOT_TOKEN~ và ~TELEGRAM_CHAT_ID~ ở trong Gitpod.io->Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web
 - Sau đó ta dùng github action để build và push docker image tự động
 
+* Có ưu ắt có nhược (o.O)
 ** Các ưu điểm của gitpod và cấu hình của mình mang lại
-- Gitpod sẽ luôn giữ thư mục /workspace làm việc của mình
-- Emacs được lưu cấu hình ở /workspace để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
+- Gitpod sẽ luôn giữ thư mục ~/workspace~ làm việc của mình
+- Emacs được lưu cấu hình ở ~/workspace~ để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
 - Emacs được chạy daemon ở trong tmate session luôn
 - Làm việc trong terminal trược tiếp
 - Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git
-- Gitpod đã cấu hình docker lưu trữ dữ liệu ở /workspace
+- Gitpod đã cấu hình docker lưu trữ dữ liệu ở ~/workspace~
 
 ** Nhược điểm
 - Chưa có các command để tương tác với gitpod như: stop workspace(mình sử dụng ~kill 1~), expose port,.. Nếu tương lai gitpod tách riêng nó thành các API, protocol gì đó sẽ tiện để implement
 - Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
-- Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vìm, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+- Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
 
 * Kết luận
 
