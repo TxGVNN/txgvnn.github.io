@@ -94,7 +94,7 @@ Cần (cuốn):
 <ul>
 <li>
 <p>
-Emacs (dĩ nhiên)
+Emacs (yeah!)
 </p>
 </li>
 <li>
@@ -119,7 +119,7 @@ Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d288978
 </li>
 <li>
 <p>
-Viết thêm phần setup.sh để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
+Viết thêm phần <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh">setup.sh</a> để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
 </p>
 </li>
 <li>
@@ -177,17 +177,12 @@ Nhược điểm
 <ul>
 <li>
 <p>
-Chưa có các command để tương tác với gitpod như: stop workspace(mình sử dụng <code>kill 1</code>), expose port,.. Nếu tương lai gitpod tách riêng nó thành các API, protocol gì đó sẽ tiện để implement
-</p>
-</li>
-<li>
-<p>
 Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
 </p>
 </li>
 <li>
 <p>
-Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa (nếu đã commit ở project) lúc chạy workspace ở mỗi người khác nhau. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa nếu đã commit ở project. Nên nếu muốn sử dụng IDE của mình thì không được. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
 </p>
 </li>
 </ul>
@@ -214,7 +209,7 @@ Thử xem <a href="https://github.com/TxGVNN/gitpod">TxGVNN/gitpod</a>
 </li>
 <li>
 <p>
-Bản Emacs GUI chạy trong emacs của cộng đồng <a href="https://github.com/emacs-lsp/lsp-gitpod">emacs-lsp/lsp-gitpod</a>
+Bản Emacs GUI chạy trong trình duyệt web của cộng đồng <a href="https://github.com/emacs-lsp/lsp-gitpod">emacs-lsp/lsp-gitpod</a>
 </p>
 </li>
 </ul>
