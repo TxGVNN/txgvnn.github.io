@@ -9,7 +9,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Dev enviroment as code" />
-<meta property="og:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử." />
+<meta property="og:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/dev-env-as-code/" />
 <meta property="article:published_time" content="2021-12-10T04:32:02+00:00" />
@@ -17,7 +17,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dev enviroment as code"/>
-<meta name="twitter:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử."/>
+<meta name="twitter:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!"/>
 
   
   
@@ -83,7 +83,7 @@ Giới thiệu
 Hay là google cloudshell mình vẫn sử dụng suốt (chém).
 </p>
 <p>
-Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử.
+Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!).
 </p>
 <h2 id="headline-2">
 Dev-env của mình
@@ -99,7 +99,7 @@ Emacs (yeah!)
 </li>
 <li>
 <p>
-Chạy trong terminal, web sẽ hạn chế về shortcut
+Chạy trong terminal, web sẽ hạn chế về shortcut (<a href="https://nyxt.atlas.engineer">Nyxt</a> chăng)
 </p>
 </li>
 <li>
@@ -109,7 +109,7 @@ Các công cụ xung quanh như docker,…
 </li>
 </ul>
 <p>
-Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build của mình.
+Khi sử dụng gitpod, nó cho mình tự build image của mình để làm môi trường. Vì thế:
 </p>
 <ul>
 <li>
@@ -129,7 +129,7 @@ Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</co
 </li>
 <li>
 <p>
-Sau đó ta dùng github action để build và push docker image tự động
+Sau đó ta dùng Github action để build và push docker image tự động
 </p>
 </li>
 </ul>
@@ -190,7 +190,7 @@ Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file 
 Kết luận
 </h2>
 <p>
-Về cơ bản thì các nhà cung cấp IDE online sẽ luôn có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
+Về cơ bản thì các nhà cung cấp IDE online khả năng chắc chắn sẽ có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
 </p>
 <p>
 Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái <code>dev-env-as-code</code> của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).
