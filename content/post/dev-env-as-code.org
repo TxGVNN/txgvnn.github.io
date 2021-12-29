@@ -10,21 +10,21 @@ draft: false
 [[https://gitpod.io/][Gitpod.io]] đề cập về khái niệm [[https://www.gitpod.io/blog/dev-env-as-code][dev-env-as-code]], nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó.
 Hay là google cloudshell mình vẫn sử dụng suốt (chém).
 
-Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái và vọc và dùng thử.
+Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!).
 
 * Dev-env của mình
 
 Cần (cuốn):
 - Emacs (yeah!)
-- Chạy trong terminal, web sẽ hạn chế về shortcut
+- Chạy trong terminal, web sẽ hạn chế về shortcut ([[https://nyxt.atlas.engineer][Nyxt]] chăng)
 - Các công cụ xung quanh như docker,...
 
-Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build của mình.
+Khi sử dụng gitpod, nó cho mình tự build image của mình để làm môi trường. Vì thế:
 
 - Ta sẽ viết lại [[https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile][Dockerfile]] với FROM từ workspace-full của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
 - Viết thêm phần [[https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh][setup.sh]] để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
 - Cần cấu hình ~TELEGRAM_BOT_TOKEN~ và ~TELEGRAM_CHAT_ID~ ở trong Gitpod.io->Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web
-- Sau đó ta dùng github action để build và push docker image tự động
+- Sau đó ta dùng Github action để build và push docker image tự động
 
 * Có ưu ắt có nhược (o.O)
 ** Các ưu điểm của gitpod và cấu hình của mình mang lại
@@ -41,7 +41,7 @@ Vì thế khi sử dụng gitpod, nó cho mình sử dụng image tự build c�
 
 * Kết luận
 
-Về cơ bản thì các nhà cung cấp IDE online sẽ luôn có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
+Về cơ bản thì các nhà cung cấp IDE online khả năng chắc chắn sẽ có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
 
 Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái ~dev-env-as-code~ của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).
 

@@ -10,11 +10,11 @@ Tóm lại không đủ nhiệt huyết để làm nữa :sad:
 
 Nhưng vẫn nhiệt tình trao đổi/chia sẽ cho anh em đồng nghiệp ở công ty, nhóm nhỏ. Nên mình nghĩ viết blog sẽ chia sẽ tốt hơn, đỡ phải nói đi nói lại mỏi mồm phết.
 
-Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì đó (đống hỗn độn chẳng hạn) mình chia sẽ hay ho thì sẽ tốt cho ai đó, không hay thì được góp ý lại mình càng tốt (khôn phết). Mình đã định viết mấy lần rồi, nhưng LƯỜI -_-
+Cuộc sống rồi cũng ra đi, mình đi rôì hi vọng để lại cái gì đó (đống hỗn độn chẳng hạn) mình chia sẽ hay ho (covid) thì sẽ tốt cho ai đó, không hay thì được góp ý lại mình càng tốt (khôn phết). Mình đã định viết mấy lần rồi, nhưng LƯỜI -_-
 
 * Quan điểm
 
-Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (lạy chúa, mình sẽ cố gắng không đề cập. Hic)
+Blog này sẽ KHÔNG đề cập đến tôn giáo, chính trị, quản điểm sống (sống chết mặc bây), triết học, đạo lý (lạy chúa, mình sẽ cố gắng không đề cập. Đạo khả đạo, phi thường đạo)
 
 Mình cũng sẽ KHÔNG quá đề cập vào chi tiết/lý thuyết kỹ thuật (ví dụ cài Emacs như nào, xây dựng helloworld ra làm sao?)
 
@@ -25,6 +25,7 @@ Mà chủ yếu là tips, workflow cá nhân của mình. Nên có thể nó s�
 Tiếng việt là một trong những thế mẹnh của mình. Btw, my english skill is not good!
 
 Mình cũng sẽ dùng vài từ tiếng anh như cách nói thông thường trong công việc, và nó sẽ không chuẩn như văn học nên ~Trong lúc viết lách bối rối, có gì xin lượng thứ~
+
 * Đại từ nhân xưng
 
 Tiếng anh thì dùng mỗi ~I~ cho khoẻ, dùng Tiếng Việt lại phải chọn ~Tôi, Mình, Tớ, Tao, Tau, Anh, Em, Chú, Bác, Thím...~
