@@ -20,6 +20,6 @@ Mình đã từng cài GNU Guix trên máy công ty cũ để làm việc (do l�
 - Thôi để mình dẫn link rồi các bạn tự ngâm cứu.
 
 * Liên kết hay ho
-- [[https://ambrevar.xyz/guix-advance/][ambrevar.xyz/guix-advance/Guix: A most advanced operating system]]
+- [[https://web.archive.org/web/20211120040842/https://ambrevar.xyz/guix-advance/][ambrevar.xyz/guix-advance/Guix: A most advanced operating system]]
 - [[https://guix.gnu.org/en/blog/][Guix Blog]]
 - [[https://www.youtube.com/c/TROP1N/search?query=guix][youtube.com/c/TROP1N/search?query=guix]]
