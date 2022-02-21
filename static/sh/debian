@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 [ "${DEBUG:-0}" -eq 0 ] || set -x
 
 if [ "$(id -u)" -eq 0 ]; then
@@ -17,7 +17,6 @@ apt-file
 bash-completion
 build-essential
 chromium
-conky-all
 cryptsetup
 curl
 dbus-x11
@@ -41,10 +40,9 @@ i3
 i3lock
 ibus-unikey
 imagemagick
-keepassx
+keepassxc
 libnotify-bin
 mpv
-openvpn
 pciutils
 policykit-1
 ranger
@@ -60,7 +58,6 @@ task-laptop
 tcpdump
 tmux
 weechat
-wicd
 wireshark
 xautolock
 xbacklight
