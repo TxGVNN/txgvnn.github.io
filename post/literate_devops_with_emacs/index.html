@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Literate Devops với Emacs | MẤY KHI MẤY KHỈ</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Literate Devops với Emacs" />
+<meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;begin_src NGÔN-NGỮ-THỰC-THI và #&#43;end_src với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;begin_src compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/literate_devops_with_emacs/" />
+<meta property="article:published_time" content="2022-03-04T07:27:19+00:00" />
+<meta property="article:modified_time" content="2022-03-04T07:27:19+00:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Literate Devops với Emacs"/>
+<meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;begin_src NGÔN-NGỮ-THỰC-THI và #&#43;end_src với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;begin_src compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="/">
+  
+    <div id="logo" style="background-image: url(https://avatars.githubusercontent.com/u/9713793?s=64)"></div>
+  
+  <div id="title">
+    <h1>MẤY KHI MẤY KHỈ</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+        <li><a href="/post/intro">Intro</a></li>
+      
+        <li><a href="/post">Writings</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    
+<p>
+Ví dụ như video này đây <a href="https://www.youtube.com/watch?v=dljNabciEGg">youtube.com/Literate Devops with Emacs</a>
+</p>
+<p>
+Hiểu đơn giản là giờ chúng ta cần <code>everything as code</code>, cần <code>reproducible</code>, tăng khả năng <code>stateless</code> (hãy như <a href="/post/gnu-guix-os/">Guix</a>)
+</p>
+<h2 id="headline-1">
+Sử dụng org-babel
+</h2>
+<p>
+Với <code>org-babel</code> thì các đoạn code sẽ được viết trong cặp <code>#+begin_src NGÔN-NGỮ-THỰC-THI</code> và <code>#+end_src</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…
+</p>
+<p>
+Các ví dụ mình dùng.
+</p>
+<h3 id="headline-2">
+Cài cắm các tool cần thiết cho máy mình
+</h3>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">*<span style="font-weight:bold"> Build PC</span>
+<span style="color:#75715e">**</span> Setup emacs
+,#+begin_src compile
+sudo apt-get update
+sudo apt-get install -y emacs-nox
+<span style="color:#75715e"># Setup dotfiles</span>
+curl https://txgvnn.github.io/sh<span style="font-style:italic">/dots | bash
+</span><span style="font-style:italic">,#+end_src
+</span><span style="font-style:italic">
+</span><span style="font-style:italic">** Setup minikube
+</span><span style="font-style:italic">,#+BEGIN_SRC compile
+</span><span style="font-style:italic">curl -LO https:/</span>/storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+,#+END_SRC
+
+,#+RESULTS:
+
+,#+BEGIN_SRC sh
+minikube config set driver kvm2
+minikube config set kubernetes-version v1.20.15
+,#+END_SRC</code></pre></div>
+</div>
+<h3 id="headline-3">
+Để backup các file secret, config các kiểu
+</h3>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+NAME: gitlab-token
+,#+BEGIN_SRC sh :results output
+cat ~/mht/sources/infra-deployment/gitlab/terraform.tfvars
+,#+END_SRC
+
+,#+RESULTS: gitlab-token
+: gitlab_token=&#34;XYZ-token&#34;</code></pre></div>
+</div>
+<h3 id="headline-4">
+Cần restore lại thì như sau
+</h3>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+BEGIN_SRC sh :var INPUT=gitlab-token
+cat &gt; ~/projects/infra-deployment/gitlab/terraform.tfvars &lt;&lt; EOF
+$INPUT
+EOF
+,#+END_SRC
+
+,#+RESULTS:</code></pre></div>
+</div>
+<p>
+org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.
+</p>
+<p>
+Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi <code>#+RESULTS</code> thành <code>#+NAME</code>
+</p>
+<p>
+Đối với các file <code>org</code> chứ thông tin nhạy cảm chúng ta nên dùng file là <code>org.gpg</code> để được encrypt bằng <code>gpg</code>
+</p>
+<h3 id="headline-5">
+Setup được trên các máy remote thông qua TRAMP như ssh
+</h3>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+BEGIN_SRC sh :dir <span style="font-style:italic">/ssh:root@the-sun:/</span>
+apt-get install -y nginx
+,#+END_SRC</code></pre></div>
+</div>
+<h2 id="headline-6">
+Sử dụng <a href="http://angg.twu.net/#eev">eev</a> package
+</h2>
+<p>
+Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
+<code>eev</code> là giải pháp.
+</p>
+<p>
+Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên <code>code</code> sang bên <code>shell</code>
+</p>
+<p>
+Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:
+</p>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">
+*<span style="font-weight:bold"> Resize disk to 40G</span>
+,#+begin_src sh :eval no
+# (eepitch-shell)
+# (eepitch-kill)
+# (eepitch-shell)
+ssh root@the-sun
+
+virsh start base
+
+cat &gt; /tmp<span style="font-style:italic">/disk.yaml &lt;&lt; EOF
+</span><span style="font-style:italic">&lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
+</span><span style="font-style:italic">  &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/</span>&gt;
+  &lt;<span style="color:#e6db74">source file=&#39;/var/lib/libvirt/images/disk-can-resize.img&#39;/</span>&gt;
+  &lt;<span style="color:#e6db74">target dev=&#39;vdb&#39; bus=&#39;virtio&#39;/</span>&gt;
+&lt;<span style="color:#e6db74">/disk</span>&gt;
+EOF
+
+virsh attach-device base /tmp/disk.yaml
+
+virsh console base # Đoạn này sẽ phải nhảy sang shell để nhập pass
+
+lsblk
+parted /dev/vdb
+resizepart 1 40GB
+quit
+
+e2fsck -f /dev/vdb1
+resize2fs -p /dev/vdb1
+
+^] # Đoạn này để thoát virsh console
+
+virsh shutdown base
+
+virsh list --all
+,#+end_src</code></pre></div>
+</div>
+<p>
+<code>eev</code> thì thật cực kỳ linh động
+</p>
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  MẤY KHI MẤY KHỈ 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/post/intro">Intro</a></li>
+         
+        <li><a href="/post">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>

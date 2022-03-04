@@ -6,7 +6,7 @@
     <description>Recent content in Tags on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Fri, 10 Dec 2021 04:32:02 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>emacs</title>
       <link>/tags/emacs/</link>
-      <pubDate>Fri, 10 Dec 2021 04:32:02 +0000</pubDate>
+      <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
       <guid>/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>stateless</title>
+      <link>/tags/stateless/</link>
+      <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
+      
+      <guid>/tags/stateless/</guid>
       <description></description>
     </item>
     
