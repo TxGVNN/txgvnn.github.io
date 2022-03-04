@@ -86,5 +86,5 @@ draft: false
   Mấy hôm truớc mình mới phát hiện ra QMK có hỗ trợ mouse mode, mình đã config vào phím của mình luôn. Quá tuyệt
 
 ** Layouts
-   Hiện tại mình đang sử dụng layout như này. Và không chắc nó là bản final.
+   Hiện tại mình đang sử dụng [[/ergodash_rev1_layout_4key_mine.json][layout.json]] như này. Và không chắc nó là bản final.
    {{< figure src="/images/ergodash-layout.png" alt="layout" >}}
