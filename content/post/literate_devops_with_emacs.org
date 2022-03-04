@@ -1,11 +1,128 @@
 ---
-title: "Literate Devops with Emacs"
+title: "Literate Devops với Emacs"
 date: 2022-03-04T07:27:19Z
-draft: true
+tags: [emacs, stateless]
+draft: false
 ---
 
 Ví dụ như video này đây [[https://www.youtube.com/watch?v=dljNabciEGg][youtube.com/Literate Devops with Emacs]]
 
+Hiểu đơn giản là giờ chúng ta cần ~everything as code~, cần ~reproducible~, tăng khả năng ~stateless~ (hãy như [[/post/gnu-guix-os/][Guix]])
+
 * Sử dụng org-babel
+Với ~org-babel~ thì các đoạn code sẽ được viết trong cặp ~#+begin_src NGÔN-NGỮ-THỰC-THI~ và ~#+end_src~ với các option như thực thi ở thư mục nào ~:dir~,...
+
+Các ví dụ mình dùng.
+
+**  Cài cắm các tool cần thiết cho máy mình
+#+begin_src org
+* Build PC
+** Setup emacs
+,#+begin_src compile
+sudo apt-get update
+sudo apt-get install -y emacs-nox
+# Setup dotfiles
+curl https://txgvnn.github.io/sh/dots | bash
+,#+end_src
+
+** Setup minikube
+,#+BEGIN_SRC compile
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+,#+END_SRC
+
+,#+RESULTS:
+
+,#+BEGIN_SRC sh
+minikube config set driver kvm2
+minikube config set kubernetes-version v1.20.15
+,#+END_SRC
+
+#+end_src
+
+
+** Để backup các file secret, config các kiểu
+#+BEGIN_SRC org
+,#+NAME: gitlab-token
+,#+BEGIN_SRC sh :results output
+cat ~/mht/sources/infra-deployment/gitlab/terraform.tfvars
+,#+END_SRC
+
+,#+RESULTS: gitlab-token
+: gitlab_token="XYZ-token"
+
+#+end_src
+
+** Cần restore lại thì như sau
+#+begin_src org
+,#+BEGIN_SRC sh :var INPUT=gitlab-token
+cat > ~/projects/infra-deployment/gitlab/terraform.tfvars << EOF
+$INPUT
+EOF
+,#+END_SRC
+
+,#+RESULTS:
+#+end_src
+
+org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.
+
+Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi ~#+RESULTS~ thành ~#+NAME~
+
+Đối với các file ~org~ chứ thông tin nhạy cảm chúng ta nên dùng file là ~org.gpg~ để được encrypt bằng ~gpg~
+
+** Setup được trên các máy remote thông qua TRAMP như ssh
+
+#+begin_src org
+,#+BEGIN_SRC sh :dir /ssh:root@the-sun:/
+apt-get install -y nginx
+,#+END_SRC
+#+end_src
+
 
 * Sử dụng [[http://angg.twu.net/#eev][eev]] package
+Một số bài toán phức tạp hơn thì ta cần dùng [[http://angg.twu.net/#eev][eev]]. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
+~eev~ là giải pháp.
+
+Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên ~code~ sang bên ~shell~
+
+Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:
+#+begin_src org
+
+* Resize disk to 40G
+,#+begin_src sh :eval no
+# (eepitch-shell)
+# (eepitch-kill)
+# (eepitch-shell)
+ssh root@the-sun
+
+virsh start base
+
+cat > /tmp/disk.yaml << EOF
+<disk type='file' device='disk'>
+  <driver name='qemu' type='qcow2'/>
+  <source file='/var/lib/libvirt/images/disk-can-resize.img'/>
+  <target dev='vdb' bus='virtio'/>
+</disk>
+EOF
+
+virsh attach-device base /tmp/disk.yaml
+
+virsh console base # Đoạn này sẽ phải nhảy sang shell để nhập pass
+
+lsblk
+parted /dev/vdb
+resizepart 1 40GB
+quit
+
+e2fsck -f /dev/vdb1
+resize2fs -p /dev/vdb1
+
+^] # Đoạn này để thoát virsh console
+
+virsh shutdown base
+
+virsh list --all
+,#+end_src
+#+end_src
+
+~eev~ thì thật cực kỳ linh động

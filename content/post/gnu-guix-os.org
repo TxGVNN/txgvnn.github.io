@@ -2,7 +2,7 @@
 title: "GNU Guix system, hệ thống của tương lai (thời đại 4.0.4)"
 date: 2021-09-18T09:12:56+07:00
 draft: false
-tags: [guix, emacs]
+tags: [guix, emacs, stateless]
 ---
 
 Mình nghĩ [[https://guix.gnu.org/][GNU Guix]] sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận.
