@@ -45,7 +45,7 @@ minikube config set kubernetes-version v1.20.15
 #+BEGIN_SRC org
 ,#+NAME: gitlab-token
 ,#+BEGIN_SRC sh :results output
-cat ~/mht/sources/infra-deployment/gitlab/terraform.tfvars
+cat ~/projects/infra-deployment/gitlab/terraform.tfvars
 ,#+END_SRC
 
 ,#+RESULTS: gitlab-token
