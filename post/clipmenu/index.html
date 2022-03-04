@@ -9,7 +9,8 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Implement tính năng kill/yank trong Emacs vào I3WM" />
-<meta property="og:description" content="Lý do   Khoảng ngày &lt;2021-02-11 Thu&gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste." />
+<meta property="og:description" content="Lý do   Khoảng ngày &lt;2021-02-11 Thu&gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.
+ Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/clipmenu/" />
 <meta property="article:published_time" content="2021-02-11T23:10:28+07:00" />
@@ -17,7 +18,8 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Implement tính năng kill/yank trong Emacs vào I3WM"/>
-<meta name="twitter:description" content="Lý do   Khoảng ngày &lt;2021-02-11 Thu&gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste."/>
+<meta name="twitter:description" content="Lý do   Khoảng ngày &lt;2021-02-11 Thu&gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.
+ Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste."/>
 
   
   
@@ -75,26 +77,29 @@
   <div class="content" itemprop="articleBody">
   
     
+<div id="outline-container-headline-1" class="outline-2">
 <h2 id="headline-1">
 Lý do
 </h2>
+<div id="outline-text-headline-1" class="outline-text-2">
 <p>
-Khoảng ngày <span class="timestamp">&lt;2021-02-11 Thu&gt;</span> sau khi được 1 bạn suggest về cái <code>~/.i3/bin/x-register</code> tổt hơn <a href="https://github.com/TxGVNN/i3-config/issues/5">TxGVNN/i3-config#5</a>. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng <code>dmenu</code>. Như tính năng yank trong Emacs.
-</p>
+Khoảng ngày <span class="timestamp">&lt;2021-02-11 Thu&gt;</span> sau khi được 1 bạn suggest về cái <code>~/.i3/bin/x-register</code> tổt hơn <a href="https://github.com/TxGVNN/i3-config/issues/5">TxGVNN/i3-config#5</a>. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng <code>dmenu</code>. Như tính năng yank trong Emacs.</p>
 <p>
-Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste. Nó là 1 chương trình riêng, hiệu quả đấy, nhưng có vẻ sẽ bất tiện với mình. Vì mình muốn nó tích hợp vào dmenu với i3, bạn sẽ cảm giác nó là 1 hệ thống hoàn chỉnh
-</p>
+Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste. Nó là 1 chương trình riêng, hiệu quả đấy, nhưng có vẻ sẽ bất tiện với mình. Vì mình muốn nó tích hợp vào dmenu với i3, bạn sẽ cảm giác nó là 1 hệ thống hoàn chỉnh</p>
 <p>
-Mình quyết định vào reddit.com/r/i3wm tìm với từ khoá clipboard, và tìm ra repostory này <a href="https://github.com/cdown/clipmenu">https://github.com/cdown/clipmenu</a>
-</p>
+Mình quyết định vào reddit.com/r/i3wm tìm với từ khoá clipboard, và tìm ra repostory này <a href="https://github.com/cdown/clipmenu">https://github.com/cdown/clipmenu</a></p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
 Cấu hình
 </h2>
-<p>
-Và đã cấu hình nó <a href="https://github.com/TxGVNN/i3-config/commit/799304716cbe18fa6cdb8d4b8ee0c0ebc435cf8d">TxGVNN/i3-config@7993047</a> quá ưng ý cho mình.
+<div id="outline-text-headline-2" class="outline-text-2">
+<p>Và đã cấu hình nó <a href="https://github.com/TxGVNN/i3-config/commit/799304716cbe18fa6cdb8d4b8ee0c0ebc435cf8d">TxGVNN/i3-config@7993047</a> quá ưng ý cho mình.
 Với 1 chút chỉnh sửa là thêm <code>xdotool</code> vào line này <a href="https://github.com/TxGVNN/i3-config/commit/799304716cbe18fa6cdb8d4b8ee0c0ebc435cf8d#diff-cfdacdccb84c4862f01c698497888ae65278c0240d7b588facc557da61f634d4R72">TxGVNN/i3-config/commit/7993047#diff-cfdacdccb84c4862f01c698497888ae65278c0240d7b588facc557da61f634d4R72</a> để paste thẳng ra luôn.
-Quá ưng ý cho mình với phím tắt <code>Super + Shift + w</code>. Tuyệt
-</p>
+Quá ưng ý cho mình với phím tắt <code>Super + Shift + w</code>. Tuyệt</p>
+</div>
+</div>
 
   
   </div>

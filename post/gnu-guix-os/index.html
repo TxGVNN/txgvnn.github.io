@@ -9,7 +9,8 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="GNU Guix system, hệ thống của tương lai (thời đại 4.0.4)" />
-<meta property="og:description" content="Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi)." />
+<meta property="og:description" content="Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+ GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/gnu-guix-os/" />
 <meta property="article:published_time" content="2021-09-18T09:12:56+07:00" />
@@ -17,7 +18,8 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="GNU Guix system, hệ thống của tương lai (thời đại 4.0.4)"/>
-<meta name="twitter:description" content="Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi)."/>
+<meta name="twitter:description" content="Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+ GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi)."/>
 
   
   
@@ -77,64 +79,53 @@
     
 <p>
 Mình nghĩ <a href="https://guix.gnu.org/">GNU Guix</a> sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận.
-GNU đã tạo nhiều <a href="https://www.gnu.org/distros/free-distros.en.html">Linux distros</a> dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
-</p>
+GNU đã tạo nhiều <a href="https://www.gnu.org/distros/free-distros.en.html">Linux distros</a> dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.</p>
 <p>
-<a href="https://guix.gnu.org/">GNU Guix</a> là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng <a href="https://www.gnu.org/software/shepherd/">GNU Shepherd</a> làm init system (mình nghĩ thế, sai thì thôi).
-</p>
+<a href="https://guix.gnu.org/">GNU Guix</a> là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng <a href="https://www.gnu.org/software/shepherd/">GNU Shepherd</a> làm init system (mình nghĩ thế, sai thì thôi).</p>
 <p>
-Mình đã từng cài GNU Guix trên máy công ty cũ để làm việc (do lúc đó ít việc). Còn hiện tại mình vẫn đang dùng Debian Stable và dùng GNU Guix để cài cắm thêm các package và tạo development env.
-</p>
+Mình đã từng cài GNU Guix trên máy công ty cũ để làm việc (do lúc đó ít việc). Còn hiện tại mình vẫn đang dùng Debian Stable và dùng GNU Guix để cài cắm thêm các package và tạo development env.</p>
+<div id="outline-container-headline-1" class="outline-2">
 <h2 id="headline-1">
 Đặc điểm GNU Guix
 </h2>
+<div id="outline-text-headline-1" class="outline-text-2">
 <ul>
 <li>
-<p>
-Kế thừa ý tưởng từ NixOS với khả năng 100% reproducible (stateless OS) và không bao giờ bị break vì dependencies (mà sẽ bị break vì hết disk).
-</p>
+<p>Kế thừa ý tưởng từ NixOS với khả năng 100% reproducible (stateless OS) và không bao giờ bị break vì dependencies (mà sẽ bị break vì hết disk).</p>
 </li>
 <li>
-<p>
-Sử dụng GNU Guile (1 loại Scheme) để định nghĩa toàn OS(serices, packages) bằng config as code.
-</p>
+<p>Sử dụng GNU Guile (1 loại Scheme) để định nghĩa toàn OS(serices, packages) bằng config as code.</p>
 </li>
 <li>
-<p>
-Tạo enviroment, profile, dotfiles tách biệt với nhau hoàn toàn hiệu quả cũng qua config as code.
-</p>
+<p>Tạo enviroment, profile, dotfiles tách biệt với nhau hoàn toàn hiệu quả cũng qua config as code.</p>
 </li>
 <li>
-<p>
-Có cả giao diện <a href="https://github.com/alezost/guix.el">Emacs</a>, một điểm cộng từ người dùng Emacs, hà hà.
-</p>
+<p>Có cả giao diện <a href="https://github.com/alezost/guix.el">Emacs</a>, một điểm cộng từ người dùng Emacs, hà hà.</p>
 </li>
 <li>
-<p>
-Thôi để mình dẫn link rồi các bạn tự ngâm cứu.
-</p>
+<p>Thôi để mình dẫn link rồi các bạn tự ngâm cứu.</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
 Liên kết hay ho
 </h2>
+<div id="outline-text-headline-2" class="outline-text-2">
 <ul>
 <li>
-<p>
-<a href="https://web.archive.org/web/20211120040842/https://ambrevar.xyz/guix-advance/">ambrevar.xyz/guix-advance/Guix: A most advanced operating system</a>
-</p>
+<p><a href="https://web.archive.org/web/20211120040842/https://ambrevar.xyz/guix-advance/">ambrevar.xyz/guix-advance/Guix: A most advanced operating system</a></p>
 </li>
 <li>
-<p>
-<a href="https://guix.gnu.org/en/blog/">Guix Blog</a>
-</p>
+<p><a href="https://guix.gnu.org/en/blog/">Guix Blog</a></p>
 </li>
 <li>
-<p>
-<a href="https://www.youtube.com/c/TROP1N/search?query=guix">youtube.com/c/TROP1N/search?query=guix</a>
-</p>
+<p><a href="https://www.youtube.com/c/TROP1N/search?query=guix">youtube.com/c/TROP1N/search?query=guix</a></p>
 </li>
 </ul>
+</div>
+</div>
 
   
   </div>

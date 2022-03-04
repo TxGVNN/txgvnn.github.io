@@ -9,7 +9,8 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Dev enviroment as code" />
-<meta property="og:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!" />
+<meta property="og:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).
+ Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/dev-env-as-code/" />
 <meta property="article:published_time" content="2021-12-10T04:32:02+00:00" />
@@ -17,7 +18,8 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Dev enviroment as code"/>
-<meta name="twitter:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!"/>
+<meta name="twitter:description" content="Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).
+ Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!"/>
 
   
   
@@ -75,144 +77,130 @@
   <div class="content" itemprop="articleBody">
   
     
+<div id="outline-container-headline-1" class="outline-2">
 <h2 id="headline-1">
 Giới thiệu
 </h2>
+<div id="outline-text-headline-1" class="outline-text-2">
 <p>
 <a href="https://gitpod.io/">Gitpod.io</a> đề cập về khái niệm <a href="https://www.gitpod.io/blog/dev-env-as-code">dev-env-as-code</a>, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó.
-Hay là google cloudshell mình vẫn sử dụng suốt (chém).
-</p>
+Hay là google cloudshell mình vẫn sử dụng suốt (chém).</p>
 <p>
-Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!).
-</p>
+Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!).</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
 <h2 id="headline-2">
 Dev-env của mình
 </h2>
+<div id="outline-text-headline-2" class="outline-text-2">
 <p>
-Cần (cuốn):
-</p>
+Cần (cuốn):</p>
 <ul>
 <li>
-<p>
-Emacs (yeah!)
-</p>
+<p>Emacs (yeah!)</p>
 </li>
 <li>
-<p>
-Chạy trong terminal, web sẽ hạn chế về shortcut (<a href="https://nyxt.atlas.engineer">Nyxt</a> chăng)
-</p>
+<p>Chạy trong terminal, web sẽ hạn chế về shortcut (<a href="https://nyxt.atlas.engineer">Nyxt</a> chăng)</p>
 </li>
 <li>
-<p>
-Các công cụ xung quanh như docker,…
-</p>
+<p>Các công cụ xung quanh như docker,…</p>
 </li>
 </ul>
-<p>
-Khi sử dụng gitpod, nó cho mình tự build image của mình để làm môi trường. Vì thế:
-</p>
+<p>Khi sử dụng gitpod, nó cho mình tự build image của mình để làm môi trường. Vì thế:</p>
 <ul>
 <li>
-<p>
-Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile">Dockerfile</a> với FROM từ <a href="https://github.com/gitpod-io/workspace-images">workspace-full</a> của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
-</p>
+<p>Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile">Dockerfile</a> với FROM từ <a href="https://github.com/gitpod-io/workspace-images">workspace-full</a> của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.</p>
 </li>
 <li>
-<p>
-Viết thêm phần <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh">setup.sh</a> để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram.
-</p>
+<p>Viết thêm phần <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh">setup.sh</a> để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram.</p>
 </li>
 <li>
-<p>
-Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</code> ở trong Gitpod.io-&gt;Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web.
-</p>
+<p>Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</code> ở trong Gitpod.io-&gt;Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web.</p>
 </li>
 <li>
-<p>
-Sau đó ta dùng <a href="https://github.com/TxGVNN/gitpod/actions">Github action</a> để build và push docker image tự động.
-</p>
+<p>Sau đó ta dùng <a href="https://github.com/TxGVNN/gitpod/actions">Github action</a> để build và push docker image tự động.</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-2">
 <h2 id="headline-3">
 Có ưu ắt có nhược (o.O)
 </h2>
+<div id="outline-text-headline-3" class="outline-text-2">
+<div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
 Các ưu điểm của gitpod và cấu hình của mình mang lại
 </h3>
+<div id="outline-text-headline-4" class="outline-text-3">
 <ul>
 <li>
-<p>
-Gitpod sẽ luôn giữ thư mục <code>/workspace</code> làm việc của mình
-</p>
+<p>Gitpod sẽ luôn giữ thư mục <code>/workspace</code> làm việc của mình</p>
 </li>
 <li>
-<p>
-Emacs được lưu cấu hình ở <code>/workspace</code> để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history
-</p>
+<p>Emacs được lưu cấu hình ở <code>/workspace</code> để đảm bảo emacs config cũng được giữ lại khi cập nhật trong quá trình làm việc, kể cả history</p>
 </li>
 <li>
-<p>
-Emacs được chạy daemon ở trong tmate session luôn
-</p>
+<p>Emacs được chạy daemon ở trong tmate session luôn</p>
 </li>
 <li>
-<p>
-Làm việc trong terminal trược tiếp
-</p>
+<p>Làm việc trong terminal trược tiếp</p>
 </li>
 <li>
-<p>
-Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git
-</p>
+<p>Gitpod đã cấu hình git credential cho chúng ta thoải mái mà git</p>
 </li>
 <li>
-<p>
-Gitpod đã cấu hình docker lưu trữ dữ liệu ở <code>/workspace</code>
-</p>
+<p>Gitpod đã cấu hình docker lưu trữ dữ liệu ở <code>/workspace</code></p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 Nhược điểm
 </h3>
+<div id="outline-text-headline-5" class="outline-text-3">
 <ul>
 <li>
-<p>
-Vì chỉ có <code>/workspace</code> là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
-</p>
+<p>Vì chỉ có <code>/workspace</code> là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)</p>
 </li>
 <li>
-<p>
-Gitpod sử dụng file <code>.gitpod.yml</code> để định nghĩa workspace. Nhưng file này không được sửa nếu đã commit ở project. Nên nếu muốn sử dụng IDE của mình thì không được. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
-</p>
+<p>Gitpod sử dụng file <code>.gitpod.yml</code> để định nghĩa workspace. Nhưng file này không được sửa nếu đã commit ở project. Nên nếu muốn sử dụng IDE của mình thì không được. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)</p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-2">
 <h2 id="headline-6">
 Kết luận
 </h2>
+<div id="outline-text-headline-6" class="outline-text-2">
 <p>
-Về cơ bản thì các nhà cung cấp IDE online khả năng chắc chắn sẽ có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.
-</p>
+Về cơ bản thì các nhà cung cấp IDE online khả năng chắc chắn sẽ có 1 phần là persistent data (luôn giữ lại) còn lại là stateless (luôn reset). Bạn sẽ quen nếu dùng OS như Tails OS.</p>
 <p>
-Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái <code>dev-env-as-code</code> của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).
-</p>
+Nên là tuỳ vào cách dùng của mình mà sẽ config cái nào ở đâu. Từ đó bạn sẽ build đc cái <code>dev-env-as-code</code> của riêng mình mà ko phụ thuộc vào provider nào. Chạy con pi ở nhà cũng được nữa là (đùa -_-).</p>
 <p>
-Và nó cũng như dotfiles, rồi ta lại thêm thú vui mỗi ngày làm việc là commit cho dotfiles!
-</p>
+Và nó cũng như dotfiles, rồi ta lại thêm thú vui mỗi ngày làm việc là commit cho dotfiles!</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
 <h2 id="headline-7">
 Tham khảo
 </h2>
+<div id="outline-text-headline-7" class="outline-text-2">
 <ul>
 <li>
-<p>
-Thử xem <a href="https://github.com/TxGVNN/gitpod">TxGVNN/gitpod</a>
-</p>
+<p>Thử xem <a href="https://github.com/TxGVNN/gitpod">TxGVNN/gitpod</a></p>
 </li>
 <li>
-<p>
-Bản Emacs GUI chạy trong trình duyệt web của cộng đồng <a href="https://github.com/emacs-lsp/lsp-gitpod">emacs-lsp/lsp-gitpod</a>
-</p>
+<p>Bản Emacs GUI chạy trong trình duyệt web của cộng đồng <a href="https://github.com/emacs-lsp/lsp-gitpod">emacs-lsp/lsp-gitpod</a></p>
 </li>
 </ul>
+</div>
+</div>
 
   
   </div>

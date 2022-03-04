@@ -5,10 +5,6 @@
     <link>/categories/</link>
     <description>Recent content in Categories on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>vi-vn</language>
-    
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>vi-vn</language><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

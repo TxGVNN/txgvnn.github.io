@@ -6,18 +6,18 @@
     <description>Recent content in stateless on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/stateless/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate><atom:link href="/tags/stateless/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Literate Devops với Emacs</title>
       <link>/post/literate_devops_with_emacs/</link>
       <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
       <guid>/post/literate_devops_with_emacs/</guid>
-      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#+BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
+      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs
+ Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
+Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…
+ Các ví dụ mình dùng.
+Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #+BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
     </item>
     
     <item>
@@ -26,7 +26,8 @@
       <pubDate>Sat, 18 Sep 2021 09:12:56 +0700</pubDate>
       
       <guid>/post/gnu-guix-os/</guid>
-      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi).</description>
+      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+ GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi).</description>
     </item>
     
   </channel>

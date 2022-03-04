@@ -9,7 +9,11 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Literate Devops với Emacs" />
-<meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
+<meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs
+ Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
+Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…
+ Các ví dụ mình dùng.
+Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #&#43;BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/literate_devops_with_emacs/" />
 <meta property="article:published_time" content="2022-03-04T07:27:19+00:00" />
@@ -17,7 +21,11 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Literate Devops với Emacs"/>
-<meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
+<meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs
+ Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
+Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…
+ Các ví dụ mình dùng.
+Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #&#43;BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
 
   
   
@@ -76,141 +84,152 @@
   
     
 <p>
-Ví dụ như video này đây <a href="https://www.youtube.com/watch?v=dljNabciEGg">youtube.com/Literate Devops with Emacs</a>
-</p>
+Ví dụ như video này đây <a href="https://www.youtube.com/watch?v=dljNabciEGg">youtube.com/Literate Devops with Emacs</a></p>
 <p>
-Hiểu đơn giản là giờ chúng ta cần <code>everything as code</code>, cần <code>reproducible</code>, tăng khả năng <code>stateless</code> (hãy như <a href="/post/gnu-guix-os/">Guix</a>)
-</p>
+Hiểu đơn giản là giờ chúng ta cần <code>everything as code</code>, cần <code>reproducible</code>, tăng khả năng <code>stateless</code> (hãy như <a href="/post/gnu-guix-os/">Guix</a>)</p>
+<div id="outline-container-headline-1" class="outline-2">
 <h2 id="headline-1">
 Sử dụng org-babel
 </h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>Với <a href="https://orgmode.org/worg/org-contrib/babel/intro.html">org-babel</a> thì các đoạn code sẽ được viết trong cặp <code>#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI</code> và <code>#+END_SRC</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…</p>
 <p>
-Với <a href="https://orgmode.org/worg/org-contrib/babel/intro.html">org-babel</a> thì các đoạn code sẽ được viết trong cặp <code>#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI</code> và <code>#+END_SRC</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…
-</p>
-<p>
-Các ví dụ mình dùng.
-</p>
+Các ví dụ mình dùng.</p>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Cài cắm các tool cần thiết cho máy mình
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <div class="src src-org">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">*<span style="font-weight:bold"> Build PC</span>
 <span style="color:#75715e">**</span> Setup emacs
-,#+BEGIN_SRC compile
-sudo apt-get update
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">compile</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>sudo apt-get update
 sudo apt-get install -y emacs-nox
-<span style="color:#75715e"># Setup dotfiles</span>
-curl https://txgvnn.github.io/sh<span style="font-style:italic">/dots | bash
-</span><span style="font-style:italic">,#+END_SRC
-</span><span style="font-style:italic">
-</span><span style="font-style:italic">** Setup minikube
-</span><span style="font-style:italic">,#+BEGIN_SRC compile
-</span><span style="font-style:italic">curl -LO https:/</span>/storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+# Setup dotfiles
+curl https://txgvnn.github.io/sh/dots | bash
+<span style="color:#75715e">#+END_SRC</span>
+
+<span style="color:#75715e">**</span> Setup minikube
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">compile</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
 sudo install minikube-linux-amd64 /usr/local/bin/minikube
-,#+END_SRC
+<span style="color:#75715e">#+END_SRC</span>
 
-,#+RESULTS:
+<span style="color:#75715e">#+RESULTS</span><span style="color:#75715e">:</span>
 
-,#+BEGIN_SRC sh
-minikube config set driver kvm2
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>minikube config set driver kvm2
 minikube config set kubernetes-version v1.20.15
-,#+END_SRC</code></pre></div>
+<span style="color:#75715e">#+END_SRC</span></code></pre></div>
 </div>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 Để backup các file secret, config các kiểu
 </h3>
+<div id="outline-text-headline-3" class="outline-text-3">
 <div class="src src-org">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+NAME: gitlab-token
-,#+BEGIN_SRC sh :results output
-cat ~/mht/sources/infra-deployment/gitlab/terraform.tfvars
-,#+END_SRC
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+NAME</span><span style="color:#75715e">: gitlab-token</span>
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :results output
+</span><span style="color:#75715e"></span>cat ~/mht/sources/infra-deployment/gitlab/terraform.tfvars
+<span style="color:#75715e">#+END_SRC</span>
 
-,#+RESULTS: gitlab-token
+<span style="color:#75715e">#+RESULTS</span><span style="color:#75715e">: gitlab-token</span>
 : gitlab_token=&#34;XYZ-token&#34;</code></pre></div>
 </div>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
 Cần restore lại thì như sau
 </h3>
+<div id="outline-text-headline-4" class="outline-text-3">
 <div class="src src-org">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+BEGIN_SRC sh :var INPUT=gitlab-token
-cat &gt; ~/projects/infra-deployment/gitlab/terraform.tfvars &lt;&lt; EOF
-$INPUT
-EOF
-,#+END_SRC
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :var INPUT=gitlab-token
+</span><span style="color:#75715e"></span>cat &gt; ~/projects/infra-deployment/gitlab/terraform.tfvars <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">$INPUT
+</span><span style="color:#e6db74">EOF</span>
+<span style="color:#75715e">#+END_SRC</span>
 
-,#+RESULTS:</code></pre></div>
+<span style="color:#75715e">#+RESULTS</span><span style="color:#75715e">:</span></code></pre></div>
 </div>
 <p>
-org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.
-</p>
+org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.</p>
 <p>
-Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi <code>#+RESULTS</code> thành <code>#+NAME</code>
-</p>
+Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi <code>#+RESULTS</code> thành <code>#+NAME</code></p>
 <p>
-Đối với các file <code>org</code> chứ thông tin nhạy cảm chúng ta nên dùng file là <code>org.gpg</code> để được encrypt bằng <code>gpg</code>
-</p>
+Đối với các file <code>org</code> chứ thông tin nhạy cảm chúng ta nên dùng file là <code>org.gpg</code> để được encrypt bằng <code>gpg</code></p>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 Setup được trên các máy remote thông qua TRAMP như ssh
 </h3>
+<div id="outline-text-headline-5" class="outline-text-3">
 <div class="src src-org">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">,#+BEGIN_SRC sh :dir <span style="font-style:italic">/ssh:root@the-sun:/</span>
-apt-get install -y nginx
-,#+END_SRC</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :dir /ssh:root@the-sun:/
+</span><span style="color:#75715e"></span>apt-get install -y nginx
+<span style="color:#75715e">#+END_SRC</span></code></pre></div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-2">
 <h2 id="headline-6">
 Sử dụng <a href="http://angg.twu.net/#eev">eev</a> package
 </h2>
+<div id="outline-text-headline-6" class="outline-text-2">
+<p>Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
+<code>eev</code> là giải pháp.</p>
 <p>
-Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
-<code>eev</code> là giải pháp.
-</p>
+Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên <code>code</code> sang bên <code>shell</code></p>
 <p>
-Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên <code>code</code> sang bên <code>shell</code>
-</p>
-<p>
-Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:
-</p>
+Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:</p>
 <div class="src src-org">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">
 *<span style="font-weight:bold"> Resize disk to 40G</span>
-,#+begin_src sh :eval no
-# (eepitch-shell)
-# (eepitch-kill)
-# (eepitch-shell)
+<span style="color:#75715e">#+begin_src </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :eval no
+</span><span style="color:#75715e"></span><span style="color:#75715e"># (eepitch-shell)</span>
+<span style="color:#75715e"># (eepitch-kill)</span>
+<span style="color:#75715e"># (eepitch-shell)</span>
 ssh root@the-sun
 
 virsh start base
 
-cat &gt; /tmp<span style="font-style:italic">/disk.yaml &lt;&lt; EOF
-</span><span style="font-style:italic">&lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
-</span><span style="font-style:italic">  &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/</span>&gt;
-  &lt;<span style="color:#e6db74">source file=&#39;/var/lib/libvirt/images/disk-can-resize.img&#39;/</span>&gt;
-  &lt;<span style="color:#e6db74">target dev=&#39;vdb&#39; bus=&#39;virtio&#39;/</span>&gt;
-&lt;<span style="color:#e6db74">/disk</span>&gt;
-EOF
+cat &gt; /tmp/disk.yaml <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">&lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
+</span><span style="color:#e6db74">  &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;
+</span><span style="color:#e6db74">  &lt;source file=&#39;/var/lib/libvirt/images/disk-can-resize.img&#39;/&gt;
+</span><span style="color:#e6db74">  &lt;target dev=&#39;vdb&#39; bus=&#39;virtio&#39;/&gt;
+</span><span style="color:#e6db74">&lt;/disk&gt;
+</span><span style="color:#e6db74">EOF</span>
 
 virsh attach-device base /tmp/disk.yaml
 
-virsh console base # Đoạn này sẽ phải nhảy sang shell để nhập pass
+virsh console base <span style="color:#75715e"># Đoạn này sẽ phải nhảy sang shell để nhập pass</span>
 
 lsblk
 parted /dev/vdb
-resizepart 1 40GB
+resizepart <span style="color:#ae81ff">1</span> 40GB
 quit
 
 e2fsck -f /dev/vdb1
 resize2fs -p /dev/vdb1
 
-^] # Đoạn này để thoát virsh console
+^<span style="color:#f92672">]</span> <span style="color:#75715e"># Đoạn này để thoát virsh console</span>
 
 virsh shutdown base
 
 virsh list --all
-,#+end_src</code></pre></div>
+<span style="color:#75715e">#+end_src</span></code></pre></div>
 </div>
 <p>
-<code>eev</code> thì thật cực kỳ linh động
-</p>
+<code>eev</code> thì thật cực kỳ linh động</p>
+</div>
+</div>
 
   
   </div>

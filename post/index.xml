@@ -6,18 +6,18 @@
     <description>Recent content in Posts on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate>
-    
-	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Literate Devops với Emacs</title>
       <link>/post/literate_devops_with_emacs/</link>
       <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
       <guid>/post/literate_devops_with_emacs/</guid>
-      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#+BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
+      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs
+ Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
+Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…
+ Các ví dụ mình dùng.
+Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #+BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
     </item>
     
     <item>
@@ -26,7 +26,8 @@
       <pubDate>Fri, 10 Dec 2021 04:32:02 +0000</pubDate>
       
       <guid>/post/dev-env-as-code/</guid>
-      <description>Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).  Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!</description>
+      <description>Giới thiệu   Gitpod.io đề cập về khái niệm dev-env-as-code, nghe cũng quá là hợp lý. Github thì có Codespaces (mình chưa thử). Về cái ý tưởng này thì trưóc đây đã có vài bên làm như cloud9 hay koding gì gì đó. Hay là google cloudshell mình vẫn sử dụng suốt (chém).
+ Trong bài này mình sẽ nói về gitpod. Vì nó miễn phí 50h/1 tháng thoải mái mà vọc và dùng thử (thật!</description>
     </item>
     
     <item>
@@ -35,7 +36,8 @@
       <pubDate>Sat, 18 Sep 2021 09:12:56 +0700</pubDate>
       
       <guid>/post/gnu-guix-os/</guid>
-      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi).</description>
+      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+ GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi).</description>
     </item>
     
     <item>
@@ -44,7 +46,9 @@
       <pubDate>Sun, 22 Aug 2021 21:21:12 +0700</pubDate>
       
       <guid>/post/bat-dau-voi-emacs/</guid>
-      <description>Hôm nay người bạn hữu của mình xin mình vài link để học emacs. Nên mình xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.  Nên mình đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs Web (có thể dùng M-x eww)     https://tuhdo.</description>
+      <description>Hôm nay người bạn hữu của mình xin mình vài link để học emacs. Nên mình xem nên bắt đầu từ đâu là hay ho, cảm hứng nhất. Chứ nếu bạn cài emacs và bật default lên có thể bạn sẽ chán ngay.
+ Nên mình đưa ra một vài resource để bắt đầu cũng như theo dõi Emacs
+Web (có thể dùng M-x eww)    https://tuhdo.</description>
     </item>
     
     <item>
@@ -53,7 +57,8 @@
       <pubDate>Sun, 01 Aug 2021 08:26:07 +0700</pubDate>
       
       <guid>/post/ergo-keyboard/</guid>
-      <description>Lý do  1. Nếu làm việc nhiều, ngón tay út bắt đầu mỏi và đau do bấm phím Ctrl quá nhiều lần (do Emacs đó)   Vì thế mà mình muốn 1 cái bàn phím có thể map được phím thoải mái, mình sẽ di chuyển ngay phím Ctrl về ngón cái  Thực ra có 1 số giải phát thay thế như dùng vi-keybinding (mình không thích, phải thêm config cho emacs nữa), đảo phím Ctrl lên Capslock (cũng được) nhưng khá khó chịu cho những tổ hợp C-z, C-x 2.</description>
+      <description>Lý do  1. Nếu làm việc nhiều, ngón tay út bắt đầu mỏi và đau do bấm phím Ctrl quá nhiều lần (do Emacs đó)   Vì thế mà mình muốn 1 cái bàn phím có thể map được phím thoải mái, mình sẽ di chuyển ngay phím Ctrl về ngón cái
+ Thực ra có 1 số giải phát thay thế như dùng vi-keybinding (mình không thích, phải thêm config cho emacs nữa), đảo phím Ctrl lên Capslock (cũng được) nhưng khá khó chịu cho những tổ hợp C-z, C-x</description>
     </item>
     
     <item>
@@ -62,7 +67,7 @@
       <pubDate>Mon, 22 Mar 2021 22:46:38 +0700</pubDate>
       
       <guid>/post/pham-vi-directory-trong-emacs/</guid>
-      <description>Sơ lược về cách Emacs làm việc với buffer/file   Buffer nói 1 cách dễ hiểu là 1 tệp ảo (không cần)/(chưa được)/(đã được) lưu thành 1 tệp. Đối tượng mà emacs làm việc là buffer. Khi mở 1 file trong emacs, emacs sẽ mở file đó vào 1 buffer cùng tên hoặc tên sẽ được đi kèm với thư mục cha khác nhau để phân biệt nếu mở file trùng tên.</description>
+      <description>Sơ lược về cách Emacs làm việc với buffer/file  Buffer nói 1 cách dễ hiểu là 1 tệp ảo (không cần)/(chưa được)/(đã được) lưu thành 1 tệp. Đối tượng mà emacs làm việc là buffer. Khi mở 1 file trong emacs, emacs sẽ mở file đó vào 1 buffer cùng tên hoặc tên sẽ được đi kèm với thư mục cha khác nhau để phân biệt nếu mở file trùng tên.</description>
     </item>
     
     <item>
@@ -71,7 +76,8 @@
       <pubDate>Sun, 07 Mar 2021 15:07:16 +0700</pubDate>
       
       <guid>/post/vo-ghi-chung/</guid>
-      <description>Khi còn là sinh viên mình cũng vọc vạch kha khá, kinh nghiệm đọng lại rồi cũng rơi dần nếu không dùng lại, ngay cả những cái đơn giản nhất. Mình bắt đầu suy nghĩ về việc viết note như là mình hồi xưa đi học để lại các kiến thức trong vở. (Nhưng vở thì mình cũng vứt lâu rồi)  Thế là mình bắt đầu làm nó bài bản hơn.</description>
+      <description>Khi còn là sinh viên mình cũng vọc vạch kha khá, kinh nghiệm đọng lại rồi cũng rơi dần nếu không dùng lại, ngay cả những cái đơn giản nhất. Mình bắt đầu suy nghĩ về việc viết note như là mình hồi xưa đi học để lại các kiến thức trong vở. (Nhưng vở thì mình cũng vứt lâu rồi)
+ Thế là mình bắt đầu làm nó bài bản hơn.</description>
     </item>
     
     <item>
@@ -80,7 +86,9 @@
       <pubDate>Sun, 07 Mar 2021 14:08:36 +0700</pubDate>
       
       <guid>/post/su-dung-todo-list-de-quan-ly-cong-viec/</guid>
-      <description>Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi  Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode Cách mình dùng   Mình viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.</description>
+      <description>Công cụ   org-mode là 1 package nổi tiếng trong Emacs. Và có rất nhiều người dùng Emacs chỉ vì org-mode thôi
+ Cách sử dụng như nào bạn có thể xem ở trang chủ của Org-mode
+  Cách mình dùng   Mình viết các file org ở các vị trí khác nhau, và sử dụng org-agenda để hiển thị toàn bộ chúng như 1 bức tranh toàn cảnh.</description>
     </item>
     
     <item>
@@ -89,7 +97,8 @@
       <pubDate>Thu, 11 Feb 2021 23:10:28 +0700</pubDate>
       
       <guid>/post/clipmenu/</guid>
-      <description>Lý do   Khoảng ngày &amp;lt;2021-02-11 Thu&amp;gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.  Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste.</description>
+      <description>Lý do   Khoảng ngày &amp;lt;2021-02-11 Thu&amp;gt; sau khi được 1 bạn suggest về cái ~/.i3/bin/x-register tổt hơn TxGVNN/i3-config#5. Mình mới nghĩ về việc tìm kiếm 1 chương trình quản lý clipboard mà mình có thể yank rồi chọn item để paste nhưng sử dụng dmenu. Như tính năng yank trong Emacs.
+ Mấy năm truớc mình đã từng thấy 1 người bạn sử dụng chương trình nào đó để show toàn bộ history cuả clipboard và chọn ra để paste.</description>
     </item>
     
     <item>
@@ -98,7 +107,8 @@
       <pubDate>Thu, 11 Feb 2021 23:00:48 +0700</pubDate>
       
       <guid>/post/intro/</guid>
-      <description>Sao lại bây giờ mới viết?   Truớc đây mình đã muốn xây dựng debian-vn.github.io để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì mình nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi mình viết :joy: Tóm lại không đủ nhiệt huyết để làm nữa :sad:  Nhưng vẫn nhiệt tình trao đổi/chia sẻ cho anh em đồng nghiệp ở công ty, nhóm nhỏ.</description>
+      <description>Sao lại bây giờ mới viết?   Truớc đây mình đã muốn xây dựng debian-vn.github.io để cho cộng đồng Debian tại VN, chứ không muốn viết blog cá nhân. Vì mình nghĩ build cộng đồng nó sẽ tồn tại lâu hơn là cá nhân. Thực ra page đó cũng có mỗi mình viết :joy: Tóm lại không đủ nhiệt huyết để làm nữa :sad:
+ Nhưng vẫn nhiệt tình trao đổi/chia sẻ cho anh em đồng nghiệp ở công ty, nhóm nhỏ.</description>
     </item>
     
   </channel>
