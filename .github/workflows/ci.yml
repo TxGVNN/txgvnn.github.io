@@ -16,7 +16,11 @@ jobs:
         submodules: true
     - name: Install dependencies
       run: |
-        sudo apt-get install hugo
+        pushd /tmp
+        wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_0.80.0_Linux-64bit.tar.gz
+        tar -xf hugo_0.80.0_Linux-64bit.tar.gz
+        sudo mv hugo /usr/local/bin/
+        popd
     - name: Build hugo output
       run: |
         hugo
