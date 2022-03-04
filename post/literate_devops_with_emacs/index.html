@@ -9,7 +9,7 @@
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
   <meta property="og:title" content="Literate Devops với Emacs" />
-<meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;begin_src NGÔN-NGỮ-THỰC-THI và #&#43;end_src với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;begin_src compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
+<meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/literate_devops_with_emacs/" />
 <meta property="article:published_time" content="2022-03-04T07:27:19+00:00" />
@@ -17,7 +17,7 @@
 
   <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Literate Devops với Emacs"/>
-<meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;begin_src NGÔN-NGỮ-THỰC-THI và #&#43;end_src với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;begin_src compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
+<meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#&#43;BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
 
   
   
@@ -85,7 +85,7 @@ Hiểu đơn giản là giờ chúng ta cần <code>everything as code</code>, c
 Sử dụng org-babel
 </h2>
 <p>
-Với <code>org-babel</code> thì các đoạn code sẽ được viết trong cặp <code>#+begin_src NGÔN-NGỮ-THỰC-THI</code> và <code>#+end_src</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…
+Với <a href="https://orgmode.org/worg/org-contrib/babel/intro.html">org-babel</a> thì các đoạn code sẽ được viết trong cặp <code>#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI</code> và <code>#+END_SRC</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…
 </p>
 <p>
 Các ví dụ mình dùng.
@@ -96,12 +96,12 @@ Cài cắm các tool cần thiết cho máy mình
 <div class="src src-org">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">*<span style="font-weight:bold"> Build PC</span>
 <span style="color:#75715e">**</span> Setup emacs
-,#+begin_src compile
+,#+BEGIN_SRC compile
 sudo apt-get update
 sudo apt-get install -y emacs-nox
 <span style="color:#75715e"># Setup dotfiles</span>
 curl https://txgvnn.github.io/sh<span style="font-style:italic">/dots | bash
-</span><span style="font-style:italic">,#+end_src
+</span><span style="font-style:italic">,#+END_SRC
 </span><span style="font-style:italic">
 </span><span style="font-style:italic">** Setup minikube
 </span><span style="font-style:italic">,#+BEGIN_SRC compile

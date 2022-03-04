@@ -17,7 +17,7 @@
       <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
       <guid>/post/literate_devops_with_emacs/</guid>
-      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #+begin_src NGÔN-NGỮ-THỰC-THI và #+end_src với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#+begin_src compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
+      <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix) Sử dụng org-babel   Với org-babel thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…  Các ví dụ mình dùng. Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs ,#+BEGIN_SRC compile sudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
     </item>
     
     <item>
