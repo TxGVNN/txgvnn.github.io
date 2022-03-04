@@ -114,22 +114,22 @@ Khi sử dụng gitpod, nó cho mình tự build image của mình để làm m�
 <ul>
 <li>
 <p>
-Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile">Dockerfile</a> với FROM từ workspace-full của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
+Ta sẽ viết lại <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/Dockerfile">Dockerfile</a> với FROM từ <a href="https://github.com/gitpod-io/workspace-images">workspace-full</a> của gitpod và cài cắm thêm các tool, cấu hình cần thiết cho mình.
 </p>
 </li>
 <li>
 <p>
-Viết thêm phần <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh">setup.sh</a> để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram
+Viết thêm phần <a href="https://github.com/TxGVNN/gitpod/blob/1bea0d2889784b0eb0dc39b0474122cda9c6aa97/setup.sh">setup.sh</a> để khởi động những gì ta cần. Cụ thế là chạy emacs daemon và tạo tmate session. Sau khi tạo tmate session thì gửi thông tin về session vào telegram.
 </p>
 </li>
 <li>
 <p>
-Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</code> ở trong Gitpod.io-&gt;Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web
+Cần cấu hình <code>TELEGRAM_BOT_TOKEN</code> và <code>TELEGRAM_CHAT_ID</code> ở trong Gitpod.io-&gt;Setting. Không cấu hình thì nó vẫn work bình thường. Mình sẽ xem session ở trên IDE ở bản web.
 </p>
 </li>
 <li>
 <p>
-Sau đó ta dùng Github action để build và push docker image tự động
+Sau đó ta dùng <a href="https://github.com/TxGVNN/gitpod/actions">Github action</a> để build và push docker image tự động.
 </p>
 </li>
 </ul>
@@ -177,12 +177,12 @@ Nhược điểm
 <ul>
 <li>
 <p>
-Vì chỉ có /workspace là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
+Vì chỉ có <code>/workspace</code> là phần được giữa lại mỗi lần bật tắt workspace nên nếu tool/data nào cài cắm ngoài thư mục này sẽ không còn. Nên nếu cần tool hay cài cắm gì, bạn cần build lại image hoặc có 1 cách nào đó dùng ngay ở /workspace (chroot, docker,..)
 </p>
 </li>
 <li>
 <p>
-Gitpod sử dụng file .gitpod.yml để định nghĩa workspace. Nhưng file này không được sửa nếu đã commit ở project. Nên nếu muốn sử dụng IDE của mình thì không được. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
+Gitpod sử dụng file <code>.gitpod.yml</code> để định nghĩa workspace. Nhưng file này không được sửa nếu đã commit ở project. Nên nếu muốn sử dụng IDE của mình thì không được. Vì dev env mỗi người chắc chắn sẽ khác nhau. Người dùng emacs, vim, notepad, vscode,.. Khả năng rồi gitpod sẽ cho custom riêng. (Đoán thế)
 </p>
 </li>
 </ul>
