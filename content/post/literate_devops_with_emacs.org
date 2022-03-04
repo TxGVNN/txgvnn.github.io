@@ -1,0 +1,11 @@
+---
+title: "Literate Devops with Emacs"
+date: 2022-03-04T07:27:19Z
+draft: true
+---
+
+Ví dụ như video này đây [[https://www.youtube.com/watch?v=dljNabciEGg][youtube.com/Literate Devops with Emacs]]
+
+* Sử dụng org-babel
+
+* Sử dụng [[http://angg.twu.net/#eev][eev]] package
