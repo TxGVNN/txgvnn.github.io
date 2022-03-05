@@ -93,12 +93,21 @@ docker-compose up
 #+end_src
 
 * Sử dụng [[http://angg.twu.net/#eev][eev]] package
+#+begin_src emacs-lisp
+(use-package eev
+  :ensure t :defer 1
+  :config (require 'eev-load)
+  (global-set-key (kbd "<f8>") #'eepitch-this-line)
+  (global-set-key (kbd "C-<f8>") #'eewrap-eepitch))
+#+end_src
+
 Một số bài toán phức tạp hơn thì ta cần dùng [[http://angg.twu.net/#eev][eev]]. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
 ~eev~ là giải pháp.
 
-Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên ~code~ sang bên ~shell~
+Khi dùng eev chạy ~(eepitch-shell)~ nó sẽ bật thêm 1 buffer shell. Và cứ nhấn f8 để nó copy từng dòng ở bên ~code~ sang bên ~shell~.
+Nó hỗ trợ rất nhiều loại để mình tương tác như ~eepitch-ansiterm~, ~eepitch-python~,...
 
-Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:
+Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server ~the-sun~ như sau:
 #+begin_src org
 
 * Resize disk to 40G
@@ -138,4 +147,4 @@ virsh list --all
 ,#+end_src
 #+end_src
 
-~eev~ thì thật cực kỳ linh động
+~eev~ thì thật cực kỳ linh động, có thể gọi là ~log as code~ hay ~code as log~ cũng được đấy nhỉ.
