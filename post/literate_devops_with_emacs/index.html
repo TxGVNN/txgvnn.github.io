@@ -201,12 +201,21 @@ Hoặc đơn giản là viết README cho dự án mà mình cũng chạy đư�
 Sử dụng <a href="http://angg.twu.net/#eev">eev</a> package
 </h2>
 <div id="outline-text-headline-7" class="outline-text-2">
-<p>Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
+<div class="src src-emacs-lisp">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-emacs-lisp" data-lang="emacs-lisp">(use-package eev
+  :ensure <span style="color:#66d9ef">t</span> :defer <span style="color:#ae81ff">1</span>
+  :config (require <span style="color:#e6db74">&#39;eev-load</span>)
+  (global-set-key (kbd <span style="color:#e6db74">&#34;&lt;f8&gt;&#34;</span>) <span style="color:#a6e22e">#&#39;</span>eepitch-this-line)
+  (global-set-key (kbd <span style="color:#e6db74">&#34;C-&lt;f8&gt;&#34;</span>) <span style="color:#a6e22e">#&#39;</span>eewrap-eepitch))</code></pre></div>
+</div>
+<p>
+Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
 <code>eev</code> là giải pháp.</p>
 <p>
-Mình bật 2 cửa sổ: 1 là code và 1 là shell. Và cứ nhấn f8 để nó copy từng dòng ở bên <code>code</code> sang bên <code>shell</code></p>
+Khi dùng eev chạy <code>(eepitch-shell)</code> nó sẽ bật thêm 1 buffer shell. Và cứ nhấn f8 để nó copy từng dòng ở bên <code>code</code> sang bên <code>shell</code>.
+Nó hỗ trợ rất nhiều loại để mình tương tác như <code>eepitch-ansiterm</code>, <code>eepitch-python</code>,…</p>
 <p>
-Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server `the-sun` như sau:</p>
+Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở server <code>the-sun</code> như sau:</p>
 <div class="src src-org">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">
 *<span style="font-weight:bold"> Resize disk to 40G</span>
@@ -246,7 +255,7 @@ virsh list --all
 <span style="color:#75715e">#+end_src</span></code></pre></div>
 </div>
 <p>
-<code>eev</code> thì thật cực kỳ linh động</p>
+<code>eev</code> thì thật cực kỳ linh động, có thể gọi là <code>log as code</code> hay <code>code as log</code> cũng được đấy nhỉ.</p>
 </div>
 </div>
 
