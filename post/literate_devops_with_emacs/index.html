@@ -175,13 +175,32 @@ Setup được trên các máy remote thông qua TRAMP như ssh
 </div>
 </div>
 </div>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Hoặc đơn giản là viết README cho dự án mà mình cũng chạy được luôn
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<p>Chúng ta có thể export <code>README.org</code> -&gt; <code>README.md</code></p>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">*<span style="font-weight:bold"> Build docker image</span>
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>make build-image
+<span style="color:#75715e">#+END_SRC</span>
+
+*<span style="font-weight:bold"> Chạy thử với docker-compose</span>
+<span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">compile</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>docker-compose up
+<span style="color:#75715e">#+END_SRC</span></code></pre></div>
 </div>
 </div>
-<div id="outline-container-headline-6" class="outline-2">
-<h2 id="headline-6">
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
 Sử dụng <a href="http://angg.twu.net/#eev">eev</a> package
 </h2>
-<div id="outline-text-headline-6" class="outline-text-2">
+<div id="outline-text-headline-7" class="outline-text-2">
 <p>Một số bài toán phức tạp hơn thì ta cần dùng <a href="http://angg.twu.net/#eev">eev</a>. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
 <code>eev</code> là giải pháp.</p>
 <p>
