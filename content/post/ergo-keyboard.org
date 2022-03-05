@@ -1,5 +1,5 @@
 ---
-title: "Builb bàn phím công thái học (ergo)"
+title: "Build bàn phím công thái học (ergo)"
 date: 2021-08-01T08:26:07+07:00
 tags: [keyboard, emacs]
 draft: false
