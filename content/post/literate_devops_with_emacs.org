@@ -78,6 +78,19 @@ apt-get install -y nginx
 ,#+END_SRC
 #+end_src
 
+** Hoặc đơn giản là viết README cho dự án mà mình cũng chạy được luôn
+Chúng ta có thể export ~README.org~ -> ~README.md~
+#+begin_src org
+* Build docker image
+,#+BEGIN_SRC sh
+make build-image
+,#+END_SRC
+
+* Chạy thử với docker-compose
+,#+BEGIN_SRC compile
+docker-compose up
+,#+END_SRC
+#+end_src
 
 * Sử dụng [[http://angg.twu.net/#eev][eev]] package
 Một số bài toán phức tạp hơn thì ta cần dùng [[http://angg.twu.net/#eev][eev]]. Cụ thể eev có tính năng như kmacro vậy. Ví dụ chúng ta cần mở terminal ssh qua vm1 rồi lại ssh qua vm2 rồi ssh vm3.
