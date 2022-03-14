@@ -10,5 +10,6 @@ draft: true
 ** Sử dụng straight
 - Ưu điểm về Reproducible builds
 ** Sử dụng guix để build
-** Sử dụng borg như tác giả magit
-** Customize luôn vào .emacs.d như doom-emacs
+** Sử dụng git modules
+** Sử dụng borg như tác giả của magit
+** Customize luôn vào .emacs.d
