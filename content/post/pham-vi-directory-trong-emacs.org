@@ -47,4 +47,4 @@ Trong trường hợp mình cần chạy function nào đó ở 1 thư mục kh�
 
 Ví dụ chạy ~ripgrep~ ở 1 thư mục khác như ~/usr/share/emacs/site-lisp~
 
-Mình sẽ sử dụng ~M-x find-file~ -> ~/usr/share/emacs/site-lisp~ -> chạy ~embark-act~ -> ~embark-chroot~ và chạy function mà mình muốn
+Mình sẽ sử dụng ~M-x find-file~ -> ~/usr/share/emacs/site-lisp~ -> chạy ~[[https://github.com/oantolin/embark][embark-act]]~ -> ~[[https://github.com/TxGVNN/dots/blob/929eb92b19d42b40dd39728a565b38cad9360eb4/.emacs#L146][embark-chroot]]~ và chạy function mà mình muốn
