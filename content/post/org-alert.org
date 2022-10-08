@@ -1,0 +1,30 @@
+---
+title: "Báo cháy với org-alert"
+date: 2022-10-08T11:30:51+07:00
+tags: [emacs, org]
+draft: false
+---
+
+* Cháy này là DEADLINE đó
+
+Trong bài trưóc mình đã viết về [[/post/su-dung-todo-list-de-quan-ly-cong-viec/][sử dụng Org-mode để quản lý công việc]]
+Thì ngoài việc tự tay check các task hàng ngày, thì chúng ta có thể sử dụng thêm tính năng alert
+
+* Vào việc luôn
+
+#+begin_src elisp
+(use-package org-alert
+  :ensure t
+  :config
+  (setq org-alert-interval 900         ;; 15phút báo cháy 1 lần
+        alert-default-style 'libnotify ;; mình sử dụng libnotify để bắn alert ra thẳng màn hình
+        org-alert-match-string         ;; Đoạn này mình có sửa thành DEADLINE < tomorrow. Để nó alert cả quá khứ đã quên
+        "SCHEDULED>=\"<today>\"+SCHEDULED<\"<tomorrow>\"|DEADLINE<\"<tomorrow>\""
+        org-alert-notification-title "Org Agenda")
+  :init
+  (run-with-idle-timer
+   0.1 nil
+   (lambda()
+     (_setup_org_files)                ;; Đoạn này mình load các file org của mình như `(setq org-agenda-files (quote ("~/.gxt/org")))'
+     (org-alert-enable))))
+#+end_src
