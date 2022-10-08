@@ -6,7 +6,17 @@
     <description>Recent content in Posts on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Fri, 04 Mar 2022 07:27:19 +0000</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Oct 2022 11:30:51 +0700</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Báo cháy với org-alert</title>
+      <link>/post/org-alert/</link>
+      <pubDate>Sat, 08 Oct 2022 11:30:51 +0700</pubDate>
+      
+      <guid>/post/org-alert/</guid>
+      <description>Cháy này là DEADLINE đó   Trong bài trưóc mình đã viết về sử dụng Org-mode để quản lý công việc Thì ngoài việc tự tay check các task hàng ngày, thì chúng ta có thể sử dụng thêm tính năng alert
+  Vào việc luôn  (use-package org-alert :ensure t :config (setq org-alert-interval 900 ;; 15phút báo cháy 1 lần alert-default-style &amp;#39;libnotify ;; mình sử dụng libnotify để bắn alert ra thẳng màn hình org-alert-match-string ;; Đoạn này mình có sửa thành DEADLINE &amp;lt; tomorrow.</description>
+    </item>
+    
     <item>
       <title>Literate Devops với Emacs</title>
       <link>/post/literate_devops_with_emacs/</link>
