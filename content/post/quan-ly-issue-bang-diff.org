@@ -1,0 +1,34 @@
+---
+title: "Quản lý issues bằng diff"
+date: 2022-12-31T23:25:21+07:00
+tags: [emacs, diff]
+draft: false
+---
+* Lý do
+Hiện tại mình đang làm việc trên ~Github/issues~.
+Vì các issue được tạo và cập nhật liên tục bởi mọi người, nên việc theo dõi khá khó khăn và mất thời gian.
+
+Vì quen làm việc với diff, nên mình muốn đưa về text và dùng diff để view/review issue một cách hiểu quả.
+
+* Triển khai
+
+** Emacs
+Vì dùng trên emacs, nên mình có gói [[https://github.com/magit/forge][forge]] để kéo issues về thành text, chỉ cần việc lưu lại các issue này thành các file text.
+Rồi dùng git để quản lý các issue.
+
+~forge~ còn cho mình tương tác với issue trực tiếp trên Emacs.
+
+** API
+
+Cách khác là dùng api để kéo issue về lưu thành text rồi dùng git để quản lý.
+
+
+* Ưu nhược
+
+** Ưu
+- Review chính xác từng chữ một khi ai đó chỉnh sửa các post.
+- Có thể có 1 góc nhìn toàn bộ về tất cả issue khi mình nhìn toàn bộ bản update (diff).
+
+** Nhược
+- Tuỳ thuộc vào thời gian kéo issue mà có thể bị miss thông tin (thêm rồi xoá).
+- Mất công setup hơn là vào web rồi click.
