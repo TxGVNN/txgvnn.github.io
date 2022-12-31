@@ -6,7 +6,18 @@
     <description>Recent content in emacs on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Sat, 08 Oct 2022 11:30:51 +0700</lastBuildDate><atom:link href="/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 31 Dec 2022 23:25:21 +0700</lastBuildDate><atom:link href="/tags/emacs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý issues bằng diff</title>
+      <link>/post/quan-ly-issue-bang-diff/</link>
+      <pubDate>Sat, 31 Dec 2022 23:25:21 +0700</pubDate>
+      
+      <guid>/post/quan-ly-issue-bang-diff/</guid>
+      <description>Lý do  Hiện tại mình đang làm việc trên Github/issues. Vì các issue được tạo và cập nhật liên tục bởi mọi người, nên việc theo dõi khá khó khăn và mất thời gian.
+ Vì quen làm việc với diff, nên mình muốn đưa về text và dùng diff để view/review issue một cách hiểu quả.
+  Triển khai  Emacs  Vì dùng trên emacs, nên mình có gói forge để kéo issues về thành text, chỉ cần việc lưu lại các issue này thành các file text.</description>
+    </item>
+    
     <item>
       <title>Báo cháy với org-alert</title>
       <link>/post/org-alert/</link>

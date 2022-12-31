@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Quản lý issues bằng diff | MẤY KHI MẤY KHỈ</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Quản lý issues bằng diff" />
+<meta property="og:description" content="Lý do  Hiện tại mình đang làm việc trên Github/issues. Vì các issue được tạo và cập nhật liên tục bởi mọi người, nên việc theo dõi khá khó khăn và mất thời gian.
+ Vì quen làm việc với diff, nên mình muốn đưa về text và dùng diff để view/review issue một cách hiểu quả.
+  Triển khai  Emacs  Vì dùng trên emacs, nên mình có gói forge để kéo issues về thành text, chỉ cần việc lưu lại các issue này thành các file text." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/quan-ly-issue-bang-diff/" />
+<meta property="article:published_time" content="2022-12-31T23:25:21+07:00" />
+<meta property="article:modified_time" content="2022-12-31T23:25:21+07:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quản lý issues bằng diff"/>
+<meta name="twitter:description" content="Lý do  Hiện tại mình đang làm việc trên Github/issues. Vì các issue được tạo và cập nhật liên tục bởi mọi người, nên việc theo dõi khá khó khăn và mất thời gian.
+ Vì quen làm việc với diff, nên mình muốn đưa về text và dùng diff để view/review issue một cách hiểu quả.
+  Triển khai  Emacs  Vì dùng trên emacs, nên mình có gói forge để kéo issues về thành text, chỉ cần việc lưu lại các issue này thành các file text."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="/">
+  
+    <div id="logo" style="background-image: url(https://avatars.githubusercontent.com/u/9713793?s=64)"></div>
+  
+  <div id="title">
+    <h1>MẤY KHI MẤY KHỈ</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+        <li><a href="/post/intro">Intro</a></li>
+      
+        <li><a href="/post">Writings</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Lý do
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>Hiện tại mình đang làm việc trên <code>Github/issues</code>.
+Vì các issue được tạo và cập nhật liên tục bởi mọi người, nên việc theo dõi khá khó khăn và mất thời gian.</p>
+<p>
+Vì quen làm việc với diff, nên mình muốn đưa về text và dùng diff để view/review issue một cách hiểu quả.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-2">
+<h2 id="headline-2">
+Triển khai
+</h2>
+<div id="outline-text-headline-2" class="outline-text-2">
+<div id="outline-container-headline-3" class="outline-3">
+<h3 id="headline-3">
+Emacs
+</h3>
+<div id="outline-text-headline-3" class="outline-text-3">
+<p>Vì dùng trên emacs, nên mình có gói <a href="https://github.com/magit/forge">forge</a> để kéo issues về thành text, chỉ cần việc lưu lại các issue này thành các file text.
+Rồi dùng git để quản lý các issue.</p>
+<p>
+<code>forge</code> còn cho mình tương tác với issue trực tiếp trên Emacs.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
+<h3 id="headline-4">
+API
+</h3>
+<div id="outline-text-headline-4" class="outline-text-3">
+<p>
+Cách khác là dùng api để kéo issue về lưu thành text rồi dùng git để quản lý.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
+Ưu nhược
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Ưu
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ul>
+<li>
+<p>Review chính xác từng chữ một khi ai đó chỉnh sửa các post.</p>
+</li>
+<li>
+<p>Có thể có 1 góc nhìn toàn bộ về tất cả issue khi mình nhìn toàn bộ bản update (diff).</p>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+Nhược
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<ul>
+<li>
+<p>Tuỳ thuộc vào thời gian kéo issue mà có thể bị miss thông tin (thêm rồi xoá).</p>
+</li>
+<li>
+<p>Mất công setup hơn là vào web rồi click.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2022  MẤY KHI MẤY KHỈ 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/post/intro">Intro</a></li>
+         
+        <li><a href="/post">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>
