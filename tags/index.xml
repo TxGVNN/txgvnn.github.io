@@ -6,22 +6,31 @@
     <description>Recent content in Tags on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Sat, 31 Dec 2022 23:25:21 +0700</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Feb 2023 02:51:36 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>emacs</title>
+      <link>/tags/emacs/</link>
+      <pubDate>Sun, 12 Feb 2023 02:51:36 +0000</pubDate>
+      
+      <guid>/tags/emacs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>guix</title>
+      <link>/tags/guix/</link>
+      <pubDate>Sun, 12 Feb 2023 02:51:36 +0000</pubDate>
+      
+      <guid>/tags/guix/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>diff</title>
       <link>/tags/diff/</link>
       <pubDate>Sat, 31 Dec 2022 23:25:21 +0700</pubDate>
       
       <guid>/tags/diff/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>emacs</title>
-      <link>/tags/emacs/</link>
-      <pubDate>Sat, 31 Dec 2022 23:25:21 +0700</pubDate>
-      
-      <guid>/tags/emacs/</guid>
       <description></description>
     </item>
     
@@ -40,15 +49,6 @@
       <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
       <guid>/tags/stateless/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>guix</title>
-      <link>/tags/guix/</link>
-      <pubDate>Sat, 18 Sep 2021 09:12:56 +0700</pubDate>
-      
-      <guid>/tags/guix/</guid>
       <description></description>
     </item>
     

@@ -6,7 +6,17 @@
     <description>Recent content on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Sat, 31 Dec 2022 23:25:21 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Feb 2023 02:51:36 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý cấu hình Emacs với Guix</title>
+      <link>/post/quan-ly-cau-hinh-emacs-voi-guix/</link>
+      <pubDate>Sun, 12 Feb 2023 02:51:36 +0000</pubDate>
+      
+      <guid>/post/quan-ly-cau-hinh-emacs-voi-guix/</guid>
+      <description>Lý do  Emacs hay Vim thì tính cá nhân hoá rất cao. Để cá nhân hoá cao thì mình phải có bộ config của riêng mình. Ngoài các config về cài đặt thì mình có thể sửa đổi (patch) các package cho vừa ý mình. Vì thế mà mình sẽ phải maintain các bản sửa đổi.
+  Các ý tưởng  Git luôn .emacs.d/elpa  Tức mình có thể dùng package.</description>
+    </item>
+    
     <item>
       <title>Quản lý issues bằng diff</title>
       <link>/post/quan-ly-issue-bang-diff/</link>
