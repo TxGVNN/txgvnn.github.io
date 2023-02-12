@@ -48,7 +48,7 @@ Nên ta làm theo và tạo ra 1 cái và mình đặt tên là [[https://github
   Có thể tham khảo [[https://github.com/TxGVNN/gitpod][TxGVNN/gitpod]] nơi mình build ra một bản để dùng trên Gitpod.io
 - Không dùng Guix thì vẫn kéo dotfiles về, Emacs sẽ cài package từ kho [[https://github.com/TxGVNN/giaelpa][TxGVNN/giaelpa]] mình đã xuất ở trên nhưng không đi kèm các thư viện, emacs version được
 - Xuất file deb cho Debian cài
-  ~guix package -f deb ...~
+  ~guix pack --format=deb ...~
 ** Công việc tiếp theo
 Vẫn còn khá khá việc để nghịch
 - Tích hợp dotfiles vào luôn ~Guix Channel~ hoặc tạo cái gọi là ~Guix Profile/Home~
