@@ -1,0 +1,55 @@
+---
+title: "Quản lý cấu hình Emacs với Guix"
+date: 2023-02-12T02:51:36Z
+tags: [emacs, guix]
+draft: false
+
+---
+* Lý do
+Emacs hay Vim thì tính cá nhân hoá rất cao. Để cá nhân hoá cao thì mình phải có bộ config của riêng mình.
+Ngoài các config về cài đặt thì mình có thể sửa đổi (patch) các package cho vừa ý mình. Vì thế mà mình sẽ phải maintain các bản sửa đổi.
+
+* Các ý tưởng
+** Git luôn .emacs.d/elpa
+Tức mình có thể dùng package.el để cài đặt trưóc, sau đó dùng git để quản lý toàn bộ ~~/.emacs.d/elpa~
+như doom-emacs
+** Sử dụng straight
+Ý tưởng của [[https://github.com/radian-software/straight.el][straight.el]] là khai báo trực tiếp link của source code và kéo về build. Không rõ là có thể patch mã luôn không
+- Ưu điểm: Reproducible builds
+- Nhược điểm: lúc kéo về toàn bộ lâu hơn so với dùng built-in package.el
+** Sử dụng borg như tác giả magit
+Ý tưởng của [[https://emacsmirror.net/manual/borg/][borg]] là dùng dạng submodule, sau mình patch thì mình đẩy lên repo của mình.
+Nhược điểm chắc sẽ là quản lý nhiều repo nếu mình patch nhiều packages.
+** Sử dụng GNU Guix
+Khi biết đến Guix, mình đã nghĩ ngay việc dùng Guix để quản lý package.
+Vì nó reproducible như straight, mà lại quản lý pacthes tập trung bằng các bản vá diff rất rõ ràng.
+
+* Lựa chọn Guix
+Sau khi xem xét nhiều ý tưởng/tools. Mình đã chọn ~Guix~ để quản lý emacs packages.
+** Ưu điểm
+- Các bản vá được lưu trữ tập trung, tường minh (diff file)
+- Tính reproducible cao (100%), mình có thể rollback bất kỳ điểm commit nào (Guix gọi là du hành thời gian)
+- Dễ dàng tính hợp các công cụ/thư viện bên ngoài mà package đó cần. Ví dụ như vterm, telega(Telegram client) hay tree-sitter
+- Xây dựng được kho ELPA cá nhân, mình đã build ở [[https://github.com/TxGVNN/giaelpa][TxGVNN/giaelpa]]
+- Config với use-package vẫn làm việc bình thường, không thay đổi. Ngay cả đối với các máy không dùng Guix
+- Còn xuất được Debian package (deb) để cài đặt toàn bộ từ emacs, libs, packages giống hệt
+- Khi mà cloud IDE càng nhiều (Gitpod, Codespace), thì Guix giúp mình tạo ra một môi trường đồng nhất (emacs, libs, packages như nhau)
+
+** Nhược điểm
+- Nặng và chậm hơn (không sao)
+
+* Triển khai
+Để triển khai thì Guix cung cấp khái niệm gọi là [[ https://guix.gnu.org/manual/en/html_node/Channels.html][Guix Channel]]. Nó giống như ~AUR bên Arch~ hay kho ~APT bên Debian~.
+Nên ta làm theo và tạo ra 1 cái và mình đặt tên là [[https://github.com/TxGVNN/guxti][TxGVNN/guxti]]
+Để có thể sử dụng hiện có 3 cách
+- Sử dụng Guix thì cài đặt channel này, rồi kéo [[https://github.com/TxGVNN/dots][TxGVNN/dots]] về là cài thôi
+  + Cài đặt guix, guix channel này
+  + ~guix pull~ và ~guix package~ để cài đặt
+  Có thể tham khảo [[https://github.com/TxGVNN/gitpod][TxGVNN/gitpod]] nơi mình build ra một bản để dùng trên Gitpod.io
+- Không dùng Guix thì vẫn kéo dotfiles về, Emacs sẽ cài package từ kho [[https://github.com/TxGVNN/giaelpa][TxGVNN/giaelpa]] mình đã xuất ở trên nhưng không đi kèm các thư viện, emacs version được
+- Xuất file deb cho Debian cài
+  ~guix package -f deb ...~
+** Công việc tiếp theo
+Vẫn còn khá khá việc để nghịch
+- Tích hợp dotfiles vào luôn ~Guix Channel~ hoặc tạo cái gọi là ~Guix Profile/Home~
+- Build cho cả codespace Github
