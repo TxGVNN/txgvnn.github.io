@@ -1,0 +1,152 @@
+---
+title: "Dtach"
+date: 2023-07-08T11:50:22+07:00
+tags: [emacs, term]
+draft: false
+---
+
+* Trực chỉ nhân tâm - Đi thẳng vô vấn đề
+- Nhớ năm xưa, khi còn vọc i3 khá nhiều, còn thường restart luôn cả window manager. Mình hay bị lost các terminal đang chạy các process cần thiết.
+- Đi làm để máy bật ở công ty qua đêm, về nhà thì cần ssh vô máy ở công ty, cần connect lại các process đang chạy trên terminal (Case này thì dùng vnc cũng được, nhưng mình thích terminal hơn nhiều)
+
+Mình cần một chương trình để giữ các process mỗi khi một terminal được khởi chạy mới.
+
+Tất nhiên là mình đang dùng ~screen~ và ~tmux~ cho các session mình cần, nhưng thấy nó phức tạp so với chức năng của mình cần.
+
+Chức năng cần thì càng KISS càng tốt:
+- Chỉ cần attach và không cần detach ở trong chính session đó
+- Cũng không cần multi-session.
+- Không một phím tắt nào để tương tác với trình quản lý này
+
+Và ~dtach - simple program that emulates the detach feature of screen.~ đã được mình phát hiện. (Một phát hiện mang tính chiến lược.)
+
+* Sử dụng
+Mỗi lần bật terminal, mình sẽ bật terminal và chạy ~dtach~ luôn, vì thế mà rất trong suốt với người dùng.
+
+Viết 1 cái script như sau:
+- ~~/.i3/bin/dtach~
+#+begin_src sh
+#!/usr/bin/env bash
+WS=$(i3-msg -t get_workspaces   | jq '.[] | select(.focused==true).num')
+urxvt -e dtach -A "/tmp/.${LOGNAME}_term_${WS}.dtach" -E -z bash -l
+#+end_src
+
+#+begin_src markdown
+------- ChatGPT(modified):
+
+Dòng 1: Gán biến WS bằng kết quả của lệnh "i3-msg -t get_workspaces"
+sau đó dùng jq để lọc và chọn workspace đang được focus và lấy số của nó.
+
+Dòng 2: Dùng lệnh urxvt để mở terminal và thực thi lệnh dtach với tùy
+chọn "-A" để liên kết vào một session tồn tại (nếu có hoặc tạo mới nếu
+chưa tồn tại), tên session được đặt tên theo user (LOGNAME), workspace hiện
+tại (WS) và đuôi ".dtach".
+-E là tắt phím detach.
+-z là tắt phím suspend, tức là bấm C-z không có hiệu lực lên dtach, mà lên chương trình chạy bên trong.
+Lếnh bash -l để chạy một shell bash login
+#+end_src
+
+Tiếp theo là gắn cho phím mở terminal bằng script này
+- ~~/.i3/config~
+#+begin_src diff
+ # start a terminal
+-bindsym $mod+Return exec i3-sensible-terminal
++bindsym $mod+Return exec ~/.i3/bin/dtach
+#+end_src
+
+Vì là mặc định giờ sẽ luôn bật terminal và chạy ~dtach~ luôn. Nên sẽ cần 1 cái phím khác để chạy thuần terminal để có thể attach vào các session đã tốn tại.
+Nên mình thêm 1 config mới
+
+#+begin_src diff
+ # start a terminal
+ bindsym $mod+Return exec ~/.i3/bin/dtach
++bindsym $mod+Shift+Return exec i3-sensible-terminal
+#+end_src
+
+** Khi nào thì attach vào
+Như bài toán đã đề ra, khi lỡ bị đóng mất cái terminal hoặc cần attach khi ở trong SSH thì rất dễ để attach lại session cũ.
+
+#+begin_src bash
+dtach -A /tmp/SESSION_PATH.dtach -E -z bash -l
+#+end_src
+
+* Tích hợp với Emacs
+Vấn đề tương tự nảy sinh với Emacs, đó là Emacs sẽ crash nếu mình làm việc/phá quá nhiều. Và khi crash ta lại mất các process đang chạy trong các shell của Emacs.
+Thế là mình biết 1 cái command như sau.
+#+begin_src elisp
+(defun shell-dtach ()
+  "Start dtach in shell."
+  (interactive)
+  (let* ((explicit-shell-file-name "dtach")
+         (file-name (concat "/tmp/"
+                            (replace-regexp-in-string
+                             "/" "~" default-directory) ".dtach"))
+         (explicit-dtach-args `("-A" ,file-name "-z"
+                                "/bin/bash" "--noediting" "-login")))
+    (shell (format "*dtach:%s*" default-directory))))
+
+#+end_src
+
+Thấy việc này có vẻ sẽ hay ho để viết 1 cái gói Emacs để tương tác với dtach.
+Thật may đúng thời điểm đó đã có 1 người giới thiệu một gói. https://sr.ht/~niklaseklund/detached.el như một định mệnh.
+
+Hm, lúc mới thử thì mình chưa thấy nó match với cái mình cần, hoặc do chưa biết dùng, nên chưa sử dụng.
+Bẵng đi một thời gian, thì gói này càng phát triển, và còn được release trên ~https://elpa.gnu.org/packages/~ luôn.
+Mình quay trở lại và dùng thử, ngon rồi đây. Đây cũng chính là triết lý sống ~Do nothing~ nằm yên đợi tùy duyên =))
+
+
+Mình đã config nó vào Emacs của mình [[https://github.com/TxGVNN/dots/blob/52d4cdeb7b2c340cb4883e7541deda904e6a7f3e/.emacs#L780][TxGVNN/dots:.emacs#detached]]. Và sau một thời gian mình patch thêm 1 số cái [[https://github.com/TxGVNN/guxti/blob/8d8a4ce0ea4ddea315454866262cbdda9741b6ee/guxti/packages/emacs-xyz.scm#L396][TxGVNN/guxti:guxti/packages/emacs-xyz.scm#L396]]. Chắc sẽ patch thêm 1 số cái mà mình thấy đang cần, như re-run chưa load lại env từ direnv.
+** Attach lại trên terminal
+
+Gói ~detached~ trên Emacs đã giải quyết bài toán rất ngon, nhưng giờ mình lại cần attach lại các session này (ở Emacs) lên terminal.
+Thế thì phải viết thêm 1 số mã, sử dụng Emacs làm interface để mà chọn session cần attach.
+
+- ~/.emacs.d/init.el
+
+#+begin_src elisp
+(defun detached-attach-session-to-copy-xclip (session)
+  "Attach to SESSION."
+  (interactive
+   (list (detached-session-in-context)))
+  (when (and session
+             (detached--valid-dtach-executable-p session))
+    (let ((initialized-session (detached--get-initialized-session session)))
+      (if (detached-session-inactive-p initialized-session)
+          (detached-open-session initialized-session))
+      (setq command (detached-session-attach-command session :type 'string))
+      (xclip-set-selection 'primary command))))
+#+end_src
+
+Với ~detached-attach-session-to-copy-xclip~, Emacs sẽ hiện danh sách các session, sau đó thì mình chọn 1 cái.
+Tiếp đến là copy nó vào trong primary keyboard bởi xclip
+
+- /usr/local/bin/detached
+
+#+begin_src bash
+#!/usr/bin/env bash
+EMACS_SOCKET=${EMACS_SOCKET:-"server"}
+emacsclient -nw -s $EMACS_SOCKET --eval "(call-interactively 'detached-attach-session-to-copy-xclip)" --eval "(call-interactively 'save-buffers-kill-terminal)"
+xdotool key --clearmodifiers Shift+Insert
+#+end_src
+
+Triệu hồi chatgpt
+#+begin_src md
+
+------- assistant:
+
+EMACS_SOCKET=${EMACS_SOCKET:-"server"}
+# Gán biến EMACS_SOCKET giá trị mặc định là "server" nếu nó chưa được đặt trước đó
+
+emacsclient -nw -s $EMACS_SOCKET --eval "(call-interactively 'detached-attach-session-to-copy-xclip)" --eval "(call-interactively 'save-buffers-kill-terminal)"
+# Sử dụng emacsclient để gửi các lệnh tới emacs đã chạy sẵn.
+# -nw: Chế độ không hiển thị cửa sổ Emacs
+# -s $EMACS_SOCKET: Kết nối đến Emacs qua ổ định socket $EMACS_SOCKET
+# --eval "(call-interactively 'detached-attach-session-to-copy-xclip)": Gọi hàm "detached-attach-session-to-copy-xclip" trong Emacs
+# --eval "(call-interactively 'save-buffers-kill-terminal)": Gọi hàm "save-buffers-kill-terminal" trong Emacs
+
+xdotool key --clearmodifiers Shift+Insert
+# Gửi sự kiện bàn phím "Shift+Insert" bằng công cụ xdotool, với tùy chọn để xóa bỏ các phím modifier hiện tại.
+
+#+end_src
+* Ghi chú
+Do mình không cần phím detach nào trong dtach session(~-E   Disables the detach character~). Nên lúc cần detach thì đơn giản là tìm đến process của dtach đó và gửi signal ~HUP~ tới process đó.
