@@ -6,7 +6,17 @@
     <description>Recent content on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Sun, 12 Feb 2023 02:51:36 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 08 Jul 2023 11:50:22 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dtach</title>
+      <link>/post/dtach/</link>
+      <pubDate>Sat, 08 Jul 2023 11:50:22 +0700</pubDate>
+      
+      <guid>/post/dtach/</guid>
+      <description>Trực chỉ nhân tâm - Đi thẳng vô vấn đề    Nhớ năm xưa, khi còn vọc i3 khá nhiều, còn thường restart luôn cả window manager. Mình hay bị lost các terminal đang chạy các process cần thiết.
+  Đi làm để máy bật ở công ty qua đêm, về nhà thì cần ssh vô máy ở công ty, cần connect lại các process đang chạy trên terminal (Case này thì dùng vnc cũng được, nhưng mình thích terminal hơn nhiều)</description>
+    </item>
+    
     <item>
       <title>Quản lý cấu hình Emacs với Guix</title>
       <link>/post/quan-ly-cau-hinh-emacs-voi-guix/</link>
