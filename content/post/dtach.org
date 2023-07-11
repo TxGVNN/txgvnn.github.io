@@ -11,7 +11,7 @@ draft: false
 
 Mình cần một chương trình để giữ các process mỗi khi một terminal được khởi chạy mới.
 
-Tất nhiên là mình đang dùng ~screen~ và ~tmux~ cho các session mình cần, nhưng thấy nó phức tạp so với chức năng của mình cần.
+Tất nhiên là mình đang dùng ~screen~ và ~tmux~ cho các session chính mình cần, nhưng trong trường hợp này, mình muốn nó thật đơn giản vì muốn áp dụng cho toàn bộ các terminal được bật.
 
 Chức năng cần thì càng KISS càng tốt:
 - Chỉ cần attach và không cần detach ở trong chính session đó
