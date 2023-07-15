@@ -28,7 +28,7 @@ Viết 1 cái script như sau:
 #+begin_src sh
 #!/usr/bin/env bash
 WS=$(i3-msg -t get_workspaces   | jq '.[] | select(.focused==true).num')
-urxvt -e dtach -A "/tmp/.${LOGNAME}_term_${WS}.dtach" -E -z bash -l
+urxvt -e dtach -A "/tmp/.${LOGNAME}_term_${WS}_$(date +%s).dtach" -E -z bash -l
 #+end_src
 
 #+begin_src markdown
@@ -40,7 +40,7 @@ sau đó dùng jq để lọc và chọn workspace đang được focus và lấ
 Dòng 2: Dùng lệnh urxvt để mở terminal và thực thi lệnh dtach với tùy
 chọn "-A" để liên kết vào một session tồn tại (nếu có hoặc tạo mới nếu
 chưa tồn tại), tên session được đặt tên theo user (LOGNAME), workspace hiện
-tại (WS) và đuôi ".dtach".
+tại (WS) và timestamp và đuôi ".dtach".
 -E là tắt phím detach.
 -z là tắt phím suspend, tức là bấm C-z không có hiệu lực lên dtach, mà lên chương trình chạy bên trong.
 Lếnh bash -l để chạy một shell bash login
@@ -69,6 +69,33 @@ Như bài toán đã đề ra, khi lỡ bị đóng mất cái terminal hoặc c
 #+begin_src bash
 dtach -A /tmp/SESSION_PATH.dtach -E -z bash -l
 #+end_src
+
+Đoạn này để tiện cho việc chạy thì viết thêm 1 cái wrapper script như sau:
+
+- ~/usr/local/bin/dtacha~
+#+begin_src bash
+#!/usr/bin/env bash
+dtach -A $1 -E -z bash -l
+#+end_src
+
+- ~/etc/bash_completion.d/dtacha~
+#+begin_src bash
+_dtacha(){
+    if [ -z "$TMPDIR" ]; then
+        export TMPDIR=/tmp
+    fi
+    local cur prev words cword opts
+    _get_comp_words_by_ref -n : cur prev words cword
+    COMPREPLY=()
+    opts=""
+    if [[ ${cword} -eq 1 ]];then
+        opts=$(find "$TMPDIR" -name ".*term*" 2>/dev/null)
+    fi
+    COMPREPLY=( $(compgen -W "$opts" -- "${cur}"))
+}
+complete -F _dtacha dtacha
+#+end_src
+
 
 * Tích hợp với Emacs
 Vấn đề tương tự nảy sinh với Emacs, đó là Emacs sẽ crash nếu mình làm việc/phá quá nhiều. Và khi crash ta lại mất các process đang chạy trong các shell của Emacs.
