@@ -125,7 +125,7 @@ Viết 1 cái script như sau:</p>
 <div class="src src-sh">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e">#!/usr/bin/env bash
 </span><span style="color:#75715e"></span>WS<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>i3-msg -t get_workspaces   | jq <span style="color:#e6db74">&#39;.[] | select(.focused==true).num&#39;</span><span style="color:#66d9ef">)</span>
-urxvt -e dtach -A <span style="color:#e6db74">&#34;/tmp/.</span><span style="color:#e6db74">${</span>LOGNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">_term_</span><span style="color:#e6db74">${</span>WS<span style="color:#e6db74">}</span><span style="color:#e6db74">.dtach&#34;</span> -E -z bash -l</code></pre></div>
+urxvt -e dtach -A <span style="color:#e6db74">&#34;/tmp/.</span><span style="color:#e6db74">${</span>LOGNAME<span style="color:#e6db74">}</span><span style="color:#e6db74">_term_</span><span style="color:#e6db74">${</span>WS<span style="color:#e6db74">}</span><span style="color:#e6db74">_</span><span style="color:#66d9ef">$(</span>date +%s<span style="color:#66d9ef">)</span><span style="color:#e6db74">.dtach&#34;</span> -E -z bash -l</code></pre></div>
 </div>
 <div class="src src-markdown">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">------- ChatGPT(modified):
@@ -136,7 +136,7 @@ sau đó dùng jq để lọc và chọn workspace đang được focus và lấ
 Dòng 2: Dùng lệnh urxvt để mở terminal và thực thi lệnh dtach với tùy
 chọn &#34;-A&#34; để liên kết vào một session tồn tại (nếu có hoặc tạo mới nếu
 chưa tồn tại), tên session được đặt tên theo user (LOGNAME), workspace hiện
-tại (WS) và đuôi &#34;.dtach&#34;.
+tại (WS) và timestamp và đuôi &#34;.dtach&#34;.
 -E là tắt phím detach.
 -z là tắt phím suspend, tức là bấm C-z không có hiệu lực lên dtach, mà lên chương trình chạy bên trong.
 Lếnh bash -l để chạy một shell bash login</code></pre></div>
