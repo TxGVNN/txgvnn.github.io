@@ -172,6 +172,38 @@ Khi nào thì attach vào
 <div class="src src-bash">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">dtach -A /tmp/SESSION_PATH.dtach -E -z bash -l</code></pre></div>
 </div>
+<p>
+Đoạn này để tiện cho việc chạy thì viết thêm 1 cái wrapper script như sau:</p>
+<ul>
+<li>
+<p><code>/usr/local/bin/dtacha</code></p>
+</li>
+</ul>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#!/usr/bin/env bash
+</span><span style="color:#75715e"></span>dtach -A $1 -E -z bash -l</code></pre></div>
+</div>
+<ul>
+<li>
+<p><code>/etc/bash_completion.d/dtacha</code></p>
+</li>
+</ul>
+<div class="src src-bash">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">_dtacha<span style="color:#f92672">(){</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -z <span style="color:#e6db74">&#34;</span>$TMPDIR<span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+        export TMPDIR<span style="color:#f92672">=</span>/tmp
+    <span style="color:#66d9ef">fi</span>
+    local cur prev words cword opts
+    _get_comp_words_by_ref -n : cur prev words cword
+    COMPREPLY<span style="color:#f92672">=()</span>
+    opts<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[[</span> <span style="color:#e6db74">${</span>cword<span style="color:#e6db74">}</span> -eq <span style="color:#ae81ff">1</span> <span style="color:#f92672">]]</span>;<span style="color:#66d9ef">then</span>
+        opts<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>find <span style="color:#e6db74">&#34;</span>$TMPDIR<span style="color:#e6db74">&#34;</span> -name <span style="color:#e6db74">&#34;.*term*&#34;</span> 2&gt;/dev/null<span style="color:#66d9ef">)</span>
+    <span style="color:#66d9ef">fi</span>
+    COMPREPLY<span style="color:#f92672">=(</span> <span style="color:#66d9ef">$(</span>compgen -W <span style="color:#e6db74">&#34;</span>$opts<span style="color:#e6db74">&#34;</span> -- <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>cur<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span><span style="color:#f92672">)</span>
+<span style="color:#f92672">}</span>
+complete -F _dtacha dtacha</code></pre></div>
+</div>
 </div>
 </div>
 </div>
