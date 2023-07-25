@@ -219,40 +219,40 @@ Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở s
 <div class="src src-org">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org">
 *<span style="font-weight:bold"> Resize disk to 40G</span>
-<span style="color:#75715e">#+begin_src </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :eval no
-</span><span style="color:#75715e"></span><span style="color:#75715e"># (eepitch-shell)</span>
-<span style="color:#75715e"># (eepitch-kill)</span>
-<span style="color:#75715e"># (eepitch-shell)</span>
-ssh root@the-sun
+<span style="color:#75715e">  #+begin_src </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :eval no
+</span><span style="color:#75715e"></span>  <span style="color:#75715e"># (eepitch-shell)</span>
+  <span style="color:#75715e"># (eepitch-kill)</span>
+  <span style="color:#75715e"># (eepitch-shell)</span>
+  ssh root@the-sun
 
-virsh start base
+  virsh start base
 
-cat &gt; /tmp/disk.yaml <span style="color:#e6db74">&lt;&lt; EOF
-</span><span style="color:#e6db74">&lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
-</span><span style="color:#e6db74">  &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;
-</span><span style="color:#e6db74">  &lt;source file=&#39;/var/lib/libvirt/images/disk-can-resize.img&#39;/&gt;
-</span><span style="color:#e6db74">  &lt;target dev=&#39;vdb&#39; bus=&#39;virtio&#39;/&gt;
-</span><span style="color:#e6db74">&lt;/disk&gt;
-</span><span style="color:#e6db74">EOF</span>
+  cat &gt; /tmp/disk.yaml <span style="color:#e6db74">&lt;&lt; EOF
+</span><span style="color:#e6db74">  &lt;disk type=&#39;file&#39; device=&#39;disk&#39;&gt;
+</span><span style="color:#e6db74">    &lt;driver name=&#39;qemu&#39; type=&#39;qcow2&#39;/&gt;
+</span><span style="color:#e6db74">    &lt;source file=&#39;/var/lib/libvirt/images/disk-can-resize.img&#39;/&gt;
+</span><span style="color:#e6db74">    &lt;target dev=&#39;vdb&#39; bus=&#39;virtio&#39;/&gt;
+</span><span style="color:#e6db74">  &lt;/disk&gt;
+</span><span style="color:#e6db74">  EOF</span>
 
-virsh attach-device base /tmp/disk.yaml
+  virsh attach-device base /tmp/disk.yaml
 
-virsh console base <span style="color:#75715e"># Đoạn này sẽ phải nhảy sang shell để nhập pass</span>
+  virsh console base <span style="color:#75715e"># Đoạn này sẽ phải nhảy sang shell để nhập pass</span>
 
-lsblk
-parted /dev/vdb
-resizepart <span style="color:#ae81ff">1</span> 40GB
-quit
+  lsblk
+  parted /dev/vdb
+  resizepart <span style="color:#ae81ff">1</span> 40GB
+  quit
 
-e2fsck -f /dev/vdb1
-resize2fs -p /dev/vdb1
+  e2fsck -f /dev/vdb1
+  resize2fs -p /dev/vdb1
 
-^<span style="color:#f92672">]</span> <span style="color:#75715e"># Đoạn này để thoát virsh console</span>
+  ^<span style="color:#f92672">]</span> <span style="color:#75715e"># Đoạn này để thoát virsh console</span>
 
-virsh shutdown base
+  virsh shutdown base
 
-virsh list --all
-<span style="color:#75715e">#+end_src</span></code></pre></div>
+  virsh list --all
+<span style="color:#75715e">  #+end_src</span></code></pre></div>
 </div>
 <p>
 <code>eev</code> thì thật cực kỳ linh động, có thể gọi là <code>log as code</code> hay <code>code as log</code> cũng được đấy nhỉ.</p>

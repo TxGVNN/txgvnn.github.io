@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workflow on MẤY KHI MẤY KHỈ</title>
+    <link>/tags/workflow/</link>
+    <description>Recent content in workflow on MẤY KHI MẤY KHỈ</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>vi-vn</language>
+    <lastBuildDate>Tue, 18 Jul 2023 23:20:25 +0700</lastBuildDate><atom:link href="/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý tasks trong project</title>
+      <link>/post/project-tasks/</link>
+      <pubDate>Tue, 18 Jul 2023 23:20:25 +0700</pubDate>
+      
+      <guid>/post/project-tasks/</guid>
+      <description>Bài toán  Trong quá trình làm việc với các project, chúng ta thường phải build, chạy, rồi test, rồi debug, đủ thể loại thao tác/tương tác cần phải làm. Với mỗi project khác nhau thì các công việc này cũng hoàn toàn khác nhau.
+Trưóc khi nghĩ cách    Nhớ lại quá khứ từng làm như nào, rồi làm lại
+  Đọc docs xem làm như nào</description>
+    </item>
+    
+  </channel>
+</rss>
