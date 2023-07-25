@@ -1,0 +1,76 @@
+---
+title: "Quản lý tasks trong project"
+tags: [emacs, workflow, devops]
+date: 2023-07-18T23:20:25+07:00
+draft: false
+---
+
+* Bài toán
+Trong quá trình làm việc với các project, chúng ta thường phải build, chạy, rồi test, rồi debug, đủ thể loại thao tác/tương tác cần phải làm.
+Với mỗi project khác nhau thì các công việc này cũng hoàn toàn khác nhau.
+
+** Trưóc khi nghĩ cách
+- Nhớ lại quá khứ từng làm như nào, rồi làm lại
+- Đọc docs xem làm như nào
+- Bật terminal, gõ lệnh
+- Bật thêm terminal, gõ lệnh
+- Cần mở web thì vô menu hoặc gõ lệnh mở web
+
+* Nghĩ cách mới
+Do việc lặp lại và không nhớ cần làm gì nên phải nghĩ cách (nhận biết cái khổ và thoát khổ).
+
+Với tư duy ~Viết một lần, chạy nhiều lần, debug và fix cũng nhiều lần~, và áp dụng kỹ thuật hơi cao [[/post/literate_devops_with_emacs/][Literate DevOops]].
+
+
+Khi bắt đầu một project nào đó mình sẽ soạn 1 cái tệp ~tasks.org~ và viết vào đây các lệnh cần chạy thay vì gõ thẳng vào terminal.
+
+
+Để trực quan sinh động, mình lấy ví dụ làm việc với 1 project mới dùng dangjo thì đại loại như sau.
+
+- tasks.org
+#+begin_src org
+ (eepitch '(shell "*django-tasks*"))
+# Setup env
+cat > .envrc << EOF
+export PATH=\$HOME/.pyenv/bin:\$PATH
+eval "\$(pyenv init -)"
+layout pyenv 3.9.2
+EOF
+
+direnv allow .
+# Update pip
+pip install -U pip
+# Install libs
+pip install -r requirements.txt
+#+end_src
+
+Cứ bấm F8 (`[[https://github.com/TxGVNN/dots/blob/1bf04a8c609307baead5248cd10e0731688c404d/.emacs#L783][eepitch-this-line-or-setup]]') vào line nào cần chạy thôi.
+
+Ok, tiếp theo ta cần chạy những câu lệnh như ~django-admin startproject|startapp|migrate...~ thì cứ viết hết vào đây.
+Mình còn tự gọi những file kiểu ~tasks.org~ là ~log as code(LaC)~.
+
+Đối với các câu lệnh có tính lặp lại cao, mình sử dụng org-babel, và viết thêm 1 gói [[https://github.com/TxGVNN/project-tasks][TxGVNN/project-tasks]] thuận tiện gọi các task bằng phím tắt.
+
+Tiếp tục ví dụ trên
+
+- tasks.org
+#+begin_src org
+* Tasks
+  ,#+name: makemigrations
+  ,#+begin_src compile :name makemigrations
+  django-admin makemigrations
+  ,#+end_src
+
+  ,#+name: browser
+  ,#+begin_src compile :name browser
+  chromium --temp-profile http://localhost:8080
+  ,#+end_src
+
+#+end_src
+
+
+Để gọi các tasks thì đơn giản bấm ~C-x p P~ (`[[https://github.com/TxGVNN/project-tasks/blob/3e2de520901efa1f7b6e95c4f46ad2f9e7c9a4db/project-tasks.el#L59][project-tasks]]'), nó sẽ hiện các task mình đã viét trong tasks.org để chọn như sau:
+{{< figure src="/images/project-tasks.png" alt="project-tasks" >}}
+
+Đối với các lệnh mà lặp lại nhiều dành cho cả team thì mình có thể viết thành ~Makefile~ thay vì viết vào ~tasks.org~.
+Vì ~tasks.org~ là tệp cá nhân của riêng mình thôi, chứ không share.
