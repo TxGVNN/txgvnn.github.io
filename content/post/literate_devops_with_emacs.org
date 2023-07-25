@@ -1,7 +1,7 @@
 ---
 title: "Literate Devops với Emacs"
 date: 2022-03-04T07:27:19Z
-tags: [emacs, stateless, org]
+tags: [emacs, stateless, org, devops]
 draft: false
 ---
 
@@ -111,40 +111,40 @@ Ví dụ như mình cần resize disk cho 1 con VM quản lý bằng virsh ở s
 #+begin_src org
 
 * Resize disk to 40G
-,#+begin_src sh :eval no
-# (eepitch-shell)
-# (eepitch-kill)
-# (eepitch-shell)
-ssh root@the-sun
+  ,#+begin_src sh :eval no
+  # (eepitch-shell)
+  # (eepitch-kill)
+  # (eepitch-shell)
+  ssh root@the-sun
 
-virsh start base
+  virsh start base
 
-cat > /tmp/disk.yaml << EOF
-<disk type='file' device='disk'>
-  <driver name='qemu' type='qcow2'/>
-  <source file='/var/lib/libvirt/images/disk-can-resize.img'/>
-  <target dev='vdb' bus='virtio'/>
-</disk>
-EOF
+  cat > /tmp/disk.yaml << EOF
+  <disk type='file' device='disk'>
+    <driver name='qemu' type='qcow2'/>
+    <source file='/var/lib/libvirt/images/disk-can-resize.img'/>
+    <target dev='vdb' bus='virtio'/>
+  </disk>
+  EOF
 
-virsh attach-device base /tmp/disk.yaml
+  virsh attach-device base /tmp/disk.yaml
 
-virsh console base # Đoạn này sẽ phải nhảy sang shell để nhập pass
+  virsh console base # Đoạn này sẽ phải nhảy sang shell để nhập pass
 
-lsblk
-parted /dev/vdb
-resizepart 1 40GB
-quit
+  lsblk
+  parted /dev/vdb
+  resizepart 1 40GB
+  quit
 
-e2fsck -f /dev/vdb1
-resize2fs -p /dev/vdb1
+  e2fsck -f /dev/vdb1
+  resize2fs -p /dev/vdb1
 
-^] # Đoạn này để thoát virsh console
+  ^] # Đoạn này để thoát virsh console
 
-virsh shutdown base
+  virsh shutdown base
 
-virsh list --all
-,#+end_src
+  virsh list --all
+  ,#+end_src
 #+end_src
 
 ~eev~ thì thật cực kỳ linh động, có thể gọi là ~log as code~ hay ~code as log~ cũng được đấy nhỉ.
