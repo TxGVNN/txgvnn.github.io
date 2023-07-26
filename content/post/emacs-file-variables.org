@@ -1,0 +1,103 @@
+---
+title: "Ứng dụng File Variables trong Emacs với Gist"
+tags: [emacs, workflow]
+date: 2023-07-26T14:24:44+07:00
+draft: false
+---
+
+Tiếp nối chuyên mục về workflow. Mình muốn chia sẻ 1 cái hay ho trong emacs mà mình mới ứng dụng nó nhiều hơn.
+Đó là khái niệm [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html][Specifying File Variables]] hay gọi đơn giản là biến local cho mỗi buffer.
+
+- Mỗi biến trong emacs có thể set là global cho toàn buffer hoặc local cho mỗi buffer riêng.
+- Emacs còn có biến local cho thư mục [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html][Directory-Variables]], thường được sử dụng trong project là chính.
+- Khi local được set thì nó là ưu tiên. ~local > dir > global~
+
+Trưóc đây mình chỉ dùng buffer-local đơn giản cho việc set mode là chính.
+Trong bài này mình trình bày cách mình áp dụng buffer-local var bằng một bài toán cụ thể như sau:
+
+* Bài văn (hay là toán)
+Trong bài trưóc mình có đề cập việc dùng tệp ~tasks.org~ để [[/post/project-tasks/][quản lý tasks trong project]].
+Vì cái tệp này, nó là riêng tư của cá nhân chứ không đồng bộ vào repository. Mà mình lại cần lưu tệp này lại mỗi lần chỉnh sửa bổ sung.
+
+** Suy tư về phương án.
+*** Giải pháp 1: sử dụng 1 git repo chung để quản lý toàn toàn bộ file tasks.org
+Sử dụng 1 git repo chung rồi link từng file tasks.org này trong mỗi project. Cách này thêm 1 cái cần quản lý, lại phức tạp khi triển khai code trên các IDE online, thậm chí trên server.
+
+*** Giải pháp 2: Đẩy file tasks.org này lên một kho lưu trữ nào đó.
+- Etherpad
+Đối với giải pháp này, mình nghĩ ngay đên etherpad, vì nó vừa free lại cũng secure ở 1 mức độ khi sử dụng random ID.
+Ngon là trong emacs có gói ~etherpad~, nhưng rất tiếc là nó cần APIKEY thì mình không thể dùng các free etherpad được.
+
+- Gist
+Mình chuyển sang xem gói ~gist~. Gist được cái thì cũng cần APIKEY, nhưng mà đang dùng nên xem ra là tiện luôn.
+Gist thì an toàn vì có tạo gist private và nó có revision cũng không khác gì là git.
+
+* Triển khai với Gist
+Gói ~gist~ cung cấp tính năng ~`gist-mode-save-buffer'~ được remap vào phím ~C-x C-s~ khi kích hoạt ~gist-mode~.
+
+Sau khi đọc code của function đó, nó cần 2 cái biến để đẩy file lên Gist.
+
+| Variable      | Description                  |
+|---------------+------------------------------|
+| gist-id       | ID of gist                   |
+| gist-filename | Name of this file in gist-id |
+
+
+Ok, vậy là chỉ cần set cái header như sau vào mỗi file tasks.org
+- Set theo oneline đầu tệp
+#+begin_src org
+# -*- mode: org; eval: (gist-mode); gist-id: "d4e49d3a4c051934aa457d9e765dd415"; gist-filename: "emacs-file-variables.org" -*-
+#+end_src
+- Set theo block cuối tệp
+#+begin_src
+# Local Variables:
+# mode: org
+# eval: (gist-mode)
+# gist-id: "d4e49d3a4c051934aa457d9e765dd415"
+# gist-filename: "emacs-file-variables.org"
+# End:
+#+end_src
+
+
+Khi chúng ta mở file này, Emacs sẽ đọc và thực thi.
+Cụ thể:
+
+|------------------------------+---------------------------------------------|
+| ~mode: org~                  | Set major mode cho file này                 |
+| ~eval: (gist-mode)~          | Load minor mode là gist-mode lên            |
+| ~gist-id: "this-is-gistid"~  | Là ~(setq-local gistid "this-is-gistid")~   |
+| ~gist-filename: "tasks.org"~ | Là ~(setq-local gist-filename "tasks.org")~ |
+
+Khi minor mode ~`gist-mode'~ được load. Khi chúng ta bấm save tệp tin, thì nó call ~`gist-mode-save-buffer'~ thay vì ~`save-buffer'~.
+
+Do tác giả của gói [[https://github.com/defunkt/gist.el][gist]] này chỉ ~(set-buffer-modified-p nil)~ chứ không lưu lại file. Vì thế mà mình đã [[https://github.com/TxGVNN/guxti/blob/8f8d1400c021400460333974b5925fd5cd534127/guxti/packages/patches/emacs-gist.patch#L1][patch để lưu lại file]] file nếu buffer đó đang gắn với 1 file.
+
+#+begin_src diff
+@@ -745,7 +745,10 @@
+          resp
+          (lambda (gist)
+-           (set-buffer-modified-p nil)
++           ;; if this buffer is belong to a file, let save it too
++           (if (buffer-file-name)
++               (save-buffer)
++             (set-buffer-modified-p nil))
+            (when new-name
+              (rename-buffer (replace-regexp-in-string "/.*$"
+#+end_src
+
+Như vậy là mình đã xử lý được vấn đề của mình với biến buffer-local, giờ nó lưu lại toàn bộ lên gist mỗi lần chỉnh sửa. Gist còn cung cấp history nữa, quá là tuyệt.
+
+** Một số lưu ý
+- Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng ~M-x gist-buffer-private~ cũng được
+- Một gist-id cho push nhiều file, max bao nhiêu thì mình chưa biết. Nhưng đây điểm tiện nếu muốn dùng chung 1 gist-id hoặc không dùng.
+- Cũng không rõ max size cho 1 file ở gist là bao nhiêu, nhưng max thì tạo file mới, easy.
+
+* Thật không?
+Thật đây [[https://gist.github.com/TxGVNN/d4e49d3a4c051934aa457d9e765dd415][https://gist.github.com/TxGVNN/d4e49d3a4c051934aa457d9e765dd415]] (nhớ xem raw để nhìn rõ Local Variables ở cuối tệp)
+
+# Local Variables:
+# mode: org
+# eval: (gist-mode)
+# gist-id: "d4e49d3a4c051934aa457d9e765dd415"
+# gist-filename: "emacs-file-variables.org"
+# End:
