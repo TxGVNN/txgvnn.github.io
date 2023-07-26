@@ -1,7 +1,7 @@
 ---
 title: "Dtach"
 date: 2023-07-08T11:50:22+07:00
-tags: [emacs, term]
+tags: [emacs, term, workflow]
 draft: false
 ---
 
@@ -99,7 +99,7 @@ complete -F _dtacha dtacha
 
 * Tích hợp với Emacs
 Vấn đề tương tự nảy sinh với Emacs, đó là Emacs sẽ crash nếu mình làm việc/phá quá nhiều. Và khi crash ta lại mất các process đang chạy trong các shell của Emacs.
-Thế là mình biết 1 cái command như sau.
+Thế là mình viết 1 cái command như sau.
 #+begin_src elisp
 (defun shell-dtach ()
   "Start dtach in shell."
