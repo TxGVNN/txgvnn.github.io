@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title> Ứng dụng File Variables trong Emacs với Gist | MẤY KHI MẤY KHỈ</title>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all,follow">
+  <meta name="googlebot" content="index,follow,snippet,archive">
+  <meta property="og:title" content="Ứng dụng File Variables trong Emacs với Gist" />
+<meta property="og:description" content="Tiếp nối chuyên mục về workflow. Mình muốn chia sẻ 1 cái hay ho trong emacs mà mình mới ứng dụng nó nhiều hơn. Đó là khái niệm Specifying File Variables hay gọi đơn giản là biến local cho mỗi buffer.
+  Mỗi biến trong emacs có thể set là global cho toàn buffer hoặc local cho mỗi buffer riêng.
+  Emacs còn có biến local cho thư mục Directory-Variables, thường được sử dụng trong project là chính." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/emacs-file-variables/" />
+<meta property="article:published_time" content="2023-07-26T14:24:44+07:00" />
+<meta property="article:modified_time" content="2023-07-26T14:24:44+07:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ứng dụng File Variables trong Emacs với Gist"/>
+<meta name="twitter:description" content="Tiếp nối chuyên mục về workflow. Mình muốn chia sẻ 1 cái hay ho trong emacs mà mình mới ứng dụng nó nhiều hơn. Đó là khái niệm Specifying File Variables hay gọi đơn giản là biến local cho mỗi buffer.
+  Mỗi biến trong emacs có thể set là global cho toàn buffer hoặc local cho mỗi buffer riêng.
+  Emacs còn có biến local cho thư mục Directory-Variables, thường được sử dụng trong project là chính."/>
+
+  
+  
+    
+  
+  
+  <link rel="stylesheet" href="/css/style-light.css">
+  
+  
+  
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  
+
+  
+<link rel="icon" type="image/png" href="/images/favicon.ico" />
+
+  
+  
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+    <header id="header">
+  <a href="/">
+  
+    <div id="logo" style="background-image: url(https://avatars.githubusercontent.com/u/9713793?s=64)"></div>
+  
+  <div id="title">
+    <h1>MẤY KHI MẤY KHỈ</h1>
+  </div>
+  </a>
+  <div id="nav">
+    <ul>
+      <li class="icon">
+        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+      </li>
+      
+        <li><a href="/post/intro">Intro</a></li>
+      
+        <li><a href="/post">Writings</a></li>
+      
+    </ul>
+  </div>
+</header>
+
+
+
+    
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <div class="content" itemprop="articleBody">
+  
+    
+<p>
+Tiếp nối chuyên mục về workflow. Mình muốn chia sẻ 1 cái hay ho trong emacs mà mình mới ứng dụng nó nhiều hơn.
+Đó là khái niệm <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html">Specifying File Variables</a> hay gọi đơn giản là biến local cho mỗi buffer.</p>
+<ul>
+<li>
+<p>Mỗi biến trong emacs có thể set là global cho toàn buffer hoặc local cho mỗi buffer riêng.</p>
+</li>
+<li>
+<p>Emacs còn có biến local cho thư mục <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html">Directory-Variables</a>, thường được sử dụng trong project là chính.</p>
+</li>
+<li>
+<p>Khi local được set thì nó là ưu tiên. <code>local &gt; dir &gt; global</code></p>
+</li>
+</ul>
+<p>Trưóc đây mình chỉ dùng buffer-local đơn giản cho việc set mode là chính.
+Trong bài này mình trình bày cách mình áp dụng buffer-local var bằng một bài toán cụ thể như sau:</p>
+<div id="outline-container-headline-1" class="outline-2">
+<h2 id="headline-1">
+Bài văn (hay là toán)
+</h2>
+<div id="outline-text-headline-1" class="outline-text-2">
+<p>Trong bài trưóc mình có đề cập việc dùng tệp <code>tasks.org</code> để <a href="/post/project-tasks/">quản lý tasks trong project</a>.
+Vì cái tệp này, nó là riêng tư của cá nhân chứ không đồng bộ vào repository. Mà mình lại cần lưu tệp này lại mỗi lần chỉnh sửa bổ sung.</p>
+<div id="outline-container-headline-2" class="outline-3">
+<h3 id="headline-2">
+Suy tư về phương án.
+</h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<div id="outline-container-headline-3" class="outline-4">
+<h4 id="headline-3">
+Giải pháp 1: sử dụng 1 git repo chung để quản lý toàn toàn bộ file tasks.org
+</h4>
+<div id="outline-text-headline-3" class="outline-text-4">
+<p>Sử dụng 1 git repo chung rồi link từng file tasks.org này trong mỗi project. Cách này thêm 1 cái cần quản lý, lại phức tạp khi triển khai code trên các IDE online, thậm chí trên server.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-4">
+<h4 id="headline-4">
+Giải pháp 2: Đẩy file tasks.org này lên một kho lưu trữ nào đó.
+</h4>
+<div id="outline-text-headline-4" class="outline-text-4">
+<ul>
+<li>
+<p>Etherpad</p>
+</li>
+</ul>
+<p>Đối với giải pháp này, mình nghĩ ngay đên etherpad, vì nó vừa free lại cũng secure ở 1 mức độ khi sử dụng random ID.
+Ngon là trong emacs có gói <code>etherpad</code>, nhưng rất tiếc là nó cần APIKEY thì mình không thể dùng các free etherpad được.</p>
+<ul>
+<li>
+<p>Gist</p>
+</li>
+</ul>
+<p>Mình chuyển sang xem gói <code>gist</code>. Gist được cái thì cũng cần APIKEY, nhưng mà đang dùng nên xem ra là tiện luôn.
+Gist thì an toàn vì có tạo gist private và nó có revision cũng không khác gì là git.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-2">
+<h2 id="headline-5">
+Triển khai với Gist
+</h2>
+<div id="outline-text-headline-5" class="outline-text-2">
+<p>Gói <code>gist</code> cung cấp tính năng <code>`gist-mode-save-buffer&#39;</code> được remap vào phím <code>C-x C-s</code> khi kích hoạt <code>gist-mode</code>.</p>
+<p>
+Sau khi đọc code của function đó, nó cần 2 cái biến để đẩy file lên Gist.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gist-id</td>
+<td>ID of gist</td>
+</tr>
+<tr>
+<td>gist-filename</td>
+<td>Name of this file in gist-id</td>
+</tr>
+</tbody>
+</table>
+<p>
+Ok, vậy là chỉ cần set cái header như sau vào mỗi file tasks.org</p>
+<ul>
+<li>
+<p>Set theo oneline đầu tệp</p>
+</li>
+</ul>
+<div class="src src-org">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e"># -*- mode: org; eval: (gist-mode); gist-id: &#34;d4e49d3a4c051934aa457d9e765dd415&#34;; gist-filename: &#34;emacs-file-variables.org&#34; -*-</span></code></pre></div>
+</div>
+<ul>
+<li>
+<p>Set theo block cuối tệp</p>
+</li>
+</ul>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text"># Local Variables:
+# mode: org
+# eval: (gist-mode)
+# gist-id: &#34;d4e49d3a4c051934aa457d9e765dd415&#34;
+# gist-filename: &#34;emacs-file-variables.org&#34;
+# End:</code></pre></div>
+</div>
+<p>
+Khi chúng ta mở file này, Emacs sẽ đọc và thực thi.
+Cụ thể:</p>
+<table>
+<tbody>
+<tr>
+<td><code>mode: org</code></td>
+<td>Set major mode cho file này</td>
+</tr>
+<tr>
+<td><code>eval: (gist-mode)</code></td>
+<td>Load minor mode là gist-mode lên</td>
+</tr>
+<tr>
+<td><code>gist-id: &#34;this-is-gistid&#34;</code></td>
+<td>Là <code>(setq-local gistid &#34;this-is-gistid&#34;)</code></td>
+</tr>
+<tr>
+<td><code>gist-filename: &#34;tasks.org&#34;</code></td>
+<td>Là <code>(setq-local gist-filename &#34;tasks.org&#34;)</code></td>
+</tr>
+</tbody>
+</table>
+<p>
+Khi minor mode <code>`gist-mode&#39;</code> được load. Khi chúng ta bấm save tệp tin, thì nó call <code>`gist-mode-save-buffer&#39;</code> thay vì <code>`save-buffer&#39;</code>.</p>
+<p>
+Do tác giả của gói <a href="https://github.com/defunkt/gist.el">gist</a> này chỉ <code>(set-buffer-modified-p nil)</code> chứ không lưu lại file. Vì thế mà mình đã <a href="https://github.com/TxGVNN/guxti/blob/8f8d1400c021400460333974b5925fd5cd534127/guxti/packages/patches/emacs-gist.patch#L1">patch để lưu lại file</a> file nếu buffer đó đang gắn với 1 file.</p>
+<div class="src src-diff">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#75715e">@@ -745,7 +745,10 @@
+</span><span style="color:#75715e"></span>          resp
+          (lambda (gist)
+<span style="color:#f92672">-           (set-buffer-modified-p nil)
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+           ;; if this buffer is belong to a file, let save it too
+</span><span style="color:#a6e22e">+           (if (buffer-file-name)
+</span><span style="color:#a6e22e">+               (save-buffer)
+</span><span style="color:#a6e22e">+             (set-buffer-modified-p nil))
+</span><span style="color:#a6e22e"></span>            (when new-name
+              (rename-buffer (replace-regexp-in-string &#34;/.*$&#34;
+</code></pre></div>
+</div>
+<p>
+Như vậy là mình đã xử lý được vấn đề của mình với biến buffer-local, giờ nó lưu lại toàn bộ lên gist mỗi lần chỉnh sửa. Gist còn cung cấp history nữa, quá là tuyệt.</p>
+<div id="outline-container-headline-6" class="outline-3">
+<h3 id="headline-6">
+Một số lưu ý
+</h3>
+<div id="outline-text-headline-6" class="outline-text-3">
+<ul>
+<li>
+<p>Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng <code>M-x gist-buffer-private</code> cũng được</p>
+</li>
+<li>
+<p>Một gist-id cho push nhiều file, max bao nhiêu thì mình chưa biết. Nhưng đây điểm tiện nếu muốn dùng chung 1 gist-id hoặc không dùng.</p>
+</li>
+<li>
+<p>Cũng không rõ max size cho 1 file ở gist là bao nhiêu, nhưng max thì tạo file mới, easy.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-2">
+<h2 id="headline-7">
+Thật không?
+</h2>
+<div id="outline-text-headline-7" class="outline-text-2">
+<p>Thật đây <a href="https://gist.github.com/TxGVNN/d4e49d3a4c051934aa457d9e765dd415"><a href="https://gist.github.com/TxGVNN/d4e49d3a4c051934aa457d9e765dd415">https://gist.github.com/TxGVNN/d4e49d3a4c051934aa457d9e765dd415</a></a> (nhớ xem raw để nhìn rõ Local Variables ở cuối tệp)</p>
+</div>
+</div>
+
+  
+  </div>
+</article>
+
+
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright  &copy; 2023  MẤY KHI MẤY KHỈ 
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+        <li><a href="/post/intro">Intro</a></li>
+         
+        <li><a href="/post">Writings</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+  </div>
+</body>
+
+<link rel="stylesheet" href=/lib/font-awesome/css/all.min.css>
+<script src=/lib/jquery/jquery.min.js></script>
+<script src=/js/main.js></script>
+</html>

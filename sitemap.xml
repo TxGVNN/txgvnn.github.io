@@ -3,37 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/emacs/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/workflow/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/emacs-file-variables/</loc>
+    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/devops/</loc>
     <lastmod>2023-07-18T23:20:25+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/emacs/</loc>
-    <lastmod>2023-07-18T23:20:25+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2023-07-18T23:20:25+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2023-07-18T23:20:25+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/post/project-tasks/</loc>
-    <lastmod>2023-07-18T23:20:25+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2023-07-18T23:20:25+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/workflow/</loc>
     <lastmod>2023-07-18T23:20:25+07:00</lastmod>
   </url>
   
