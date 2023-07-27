@@ -238,7 +238,10 @@ Một số lưu ý
 <div id="outline-text-headline-6" class="outline-text-3">
 <ul>
 <li>
-<p>Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng <code>M-x gist-buffer-private</code> cũng được</p>
+<p>Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng <code>M-x gist-buffer{,-private}</code> cũng được.</p>
+</li>
+<li>
+<p>Vì <code>`gist-mode-save-buffer&#39;</code> cần có thông tin về <code>gist-id</code> trưóc khi lưu, nên mình cần phải chạy <code>M-x gist-list</code> lần đầu khi mở file để load các <code>gist-id</code> vào <code>gist-list-db</code>.</p>
 </li>
 <li>
 <p>Một gist-id cho push nhiều file, max bao nhiêu thì mình chưa biết. Nhưng đây điểm tiện nếu muốn dùng chung 1 gist-id hoặc không dùng.</p>
