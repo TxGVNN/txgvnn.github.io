@@ -88,7 +88,8 @@ Do tác giả của gói [[https://github.com/defunkt/gist.el][gist]] này chỉ
 Như vậy là mình đã xử lý được vấn đề của mình với biến buffer-local, giờ nó lưu lại toàn bộ lên gist mỗi lần chỉnh sửa. Gist còn cung cấp history nữa, quá là tuyệt.
 
 ** Một số lưu ý
-- Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng ~M-x gist-buffer-private~ cũng được
+- Chúng ta cần tạo ra gist-id trưóc khi sử dụng. Tức là đối với lần đầu tiên hay tạo 1 cái gist để lấy id, dùng ~M-x gist-buffer{,-private}~ cũng được.
+- Vì ~`gist-mode-save-buffer'~ cần có thông tin về ~gist-id~ trưóc khi lưu, nên mình cần phải chạy ~M-x gist-list~ lần đầu khi mở file để load các ~gist-id~ vào ~gist-list-db~.
 - Một gist-id cho push nhiều file, max bao nhiêu thì mình chưa biết. Nhưng đây điểm tiện nếu muốn dùng chung 1 gist-id hoặc không dùng.
 - Cũng không rõ max size cho 1 file ở gist là bao nhiêu, nhưng max thì tạo file mới, easy.
 
