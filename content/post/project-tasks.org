@@ -25,7 +25,7 @@ Với tư duy ~Viết một lần, chạy nhiều lần, debug và fix cũng nhi
 Khi bắt đầu một project nào đó mình sẽ soạn 1 cái tệp ~tasks.org~ và viết vào đây các lệnh cần chạy thay vì gõ thẳng vào terminal.
 
 
-Để trực quan sinh động, mình lấy ví dụ làm việc với 1 project mới dùng dangjo thì đại loại như sau.
+Để trực quan sinh động, mình lấy ví dụ làm việc với 1 project mới dùng django thì đại loại như sau.
 
 - tasks.org
 #+begin_src org
