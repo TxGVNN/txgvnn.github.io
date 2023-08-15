@@ -212,7 +212,28 @@ Triển khai
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">docker run --rm -v <span style="color:#e6db74">`</span>pwd<span style="color:#e6db74">`</span>:/data --privileged -v /dev:/dev qmkfm/qmk_firmware qmk flash /data/ergodash_rev1_layout_4key_mine.json</code></pre></div>
 </div>
 <p>
-   Default lúc flash này là cho left hand, còn nếu bạn muốn flash cho right hand hoặc enable thêm mouse mode thì cần phải update mấy file *.c ở trong keyboards/ergodash của qmk_firmware</p>
+Default lúc flash này là cho left hand và không hỗ trợ mouse mode.</p>
+<ul>
+<li>
+<p>Còn nếu bạn muốn flash cho right hand
+Thay đổi ở tệp <code>keyboards/ergodash/rev1/config.h</code></p>
+</li>
+</ul>
+<div class="src src-diff">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#a6e22e">+#define MASTER_RIGHT
+</span></code></pre></div>
+</div>
+<ul>
+<li>
+<p>Enable mouse mode</p>
+</li>
+</ul>
+<p>Thay đổi ở tệp <code>keyboards/ergodash/rules.mk</code></p>
+<div class="src src-diff">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff"><span style="color:#f92672">-MOUSEKEY_ENABLE = no       # Mouse keys
+</span><span style="color:#f92672"></span><span style="color:#a6e22e">+MOUSEKEY_ENABLE = yes       # Mouse keys
+</span></code></pre></div>
+</div>
 </div>
 </div>
 </div>
