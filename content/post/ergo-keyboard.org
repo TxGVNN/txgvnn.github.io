@@ -75,7 +75,20 @@ draft: false
    docker run --rm -v `pwd`:/data --privileged -v /dev:/dev qmkfm/qmk_firmware qmk flash /data/ergodash_rev1_layout_4key_mine.json
    #+end_src
 
-   Default lúc flash này là cho left hand, còn nếu bạn muốn flash cho right hand hoặc enable thêm mouse mode thì cần phải update mấy file *.c ở trong keyboards/ergodash của qmk_firmware
+Default lúc flash này là cho left hand và không hỗ trợ mouse mode.
+
+- Còn nếu bạn muốn flash cho right hand
+  Thay đổi ở tệp ~keyboards/ergodash/rev1/config.h~
+#+begin_src diff
++#define MASTER_RIGHT
+#+end_src
+
+- Enable mouse mode
+Thay đổi ở tệp ~keyboards/ergodash/rules.mk~
+#+begin_src diff
+-MOUSEKEY_ENABLE = no       # Mouse keys
++MOUSEKEY_ENABLE = yes       # Mouse keys
+#+end_src
 * Sử dụng
   {{< figure src="/images/ergodash.jpeg" alt="ergodash" >}}
   Mình đã vác lên công ty sử dụng luôn, nó thật là khó chịu đã thế keycap của mình là blank =)). Nhưng sau nhiều lần chỉnh sửa keymap layout thì dần dần mình đã quen và trở về tốc độ gõ của ngày xưa (vẫn gõ chậm)
