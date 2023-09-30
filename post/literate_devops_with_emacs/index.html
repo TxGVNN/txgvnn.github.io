@@ -11,8 +11,7 @@
   <meta property="og:title" content="Literate Devops với Emacs" />
 <meta property="og:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs
  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
-Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…
- Các ví dụ mình dùng.
+Sử dụng org-babel  Với org-babel#literate-programming thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,… Các ví dụ mình dùng.
 Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #&#43;BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/literate_devops_with_emacs/" />
@@ -23,8 +22,7 @@ Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #&#4
 <meta name="twitter:title" content="Literate Devops với Emacs"/>
 <meta name="twitter:description" content="Ví dụ như video này đây youtube.com/Literate Devops with Emacs
  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
-Sử dụng org-babel  Với org-babel thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,…
- Các ví dụ mình dùng.
+Sử dụng org-babel  Với org-babel#literate-programming thì các đoạn code sẽ được viết trong cặp #&#43;BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #&#43;END_SRC với các option như thực thi ở thư mục nào :dir,… Các ví dụ mình dùng.
 Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #&#43;BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn."/>
 
   
@@ -92,8 +90,7 @@ Hiểu đơn giản là giờ chúng ta cần <code>everything as code</code>, c
 Sử dụng org-babel
 </h2>
 <div id="outline-text-headline-1" class="outline-text-2">
-<p>Với <a href="https://orgmode.org/worg/org-contrib/babel/intro.html">org-babel</a> thì các đoạn code sẽ được viết trong cặp <code>#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI</code> và <code>#+END_SRC</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…</p>
-<p>
+<p>Với <a href="https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming">org-babel#literate-programming</a> thì các đoạn code sẽ được viết trong cặp <code>#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI</code> và <code>#+END_SRC</code> với các option như thực thi ở thư mục nào <code>:dir</code>,…
 Các ví dụ mình dùng.</p>
 <div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
@@ -136,6 +133,7 @@ minikube config set kubernetes-version v1.20.15
 </span><span style="color:#75715e"></span>cat ~/projects/infra-deployment/gitlab/terraform.tfvars
 <span style="color:#75715e">#+END_SRC</span>
 
+<span style="color:#75715e">#+NAME</span><span style="color:#75715e">: gitlab-token-output</span>
 <span style="color:#75715e">#+RESULTS</span><span style="color:#75715e">: gitlab-token</span>
 : gitlab_token=&#34;XYZ-token&#34;</code></pre></div>
 </div>
@@ -147,7 +145,7 @@ Cần restore lại thì như sau
 </h3>
 <div id="outline-text-headline-4" class="outline-text-3">
 <div class="src src-org">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :var INPUT=gitlab-token
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-org" data-lang="org"><span style="color:#75715e">#+BEGIN_SRC </span><span style="color:#75715e">sh</span><span style="color:#75715e"> :var INPUT=gitlab-token-output
 </span><span style="color:#75715e"></span>cat &gt; ~/projects/infra-deployment/gitlab/terraform.tfvars <span style="color:#e6db74">&lt;&lt; EOF
 </span><span style="color:#e6db74">$INPUT
 </span><span style="color:#e6db74">EOF</span>
@@ -156,9 +154,7 @@ Cần restore lại thì như sau
 <span style="color:#75715e">#+RESULTS</span><span style="color:#75715e">:</span></code></pre></div>
 </div>
 <p>
-org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.</p>
-<p>
-Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi <code>#+RESULTS</code> thành <code>#+NAME</code></p>
+org-mode sẽ lấy biến <code>INPUT</code> bằng giá trị của name <code>gitlab-token-output</code> trên kia.</p>
 <p>
 Đối với các file <code>org</code> chứ thông tin nhạy cảm chúng ta nên dùng file là <code>org.gpg</code> để được encrypt bằng <code>gpg</code></p>
 </div>
