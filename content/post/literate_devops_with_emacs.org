@@ -10,8 +10,7 @@ Ví dụ như video này đây [[https://www.youtube.com/watch?v=dljNabciEGg][yo
 Hiểu đơn giản là giờ chúng ta cần ~everything as code~, cần ~reproducible~, tăng khả năng ~stateless~ (hãy như [[/post/gnu-guix-os/][Guix]])
 
 * Sử dụng org-babel
-Với [[https://orgmode.org/worg/org-contrib/babel/intro.html][org-babel]] thì các đoạn code sẽ được viết trong cặp ~#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI~ và ~#+END_SRC~ với các option như thực thi ở thư mục nào ~:dir~,...
-
+Với [[https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming][org-babel#literate-programming]] thì các đoạn code sẽ được viết trong cặp ~#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI~ và ~#+END_SRC~ với các option như thực thi ở thư mục nào ~:dir~,...
 Các ví dụ mình dùng.
 
 **  Cài cắm các tool cần thiết cho máy mình
@@ -48,6 +47,7 @@ minikube config set kubernetes-version v1.20.15
 cat ~/projects/infra-deployment/gitlab/terraform.tfvars
 ,#+END_SRC
 
+,#+NAME: gitlab-token-output
 ,#+RESULTS: gitlab-token
 : gitlab_token="XYZ-token"
 
@@ -55,7 +55,7 @@ cat ~/projects/infra-deployment/gitlab/terraform.tfvars
 
 ** Cần restore lại thì như sau
 #+begin_src org
-,#+BEGIN_SRC sh :var INPUT=gitlab-token
+,#+BEGIN_SRC sh :var INPUT=gitlab-token-output
 cat > ~/projects/infra-deployment/gitlab/terraform.tfvars << EOF
 $INPUT
 EOF
@@ -64,9 +64,7 @@ EOF
 ,#+RESULTS:
 #+end_src
 
-org-mode sẽ lấy biến INPUT bằng giá trị của name gitlab-token trên kia.
-
-Trong trường hợp chúng ta init mới từ chứ chưa có dữ liệu backup thì chỉ cần đổi ~#+RESULTS~ thành ~#+NAME~
+org-mode sẽ lấy biến ~INPUT~ bằng giá trị của name ~gitlab-token-output~ trên kia.
 
 Đối với các file ~org~ chứ thông tin nhạy cảm chúng ta nên dùng file là ~org.gpg~ để được encrypt bằng ~gpg~
 
