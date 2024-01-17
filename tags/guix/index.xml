@@ -23,7 +23,7 @@
       <pubDate>Sat, 18 Sep 2021 09:12:56 +0700</pubDate>
       
       <guid>/post/gnu-guix-os/</guid>
-      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận. GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
+      <description>Mình nghĩ GNU Guix sẽ là hệ thống chủ chốt trong tương lai, thống trị trên mọi mặt trận (thầy bói 4.0). GNU đã tạo nhiều Linux distros dựa trên nhiều distro khác từ nhưng GNU Guix là một kiến trúc khác hẳn.
  GNU Guix là 1 trình quản lý gói như apt, yum, pacman trên các OS khác. Khi nhắc đến hệ điều hành GNU Guix thì tức hệ điều hành đó sẽ sử dụng GNU Guix làm trình quản lý chính, cùng GNU Shepherd làm init system (mình nghĩ thế, sai thì thôi).</description>
     </item>
     
