@@ -6,7 +6,18 @@
     <description>Recent content on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Wed, 26 Jul 2023 14:24:44 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 Jan 2024 14:13:23 +0700</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mình hóng hớt tin tức ra sao?</title>
+      <link>/post/read-news-in-emacs/</link>
+      <pubDate>Thu, 25 Jan 2024 14:13:23 +0700</pubDate>
+      
+      <guid>/post/read-news-in-emacs/</guid>
+      <description>Đọc tin nhưng có thể không tin - Who quotes
+  Với Elfeed trong Emacs mình dễ dàng theo dõi các nguồn tin
+   Mình đang xài config như sau  ;; https://github.com/skeeto/elfeed ;; Elfeed is a web feed client for Emacs, inspired by notmuch... (use-package elfeed :ensure t :defer t :commands (elfeed) :bind (:map elfeed-search-mode-map (&amp;#34;U&amp;#34; . elfeed-update)) :config ;; Use md4rd package to open the reddit comment link instead (require &amp;#39;md4rd) (add-to-list &amp;#39;browse-url-handlers &amp;#39;(&amp;#34;.</description>
+    </item>
+    
     <item>
       <title>Ứng dụng File Variables trong Emacs với Gist</title>
       <link>/post/emacs-file-variables/</link>
