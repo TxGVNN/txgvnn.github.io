@@ -1,0 +1,83 @@
+---
+title: "Mình hóng hớt tin tức ra sao?"
+date: 2024-01-25T14:13:23+07:00
+draft: false
+tags: [emacs, news]
+---
+
+#+BEGIN_QUOTE
+Đọc tin nhưng có thể không tin - Who quotes
+#+END_QUOTE
+
+Với Elfeed trong Emacs mình dễ dàng theo dõi các nguồn tin
+
+{{< figure src="https://i.imgur.com/kxgF5AH.png" alt="source: https://github.com/skeeto/elfeed" >}}
+
+* Mình đang xài config như sau
+#+begin_src elisp :results none
+;; https://github.com/skeeto/elfeed
+;; Elfeed is a web feed client for Emacs, inspired by notmuch...
+(use-package elfeed
+  :ensure t :defer t
+  :commands (elfeed)
+  :bind
+  (:map elfeed-search-mode-map
+        ("U" . elfeed-update))
+  :config
+
+  ;; Use md4rd package to open the reddit comment link instead
+  (require 'md4rd)
+  (add-to-list 'browse-url-handlers '(".*reddit.com/" . elfeed-open-md4rd-url))
+  (defun elfeed-open-md4rd-url (url &optional new-window)
+    (md4rd--fetch-comments (format "%s.json" url)))
+
+  ;; use hnreader to open the hn comment
+  (require 'hnreader)
+  (add-to-list 'browse-url-handlers '(".*news.ycombinator.com/" . elfeed-open-hnreader-url))
+  (defun elfeed-open-hnreader-url (url &optional new-window)
+    (hnreader-comment url)))
+
+
+;; https://github.com/remyhonig/elfeed-org
+;; Maintaining tags for all rss feeds is cumbersome using the regular flat list
+;; where there is no hierarchy and tag names are duplicated a lot....
+(use-package elfeed-org
+  :ensure t :defer t
+  :after elfeed
+  :init
+  ;; Define feed sources here
+  (setq rmh-elfeed-org-files (list "~/.gxt/org/feeds.org"))
+  (elfeed-org))
+
+;; https://github.com/algernon/elfeed-goodies
+;; Various bits and pieces to enhance the Elfeed user experience.
+(use-package elfeed-goodies
+  :ensure t :defer t
+  :after elfeed
+  :init (elfeed-goodies/setup))
+
+;; readers
+(use-package md4rd :ensure t :defer t)
+(use-package hnreader :ensure t :defer t)
+
+#+end_src
+
+* Nguồn cấp tin như sau
+
+#+begin_src sh :results org
+cat ~/.gxt/org/feeds.org
+#+end_src
+
+#+RESULTS:
+#+begin_src org
+,* News                                                                 :elfeed:
+,** Emacs
+,*** https://www.reddit.com/r/emacs/.rss                             :emacs:
+,*** https://sachachua.com/blog/category/emacs-news/feed/            :emacs:
+,** https://guix.gnu.org/feeds/blog.atom                               :guix:
+,** Hacker news
+,*** https://news.ycombinator.com/rss                            :hn:ignore:
+,*** https://hnrss.org/newest?comments=150                         :hn:c150:
+,*** https://hnrss.org/newest?points=200                           :hn:p200:
+,*** https://hnrss.org/newest?points=100                    :hn:p100:ignore:
+#+end_src
