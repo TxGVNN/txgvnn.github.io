@@ -22,7 +22,7 @@ như doom-emacs
 Nhược điểm chắc sẽ là quản lý nhiều repo nếu mình patch nhiều packages.
 ** Sử dụng GNU Guix
 Khi biết đến Guix, mình đã nghĩ ngay việc dùng Guix để quản lý package.
-Vì nó reproducible như straight, mà lại quản lý pacthes tập trung bằng các bản vá diff rất rõ ràng.
+Vì nó reproducible như straight, mà lại quản lý patches tập trung bằng các bản vá diff rất rõ ràng.
 
 * Lựa chọn Guix
 Sau khi xem xét nhiều ý tưởng/tools. Mình đã chọn ~Guix~ để quản lý emacs packages.
