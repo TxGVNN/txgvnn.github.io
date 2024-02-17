@@ -33,5 +33,5 @@ Nên Tôi/tao/tau sẽ chọn Mình. (Chịu). Hay là chọn Tui nhỉ, dễ th
 
 * Sao không bật comment?
 
-Rất vui nếu anh chị em góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho mình nhé. ~txgvnn@gmail.com~ (mình ít khi check, hà hà, nên có thể sẽ rep khá lâuuuu | hoặc không rep)
-Nếu nội dung nhảy cảm thì nhớ [[https://github.com/txgvnn.gpg][~GnuPG/0xE655BF766A56995D~]] nhá, mình đang tập dùng.
+Rất vui nếu anh chị em góp ý/bổ sung điều gì. Nhưng hãy gửi mail trực tiếp cho mình nhé. ~txgvnn@disroot.org~ (mình ít khi check, hà hà, nên có thể sẽ rep khá lâuuuu | hoặc không rep)
+Nếu nội dung nhảy cảm thì nhớ [[https://github.com/txgvnn.gpg][~GnuPG/0xED8F46CD67CCD3A1~]] nhá, mình đang tập dùng.
