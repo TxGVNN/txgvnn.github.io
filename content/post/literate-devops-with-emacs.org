@@ -11,9 +11,10 @@ Hiểu đơn giản là giờ chúng ta cần ~everything as code~, cần ~repro
 
 * Sử dụng org-babel
 Với [[https://orgmode.org/worg/org-contrib/babel/intro.html#literate-programming][org-babel#literate-programming]] thì các đoạn code sẽ được viết trong cặp ~#+BEGIN_SRC NGÔN-NGỮ-THỰC-THI~ và ~#+END_SRC~ với các option như thực thi ở thư mục nào ~:dir~,...
-Các ví dụ mình dùng.
 
-**  Cài cắm các tool cần thiết cho máy mình
+Các ví dụ:
+
+**  Cài cắm các tool
 #+begin_src org
 * Build PC
 ** Setup emacs

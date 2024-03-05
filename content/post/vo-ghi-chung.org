@@ -15,7 +15,8 @@ Thế là mình bắt đầu làm nó bài bản hơn. Như 1 cuốn vở ghi ch
 - Mình sẽ note theo các topic là các folder cho dễ tìm. Kiểu structure 1 chút
 - Để tìm 1 note thì mình sẽ tìm theo 2 cách tìm theo file và tìm theo pattern. (dùng find và grep)
 - Viết anything có thể note được. Ví dụ mình cho cả đống config về cái gì đó lên luôn, chả sao.
-- Hỗ trợ cả encrypt bằng GnuPG
+- Mã hoá: Sử dụng GnuPG và git-crypt
+
 * Bắt đầu
 
   Từ cái đó mình đã viết ra 1 cái tool là [[https://github.com/txgvnn/gxt][gxt]] (vâng, mình tự sướng bằng tên của mình. Haha)
@@ -32,6 +33,11 @@ Thế là mình bắt đầu làm nó bài bản hơn. Như 1 cuốn vở ghi ch
   Hôì đó mình đang dùng Vim, chưa dùng Emacs.
   Sau này chuyển qua sống trong Emacs thì mình không còn dùng ~gxt~ nhiều trên máy tính của mình nữa.
   Nhưng tool này vẫn hữu dụng trên điện thoại cuả mình. Vì mình sử dụng [[https://termux.com][Termux]] trên điện thoại nên dùng ~gxt~ để tìm kiếm note rất tiện.
+
+** Với Emacs:
+: - Để tìm 1 note thì mình sẽ tìm theo 2 cách tìm theo file và tìm theo pattern. (dùng find và grep)
+
+Sử dụng ~project-find-file~, ~consult-ripgrep~, ~consult-grep~
 
 * Mình thấy
 

@@ -19,7 +19,7 @@ Với mỗi project khác nhau thì các công việc này cũng hoàn toàn kh�
 * Nghĩ cách mới
 Do việc lặp lại và không nhớ cần làm gì nên phải nghĩ cách (nhận biết cái khổ và thoát khổ).
 
-Với tư duy ~Viết một lần, chạy nhiều lần, debug và fix cũng nhiều lần~, và áp dụng kỹ thuật hơi cao [[/post/literate_devops_with_emacs/][Literate DevOops]].
+Với tư duy ~Viết một lần, chạy nhiều lần, debug và fix cũng nhiều lần~, và áp dụng kỹ thuật hơi cao [[/post/literate-devops-with-emacs/][Literate DevOops]].
 
 
 Khi bắt đầu một project nào đó mình sẽ soạn 1 cái tệp ~tasks.org~ và viết vào đây các lệnh cần chạy thay vì gõ thẳng vào terminal.
