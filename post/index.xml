@@ -6,7 +6,17 @@
     <description>Recent content in Posts on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Thu, 25 Jan 2024 14:13:23 +0700</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 13:47:16 +0700</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý mật khẩu ssh-key bằng GnuPG</title>
+      <link>/post/manage-ssh-passphrase-with-gpg/</link>
+      <pubDate>Mon, 06 May 2024 13:47:16 +0700</pubDate>
+      
+      <guid>/post/manage-ssh-passphrase-with-gpg/</guid>
+      <description>Vấn đề  Mình sử dụng nhiều ssh-key cho các dự án khác nhau. Mỗi key mình đều đặt passphrase cũng khác nhau.
+ Vấn đề nảy sinh là nhiều key thì nhiều pass, mà mình hay dùng GnuPG để quản lý các secret nên muốn quy nó về 1 mối luôn. Giống như việc sử dụng KeePass để quản lý các mật khẩu. (Có khi KeePass lại có plugin cho việc quản lý ssh-keys, chưa tìm hiểu)</description>
+    </item>
+    
     <item>
       <title>Mình hóng hớt tin tức ra sao?</title>
       <link>/post/read-news-in-emacs/</link>
@@ -83,14 +93,15 @@ Trưóc khi nghĩ cách    Nhớ lại quá khứ từng làm như nào, rồi l
     
     <item>
       <title>Literate Devops với Emacs</title>
-      <link>/post/literate_devops_with_emacs/</link>
+      <link>/post/literate-devops-with-emacs/</link>
       <pubDate>Fri, 04 Mar 2022 07:27:19 +0000</pubDate>
       
-      <guid>/post/literate_devops_with_emacs/</guid>
+      <guid>/post/literate-devops-with-emacs/</guid>
       <description>Ví dụ như video này đây youtube.com/Literate Devops with Emacs
  Hiểu đơn giản là giờ chúng ta cần everything as code, cần reproducible, tăng khả năng stateless (hãy như Guix)
-Sử dụng org-babel  Với org-babel#literate-programming thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,… Các ví dụ mình dùng.
-Cài cắm các tool cần thiết cho máy mình  *Build PC ** Setup emacs #+BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
+Sử dụng org-babel  Với org-babel#literate-programming thì các đoạn code sẽ được viết trong cặp #+BEGIN_SRC NGÔN-NGỮ-THỰC-THI và #+END_SRC với các option như thực thi ở thư mục nào :dir,…
+ Các ví dụ:
+Cài cắm các tool  *Build PC ** Setup emacs #+BEGIN_SRC compilesudo apt-get update sudo apt-get install -y emacs-nox # Setup dotfiles curl https://txgvnn.</description>
     </item>
     
     <item>

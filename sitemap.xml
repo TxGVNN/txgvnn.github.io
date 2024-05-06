@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/</loc>
+    <lastmod>2024-05-06T13:47:16+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/</loc>
+    <lastmod>2024-05-06T13:47:16+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/post/manage-ssh-passphrase-with-gpg/</loc>
+    <lastmod>2024-05-06T13:47:16+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2024-05-06T13:47:16+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/workflow/</loc>
+    <lastmod>2024-05-06T13:47:16+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/tags/emacs/</loc>
     <lastmod>2024-01-25T14:13:23+07:00</lastmod>
   </url>
@@ -13,28 +38,8 @@
   </url>
   
   <url>
-    <loc>/</loc>
-    <lastmod>2024-01-25T14:13:23+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/tags/news/</loc>
     <lastmod>2024-01-25T14:13:23+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
-    <lastmod>2024-01-25T14:13:23+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2024-01-25T14:13:23+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/workflow/</loc>
-    <lastmod>2023-07-26T14:24:44+07:00</lastmod>
   </url>
   
   <url>
@@ -93,7 +98,7 @@
   </url>
   
   <url>
-    <loc>/post/literate_devops_with_emacs/</loc>
+    <loc>/post/literate-devops-with-emacs/</loc>
     <lastmod>2022-03-04T07:27:19+00:00</lastmod>
   </url>
   

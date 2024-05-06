@@ -6,7 +6,17 @@
     <description>Recent content in workflow on MẤY KHI MẤY KHỈ</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>vi-vn</language>
-    <lastBuildDate>Wed, 26 Jul 2023 14:24:44 +0700</lastBuildDate><atom:link href="/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 May 2024 13:47:16 +0700</lastBuildDate><atom:link href="/tags/workflow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quản lý mật khẩu ssh-key bằng GnuPG</title>
+      <link>/post/manage-ssh-passphrase-with-gpg/</link>
+      <pubDate>Mon, 06 May 2024 13:47:16 +0700</pubDate>
+      
+      <guid>/post/manage-ssh-passphrase-with-gpg/</guid>
+      <description>Vấn đề  Mình sử dụng nhiều ssh-key cho các dự án khác nhau. Mỗi key mình đều đặt passphrase cũng khác nhau.
+ Vấn đề nảy sinh là nhiều key thì nhiều pass, mà mình hay dùng GnuPG để quản lý các secret nên muốn quy nó về 1 mối luôn. Giống như việc sử dụng KeePass để quản lý các mật khẩu. (Có khi KeePass lại có plugin cho việc quản lý ssh-keys, chưa tìm hiểu)</description>
+    </item>
+    
     <item>
       <title>Ứng dụng File Variables trong Emacs với Gist</title>
       <link>/post/emacs-file-variables/</link>
