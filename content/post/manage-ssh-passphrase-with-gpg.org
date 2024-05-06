@@ -1,0 +1,123 @@
+---
+title: "Quản lý mật khẩu ssh-key bằng GnuPG"
+date: 2024-05-06T13:47:16+07:00
+tags: [workflow]
+draft: false
+---
+
+* Vấn đề
+Mình sử dụng nhiều ssh-key cho các dự án khác nhau. Mỗi key mình đều đặt passphrase cũng khác nhau.
+
+Vấn đề nảy sinh là nhiều key thì nhiều pass, mà mình hay dùng GnuPG để quản lý các secret nên muốn quy nó về 1 mối luôn.
+Giống như việc sử dụng KeePass để quản lý các mật khẩu. (Có khi KeePass lại có plugin cho việc quản lý ssh-keys, chưa tìm hiểu)
+
+* Giải quyết
+Từng nghĩ tạo ssh key trong tính năng của GnuPG luôn. Nhưng xong thấy nó đi theo cặp (bị lock) không ưng lắm.
+Phương án tiếp theo là học them ~Emacs~, viết password vào tệp ~.authinfo.gpg~, nó cũng là 1 dạng password management.
+
+~ssh-add~ cung cấp 2 biến mỗi trường ~SSH_ASKPASS~ và ~SSH_ASKPASS_REQUIRE~ để ta có thể control được phần điền mật khẩu. Cool.
+
+
+- Tạo 1 script ~/usr/local/bin/gpg-ask-pass-for-ssh.sh~ để handle công việc lấy pass từ ~~/.authinfo.gpg~ như sau
+#+begin_src sh :results none :tangle /usr/local/bin/gpg-ask-pass-for-ssh.sh
+#!/usr/bin/env bash
+input="$@"
+# input="Enter passphrase for ~/.ssh/id_rsa:"
+real_keyname=$(echo $input | awk -F' ' '{print $4}')
+# Get keyname by remove : in end of string and get basename
+keyname=$(basename "$real_keyname" | sed 's/:$//')
+if [ -z "$keyname" ]; then
+    echo "Keyname is empty"
+    exit 1
+fi
+
+# use gpg to decrypt ~/.authinfo.gpg then get password from line match with ssh/keyname
+gpg -q -d ~/.authinfo.gpg | grep "ssh/${keyname}" | awk -F' ' '{print $6}'
+#+end_src
+
+- Lưu trữ passphrase vào ~.authinfo.gpg~ thôi
+
+Giả sử key ở tại ~~/.ssh/id_rsa~
+
+#+begin_src authinfo :results none
+machine ssh/id_rsa login root password PASSPHRASE_HERE
+machine ssh/giaptx@company.blabla login root password PASSPHRASE_HERE_BLABLA
+#+end_src
+
+
+Demo:
+#+begin_src sh :results none
+eval $(ssh-agent)
+SSH_ASKPASS=/usr/local/bin/gpg-ask-pass-for-ssh.sh
+SSH_ASKPASS_REQUIRE=force ssh-add ~/.ssh/id_rsa
+#+end_src
+
+
+* Tổng kết
+Trên đây là cách mình dùng GnuPG để manage các pass cho ssh. Trong thực tế thì mình đã viết 1 function để load ssh-key tiện hơn trong terminal.
+Thêm phần link vào các ssh-agent để tránh tạo trùng lặp.
+
+Cụ thể mình config vào ~~/.bashrc~ như sau
+
+#+begin_src bash :results none
+export SSH_DIR="${HOME}/.ssh"
+use-ssh(){
+    SSH_ASKPASS=/usr/local/bin/gpg-ask-pass-for-ssh.sh
+    ssh_key="${1:-id_rsa}"
+    if [ -e "${SSH_DIR}/${ssh_key}" ]; then
+        ssh_key="${SSH_DIR}/${ssh_key}"
+    elif [ -e "${PWD}/${ssh_key}" ]; then
+        ssh_key="${PWD}/${ssh_key}"
+    elif [ -e "${ssh_key}" ]; then
+        ssh_key="${ssh_key}"
+    else
+        echo "What is ${ssh_key}?"
+        return 1
+    fi
+    ssh_key=$(readlink -f "$ssh_key")
+    ssh_name=$(basename "$ssh_key")
+    ssh_md5=$(md5sum "$ssh_key" | cut -f1 -d" ")
+    file="$SSH_DIR/${ssh_name}_${ssh_md5}.sock"
+    echo "Set SSH_AUTH_SOCK=$file"
+    if [ -z "$2" ] && [ -e "$file" ]; then
+        export SSH_AUTH_SOCK="$(readlink -f $file)"
+        ps1 "ssh:$ssh_name"
+        return 0
+    fi
+    eval $(ssh-agent)
+    SSH_ASKPASS_REQUIRE=force ssh-add "${ssh_key}"
+    ln -svf "$SSH_AUTH_SOCK" "$file" >& /dev/null
+    ps1 "ssh:$ssh_name"
+}
+
+_use-ssh(){
+    local cur prev words cword opts
+    _get_comp_words_by_ref -n : cur prev words cword
+    COMPREPLY=()
+    opts=""
+    if [[ ${#toks[@]} -ne 0 ]]; then
+        compopt -o filenames 2> /dev/null;
+        COMPREPLY+=("${toks[@]}");
+    fi
+    if [[ ${cword} -eq 1 ]];then
+        opts=$(find "${SSH_DIR}/" -name \*@\* -exec basename {} \;)
+    fi
+    _filedir
+    COMPREPLY+=( $(compgen -W "$opts" -- "${cur}"))
+}
+
+complete -F _use-ssh use-ssh
+#+end_src
+
+** Lúc dùng chỉ cần gõ:
+- Với key nằm trong ~/.ssh
+~use-ssh~ => Với key măc định là ~id_rsa~
+
+~use-ssh giaptx@company.blabla~
+
+- Hoặc với đường dẫn tương đối
+
+~use-ssh project/ssh-key~
+
+- Hoặc với đưòng dẫn tuyệt đối
+~use-ssh /tmp/key-temporary~
