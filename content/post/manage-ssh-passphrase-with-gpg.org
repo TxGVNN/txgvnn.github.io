@@ -13,7 +13,7 @@ Giống như việc sử dụng KeePass để quản lý các mật khẩu. (Có
 
 * Giải quyết
 Từng nghĩ tạo ssh key trong tính năng của GnuPG luôn. Nhưng xong thấy nó đi theo cặp (bị lock) không ưng lắm.
-Phương án tiếp theo là học them ~Emacs~, viết password vào tệp ~.authinfo.gpg~, nó cũng là 1 dạng password management.
+Phương án tiếp theo là lấy cảm hứng từ ~Emacs~, lưu password vào tệp ~.authinfo.gpg~, nó cũng là 1 dạng password management.
 
 ~ssh-add~ cung cấp 2 biến mỗi trường ~SSH_ASKPASS~ và ~SSH_ASKPASS_REQUIRE~ để ta có thể control được phần điền mật khẩu. Cool.
 
