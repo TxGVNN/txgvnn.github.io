@@ -148,7 +148,7 @@ Cụ thể mình config vào <code>~/.bashrc</code> như sau</p>
 <div class="src src-bash">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export SSH_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/.ssh&#34;</span>
 use-ssh<span style="color:#f92672">(){</span>
-    SSH_ASKPASS<span style="color:#f92672">=</span>/usr/local/bin/gpg-ask-pass-for-ssh.sh
+    export SSH_ASKPASS<span style="color:#f92672">=</span>/usr/local/bin/gpg-ask-pass-for-ssh.sh
     ssh_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>1<span style="color:#66d9ef">:-</span>id_rsa<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> -e <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SSH_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>ssh_key<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
         ssh_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>SSH_DIR<span style="color:#e6db74">}</span><span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>ssh_key<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
