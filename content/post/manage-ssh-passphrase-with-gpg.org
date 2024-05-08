@@ -62,7 +62,7 @@ Cụ thể mình config vào ~~/.bashrc~ như sau
 #+begin_src bash :results none
 export SSH_DIR="${HOME}/.ssh"
 use-ssh(){
-    SSH_ASKPASS=/usr/local/bin/gpg-ask-pass-for-ssh.sh
+    export SSH_ASKPASS=/usr/local/bin/gpg-ask-pass-for-ssh.sh
     ssh_key="${1:-id_rsa}"
     if [ -e "${SSH_DIR}/${ssh_key}" ]; then
         ssh_key="${SSH_DIR}/${ssh_key}"
