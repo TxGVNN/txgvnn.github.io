@@ -4,7 +4,7 @@
 
 banner(){
     echo -e ' \e[36m_____      ___\e[0m   '
-    echo -e '\e[36m|_   _|\e[31m_ __\e[36m/ __|\e[0m Giap Tran <txgvnn@gmail.com>\e[0m'
+    echo -e '\e[36m|_   _|\e[31m_ __\e[36m/ __|\e[0m Giap Tran <txgvnn@disroot.org>\e[0m'
     echo -e '  \e[36m| | \e[31m\ \ /\e[36m (_ |\e[0m github.com/txgvnn\e[0m'
     echo -e '  \e[36m|_| \e[31m/_\_\\\e[36m\___|\e[0m txgvnn:irc.oftc.net\e[0m'
     echo ''
