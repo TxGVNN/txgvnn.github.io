@@ -1,0 +1,51 @@
+---
+title: "Làm cho Gitpod giữ lại dữ liệu ngoài workspace"
+date: 2024-07-28T15:25:53+07:00
+tags: [emacs, workflow]
+draft: false
+---
+
+* Vấn đề
+Mình đang dùng song song Gitpod và Codespaces (Github) thì thấy thằng Gitpod nó lưu mỗi thư mục ~/workspace~ giữa các session thôi. Còn Codespace thì lưu toàn bộ trạng thái của container luôn.
+
+Vì thế mà mình cũng muốn thằng Gitpod hành xử như thằng Codespaces. Cụ thế chẳng hạn như cài thêm các package bằng apt thì restart container không phải cài lại nữa.
+
+Chỗ này mặc dù thiết kế của gitpod là stateless, mọi cài cắm sẽ được cài vào image hoặc script bootstrap. Nhưng mình vẫn thích lưu lại state của container, vì mình bật trường kỳ 1 container cho toàn bộ project khác nhau. Vấn đảm bảo được 2 yếu tố:
+
+- Stateless: Có Dockerfile, các script để cài cắm (reproducible)
+- Stateful: Lưu lại trạng thái, đỡ cài cắm lại mỗi lần bật tắt
+
+Một phút dành cho quảng cáo: Mình có build image cho Gitpod và Codespaces tại https://github.com/TxGVNN/oops
+
+* Giải quyết vấn đề
+Sử dụng ~fuse-overlayfs~ để tạo thư mục overlay cho các thư mục mà mình muốn giữa lại, rồi thiết lập lưu trữ vào thư mục ~/workspace~
+
+Mình tạo 1 script lúc khởi chạy gitpod như sau:
+
+#+begin_src sh
+#!/usr/bin/env bash
+sudo apt update
+sudo apt install -y fuse-overlayfs  # Nên cài package này sẵn ở Dockerfile
+
+# Chỗ này mình overlay 4 thư mục: /usr, /etc, /var/cache, /var/lib
+
+if ! mount | grep -qE '/usr.*fuse-overlayfs'; then
+    sudo mkdir -p /workspaces/overlay/workir/usr /workspaces/overlay/usr
+    sudo fuse-overlayfs -o lowerdir=/usr,upperdir=/workspaces/overlay/usr,workdir=/workspaces/overlay/workir/usr /usr
+fi
+if ! mount | grep -qE '/etc.*fuse-overlayfs'; then
+    sudo mkdir -p /workspaces/overlay/workir/etc /workspaces/overlay/etc
+    sudo fuse-overlayfs -o lowerdir=/etc,upperdir=/workspaces/overlay/etc,workdir=/workspaces/overlay/workir/etc /etc
+fi
+if ! mount | grep -qE '/var\/cache.*fuse-overlayfs'; then
+    sudo mkdir -p /workspaces/overlay/workir/var/cache /workspaces/overlay/var/cache
+    sudo fuse-overlayfs -o lowerdir=/var/cache,upperdir=/workspaces/overlay/var/cache,workdir=/workspaces/overlay/workir/var/cache /var/cache
+fi
+
+if ! mount | grep -qE '/var\/lib.*fuse-overlayfs'; then
+    sudo mkdir -p /workspaces/overlay/workir/var/lib /workspaces/overlay/var/lib
+    sudo fuse-overlayfs -o lowerdir=/var/lib,upperdir=/workspaces/overlay/var/lib,workdir=/workspaces/overlay/workir/var/lib /var/lib
+fi
+#+end_src
+
+
